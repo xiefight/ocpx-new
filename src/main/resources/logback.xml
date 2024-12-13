@@ -1,0 +1,4031 @@
+<!-- Logback configuration. See http://logback.qos.ch/manual/index.html -->
+<configuration scan="true" scanPeriod="10 seconds">
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    <!-- 按照大小切割日志, 保留一定的数量 -->
+    <appender name="INFO_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/info.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/info.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过30MB归档 -->
+            <maxFileSize>60MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <!-- 按照大小切割日志, 保留一定的数量 -->
+    <appender name="ERROR_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+        <File>logs/error.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/error.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过30MB归档 -->
+            <maxFileSize>50MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy" level="INFO" additivity="true">
+    </logger>
+    <root level="INFO">
+        <appender-ref ref="INFO_FILE"/>
+        <appender-ref ref="ERROR_FILE"/>
+    </root>
+
+
+    <!-- 西瓜视频 start -->
+    <appender name="XIGUA_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/xigua/xigua.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/xigua/xigua.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.WifiXiguaChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="XIGUA_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.WifiXiguaServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="XIGUA_LOG"/>
+    </logger>
+
+    <!-- 西瓜视频 end -->
+
+
+    <!-- 京东 start -->
+    <appender name="LTJD_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/ltjd/ltjd.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/ltjd/ltjd.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiJingdongChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="LTJD_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiJingdongServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="LTJD_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduLtjdChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="LTJD_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduLtjdServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="LTJD_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.middle.impl.BdssLtjdChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="LTJD_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BdssLtjdServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="LTJD_LOG"/>
+    </logger>
+
+    <!-- 京东 end -->
+
+    <!-- 京东搜索 start -->
+    <appender name="JDSS_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/jdss/jdss.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/jdss/jdss.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduJdssChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="JDSS_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduJdssServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="JDSS_LOG"/>
+    </logger>
+
+    <!-- 京东搜索 end -->
+
+    <!-- 优酷 start -->
+    <appender name="YOUKU_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/youku/youku.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/youku/youku.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiYoukuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="YOUKU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiYoukuServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="YOUKU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduYoukuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="YOUKU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduYoukuServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="YOUKU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiYoukuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="YOUKU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiYoukuServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="YOUKU_LOG"/>
+    </logger>
+
+
+    <!-- 优酷 end -->
+
+
+    <!-- 快手 start -->
+    <appender name="KUAISHOU_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/kuaishou/kuaishou.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/kuaishou/kuaishou.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>20</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>50MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiKuaishouChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="KUAISHOU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiKuaishouServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="KUAISHOU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiKuaishouChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="KUAISHOU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiKuaishouServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="KUAISHOU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.middle.impl.OppoKuaishouChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="KUAISHOU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.OppoKuaishouServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="KUAISHOU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduKuaishouChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="KUAISHOU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduKuaishouServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="KUAISHOU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.middle.impl.IQiyiKuaishouChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="KUAISHOU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.IQiyiKuaishouServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="KUAISHOU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.middle.impl.BdssKuaishouChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="KUAISHOU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BdssKuaishouServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="KUAISHOU_LOG"/>
+    </logger>
+
+
+    <appender name="KUAISHOU_GDT_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/kuaishouGdt/kuaishouGdt.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/kuaishouGdt/kuaishouGdt.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.GDTKuaishouChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="KUAISHOU_GDT_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.GDTKuaishouServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="KUAISHOU_GDT_LOG"/>
+    </logger>
+
+    <!-- 快手 end -->
+
+
+    <!-- 天猫 start -->
+    <appender name="TIANMAO_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/tianmao/tianmao.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/tianmao/tianmao.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduTianmaoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="TIANMAO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduTianmaoServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="TIANMAO_LOG"/>
+    </logger>
+
+    <!-- 天猫 end -->
+
+
+    <!-- 番茄 start -->
+    <appender name="FANQIE_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/fanqie/fanqie.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/fanqie/fanqie.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduFanqieChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="FANQIE_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduFanqieServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="FANQIE_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.middle.impl.WifiFanqieChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="FANQIE_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.WifiFanqieServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="FANQIE_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiFanqieChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="FANQIE_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiFanqieServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="FANQIE_LOG"/>
+    </logger>
+
+
+    <!-- 番茄 end -->
+
+
+    <!-- 京东金融 start -->
+    <appender name="JINGDONGJINRONG_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/jdjr/jdjr.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/jdjr/jdjr.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduJdjrChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="JINGDONGJINRONG_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduJdjrServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="JINGDONGJINRONG_LOG"/>
+    </logger>
+
+
+    <!-- 京东金融 end -->
+
+
+    <!-- 小红书 start -->
+    <appender name="XIAOHONGSHU_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/xiaohongshu/xiaohongshu.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/xiaohongshu/xiaohongshu.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiXiaohongshuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="XIAOHONGSHU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiXiaohongshuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="XIAOHONGSHU_LOG"/>
+    </logger>
+
+    <!-- 小红书 end -->
+
+
+    <!-- 心遇 start -->
+    <appender name="XINYU_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/xinyu/xinyu.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/xinyu/xinyu.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiXinyuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="XINYU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiXinyuServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="XINYU_LOG"/>
+    </logger>
+
+    <!-- 心遇 end -->
+
+
+    <!-- 探探 （huihui） start -->
+    <appender name="TANTAN_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/tantan/tantan.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/tantan/tantan.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiHuihuiTantanChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="TANTAN_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiHuihuiTantanServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="TANTAN_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiHuihuiTantanChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="TANTAN_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiHuihuiTantanServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="TANTAN_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduHuihuiTantanChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="TANTAN_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduHuihuiTantanServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="TANTAN_LOG"/>
+    </logger>
+
+    <!-- 探探 （huihui） end -->
+
+
+    <!-- liangdamao start -->
+    <appender name="LIANGDAMAO_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/liangdamao/liangdamao.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/liangdamao/liangdamao.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.ads2channel.service.impl.LiangdamaoServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="LIANGDAMAO_LOG"/>
+    </logger>
+    <!-- liangdamao end -->
+
+
+    <!-- 辉煌 start -->
+    <appender name="HUIHUANG_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/huihuang/huihuang.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/huihuang/huihuang.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiHuihuangChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANG_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiHuihuangServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANG_LOG"/>
+    </logger>
+
+    <!-- 辉煌 end -->
+
+
+    <!-- 懂车帝 start -->
+    <appender name="DONGCHEDI_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/dongchedi/dongchedi.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/dongchedi/dongchedi.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduDongchediChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="DONGCHEDI_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduDongchediServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="DONGCHEDI_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiDongchediChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="DONGCHEDI_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiDongchediServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="DONGCHEDI_LOG"/>
+    </logger>
+
+    <!-- 懂车帝 end -->
+
+
+    <!-- 心遇-有道 start -->
+    <appender name="XINYUYOUDAO_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/xinyuyoudao/xinyuyoudao.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/xinyuyoudao/xinyuyoudao.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiXinyuYoudaoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="XINYUYOUDAO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiHuihuiXinyuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="XINYUYOUDAO_LOG"/>
+    </logger>
+
+    <!-- 心遇-有道 end -->
+
+
+    <!-- 七猫-有道 start -->
+    <appender name="QIMAOYOUDAO_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/qimaoyoudao/qimaoyoudao.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/qimaoyoudao/qimaoyoudao.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiQimaoYoudaoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QIMAOYOUDAO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiHuihuiQimaoServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QIMAOYOUDAO_LOG"/>
+    </logger>
+
+    <!-- 七猫-有道 end -->
+
+
+    <!-- 河马短剧-有道 start -->
+    <appender name="HUIHUI_HEMADUANJU_XIAOMI_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/huihui/hemaduanju/hemaduanju_xiaomi.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/huihui/hemaduanju/hemaduanju_xiaomi.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiHuihuiHemaduanjuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUI_HEMADUANJU_XIAOMI_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiHuihuiHemaduanjuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUI_HEMADUANJU_XIAOMI_LOG"/>
+    </logger>
+
+
+    <appender name="HUIHUI_HEMADUANJU_BAIDU_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/huihui/hemaduanju/hemaduanju_baidu.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/huihui/hemaduanju/hemaduanju_baidu.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduHuihuiHemaduanjuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUI_HEMADUANJU_BAIDU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduHuihuiHemaduanjuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUI_HEMADUANJU_BAIDU_LOG"/>
+    </logger>
+
+    <!-- 河马短剧-有道 end -->
+
+    <!-- 智谱清言-有道 start -->
+    <appender name="HUIHUI_ZHIPUQINGYAN_BAIDU_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/huihui/zhipuqingyan/zhipuqingyan_baidu.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/huihui/zhipuqingyan/zhipuqingyan_baidu.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduHuihuiZhipuqingyanChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUI_ZHIPUQINGYAN_BAIDU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduHuihuiZhipuqingyanServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUI_ZHIPUQINGYAN_BAIDU_LOG"/>
+    </logger>
+
+    <appender name="HUIHUI_ZHIPUQINGYAN_HONOR_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/huihui/zhipuqingyan/zhipuqingyan_Honor.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/huihui/zhipuqingyan/zhipuqingyan_Honor.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HonorHuihuiZhipuqingyanChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUI_ZHIPUQINGYAN_HONOR_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HonorHuihuiZhipuqingyanServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUI_ZHIPUQINGYAN_HONOR_LOG"/>
+    </logger>
+
+    <!-- 智谱清言-有道 end -->
+
+    <!-- 鱼泡-有道 start -->
+    <appender name="HUIHUI_YUPAO_BAIDU_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/huihui/yupao/yupao_baidu.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/huihui/yupao/yupao_baidu.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduHuihuiYupaoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUI_YUPAO_BAIDU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduHuihuiYupaoServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUI_YUPAO_BAIDU_LOG"/>
+    </logger>
+
+    <appender name="HUIHUI_YUPAO_XIAOMI_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/huihui/yupao/yupao_xiaomi.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/huihui/yupao/yupao_xiaomi.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiHuihuiYupaoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUI_YUPAO_XIAOMI_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiHuihuiYupaoServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUI_YUPAO_XIAOMI_LOG"/>
+    </logger>
+
+    <!-- 鱼泡-有道 end -->
+
+
+    <!-- 闲鱼 start -->
+    <appender name="XIANYU_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/xianyu/xianyu.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/xianyu/xianyu.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduHuihuiXianyuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="XIANYU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduHuihuiXianyuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="XIANYU_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiXianyuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="XIANYU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiHuihuiXianyuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="XIANYU_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiHuihuiXianyuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="XIANYU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiHuihuiXianyuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="XIANYU_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.IQiyiHuihuiXianyuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="XIANYU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.IQiyiHuihuiXianyuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="XIANYU_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.GDTHuihuiXianyuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="XIANYU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.GDTHuihuiXianyuServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="XIANYU_LOG"/>
+    </logger>
+
+    <!-- 闲鱼 end -->
+
+
+    <!-- huihui有道 淘宝 start -->
+    <appender name="HUIHUI_TAOBAO_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/taobao/taobao.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/taobao/taobao.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiHuihuiTaobaoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUI_TAOBAO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiHuihuiTaobaoServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUI_TAOBAO_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduHuihuiTaobaoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUI_TAOBAO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduHuihuiTaobaoServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUI_TAOBAO_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiHuihuiTaobaoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUI_TAOBAO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiHuihuiTaobaoServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUI_TAOBAO_LOG"/>
+    </logger>
+
+    <!-- huihui有道 淘宝 end -->
+
+    <!-- huihui有道 瓜子二手车 start -->
+    <appender name="HUIHUI_GUAZI_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/huihuiguazi/guazi.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/huihuiguazi/guazi.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiHuihuiGuaziChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUI_GUAZI_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiHuihuiGuaziServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUI_GUAZI_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiHuihuiGuaziChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUI_GUAZI_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiHuihuiGuaziServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUI_GUAZI_LOG"/>
+    </logger>
+
+    <!-- huihui有道 瓜子二手车 end -->
+
+
+    <!-- 途虎 start -->
+    <appender name="TUHU_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/tuhu/tuhu.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/tuhu/tuhu.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiTuhuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="TUHU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiHuihuiTuhuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="TUHU_LOG"/>
+    </logger>
+
+    <!-- 途虎 end -->
+
+
+    <!-- 点淘 start -->
+    <appender name="DAINTAO_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/diantao/diantao.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/diantao/diantao.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiDiantaoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="DAINTAO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiDiantaoServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="DAINTAO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduDiantaoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="DAINTAO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduDiantaoServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="DAINTAO_LOG"/>
+    </logger>
+
+    <!-- 点淘 end -->
+
+
+    <!-- 番茄小说（全能互动） start -->
+    <appender name="QUANNENG_FANQIE_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/quannengFanqie/quannengFanqie.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/quannengFanqie/quannengFanqie.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiQuannengFanqieChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_FANQIE_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiQuannengFanqieServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_FANQIE_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiQuannengFanqieChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_FANQIE_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiQuannengFanqieServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_FANQIE_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduQuannengFanqieChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_FANQIE_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduQuannengFanqieServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_FANQIE_LOG"/>
+    </logger>
+
+    <!-- 番茄小说（全能互动） end -->
+
+    <!-- 番茄畅听（全能互动） start -->
+    <appender name="QUANNENG_FANQIECHANGTING_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/quannengFanqiechangting/quannengFanqiechangting.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/quannengFanqiechangting/quannengFanqiechangting.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduQuannengFanqiechangtingChannelAds" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_FANQIECHANGTING_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduQuannengFanqiechangtingServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_FANQIECHANGTING_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiQuannengFanqiechangtingChannelAds" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_FANQIECHANGTING_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiQuannengFanqiechangtingServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_FANQIECHANGTING_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiQuannengFanqiechangtingChannelAds" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_FANQIECHANGTING_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiQuannengFanqiechangtingServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_FANQIECHANGTING_LOG"/>
+    </logger>
+    <!-- 番茄畅听（全能互动） end -->
+
+    <!-- 抖音极速（全能互动） start -->
+    <appender name="QUANNENG_DOUYINJISU_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/quannengDouyinjisu/quannengDouyinjisu.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/quannengDouyinjisu/quannengDouyinjisu.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiQuannengDouyinjisuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_DOUYINJISU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiQuannengDouyinjisuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_DOUYINJISU_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduQuannengDouyinjisuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_DOUYINJISU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduQuannengDouyinjisuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_DOUYINJISU_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiQuannengDouyinjisuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_DOUYINJISU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiQuannengDouyinjisuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_DOUYINJISU_LOG"/>
+    </logger>
+
+    <!-- 抖音极速（全能互动） end -->
+
+    <!-- 西瓜视频（全能互动） start -->
+    <appender name="QUANNENG_XIGUAVIDEO_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/quannengXiguaVideo/quannengXiguaVideo.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/quannengXiguaVideo/quannengXiguaVideo.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiQuannengXiguaVideoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_XIGUAVIDEO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiQuannengXiguaVideoServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_XIGUAVIDEO_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduQuannengXiguaVideoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_XIGUAVIDEO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduQuannengXiguaServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_XIGUAVIDEO_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiQuannengXiguaVideoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_XIGUAVIDEO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiQuannengXiguaVideoServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_XIGUAVIDEO_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.IQiyiQuannengXiguaVideoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_XIGUAVIDEO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.IQiyiQuannengXiguaVideoServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_XIGUAVIDEO_LOG"/>
+    </logger>
+
+    <!-- 西瓜视频（全能互动） end -->
+
+
+    <!-- 爱奇艺（huihui） start -->
+    <appender name="IQIYI_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/iqiyi/iqiyi.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/iqiyi/iqiyi.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiIQiyiChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="IQIYI_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiHuihuiIQiyiServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="IQIYI_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiIQiyiChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="IQIYI_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiHuihuiIQiyiServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="IQIYI_LOG"/>
+    </logger>
+
+    <!-- 爱奇艺（huihui） end -->
+
+
+    <!-- 抖音（大猫） start -->
+    <appender name="DOUYIN_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/douyin/douyin.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/douyin/douyin.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduDouyinChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="DOUYIN_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduDouyinServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="DOUYIN_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiDouyinChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="DOUYIN_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiDouyinServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="DOUYIN_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiDouyinChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="DOUYIN_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiDouyinServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="DOUYIN_LOG"/>
+    </logger>
+
+    <!-- 抖音（大猫） end -->
+
+
+    <!-- 抖音火山（大猫） start -->
+    <appender name="DOUYINHUOSHAN_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/douyinhuoshan/douyinhuoshan.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/douyinhuoshan/douyinhuoshan.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiDouyinhuoshanChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="DOUYINHUOSHAN_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiDouyinhuoshanServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="DOUYINHUOSHAN_LOG"/>
+    </logger>
+
+    <!-- 抖音火山（大猫） end -->
+
+
+    <!-- 辉煌 天猫 start -->
+    <appender name="HUIHUANGTIANMAO_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/hhtianmao/hhtianmao.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/hhtianmao/hhtianmao.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduHuihuangTianmaoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANGTIANMAO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduHuihuangTianmaoServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANGTIANMAO_LOG"/>
+    </logger>
+
+    <!-- 辉煌 天猫 end -->
+
+
+    <!-- 辉煌 抖音火山 start -->
+    <appender name="HUIHUANGDOUYINHUOSHAN_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/hhdyhs/hhdyhs.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/hhdyhs/hhdyhs.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduHuihuangDouyinhuoshanChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANGDOUYINHUOSHAN_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduHuihuangDouyinhuoshanServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANGDOUYINHUOSHAN_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiHuihuangDouyinhuoshanChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANGDOUYINHUOSHAN_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiHuihuangDouyinhuoshanServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANGDOUYINHUOSHAN_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiHuihuangDouyinhuoshanChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANGDOUYINHUOSHAN_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiHuihuangDouyinhuoshanServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANGDOUYINHUOSHAN_LOG"/>
+    </logger>
+
+    <!-- 辉煌 抖音火山 end -->
+
+
+    <!-- 辉煌 红果短剧 start -->
+    <appender name="HUIHUANGHONGGUODUANJU_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/hhhgdj/hhhgdj.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/hhhgdj/hhhgdj.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiHuihuangHongguoduanjuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANGHONGGUODUANJU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiHuihuangHongguoduanjuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANGHONGGUODUANJU_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiHuihuangHongguoduanjuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANGHONGGUODUANJU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiHuihuangHongguoduanjuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANGHONGGUODUANJU_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduHuihuangHongguoduanjuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANGHONGGUODUANJU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduHuihuangHongguoduanjuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANGHONGGUODUANJU_LOG"/>
+    </logger>
+
+    <!-- 辉煌 红果短剧 end -->
+
+    <!-- 辉煌 西瓜视频 start -->
+    <appender name="HUIHUANG_XIGUAVIDEO_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/hhxgvideo/hhxgvideo.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/hhxgvideo/hhxgvideo.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiHuihuangXiguavideoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANG_XIGUAVIDEO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiHuihuangXiguaServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_XIGUAVIDEO_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduHuihuangXiguavideoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANG_XIGUAVIDEO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduHuihuangXiguavideoServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_XIGUAVIDEO_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiHuihuangXiguavideoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANG_XIGUAVIDEO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiHuihuangXiguavideoServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_XIGUAVIDEO_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.IQiyiHuihuangXiguavideoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANG_XIGUAVIDEO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.IQiyiHuihuangXiguavideoServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_XIGUAVIDEO_LOG"/>
+    </logger>
+
+    <!-- 辉煌 西瓜视频 end -->
+
+
+    <!-- 辉煌 番茄 start -->
+    <appender name="HUIHUANG_FANQIE_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/hhfq/hhfq.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/hhfq/hhfq.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.IQiyiHuihuangFanqieChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANG_FANQIE_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.IQiyiHuihuangFanqieServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_FANQIE_LOG"/>
+    </logger>
+
+
+    <!-- 辉煌 番茄 end -->
+
+    <!-- 辉煌 番茄畅听 start -->
+    <appender name="HUIHUANG_FANQIECHANGTING_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/hhfqct/hhfqct.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/hhfqct/hhfqct.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiHuihuangFanqiechangtingChannelAds" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_FANQIECHANGTING_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiHuihuangFanqiechangtingServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_FANQIECHANGTING_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiHuihuangFanqiechangtingChannelAds" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_FANQIECHANGTING_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiHuihuangFanqiechangtingServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_FANQIECHANGTING_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduHuihuangFanqiechangtingChannelAds" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_FANQIECHANGTING_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduHuihuangFanqiechangtingServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_FANQIECHANGTING_LOG"/>
+    </logger>
+
+    <!-- 辉煌 番茄畅听 end -->
+
+
+    <!-- 辉煌 今日头条 start -->
+    <appender name="HUIHUANG_JINRITOUTIAO_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/hhjrtt/hhjrtt.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/hhjrtt/hhjrtt.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduHuihuangJinritoutiaoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANG_JINRITOUTIAO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduHuihuangJinritoutiaoServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_JINRITOUTIAO_LOG"/>
+    </logger>
+
+
+    <!-- 辉煌 今日头条 end -->
+
+
+    <!-- 辉煌 一淘 start -->
+    <appender name="HUIHUANG_YITAO_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/hhyitao/hhyitao.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/hhyitao/hhyitao.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduHuihuangYitaoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANG_YITAO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduHuihuangYitaoServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_YITAO_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.OppoHuihuangYitaoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANG_YITAO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.OppoHuihuangYitaoServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_YITAO_LOG"/>
+    </logger>
+
+
+    <appender name="HUIHUANG_YITAO_HONOR_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/huihuang/yitao/yitao_honor.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/huihuang/yitao/yitao_honor.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HonorHuihuangYitaoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANG_YITAO_HONOR_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HonorHuihuangYitaoServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_YITAO_HONOR_LOG"/>
+    </logger>
+
+    <!-- 辉煌 一淘 end -->
+
+    <!-- 辉煌 丰芒 一淘 start -->
+    <appender name="HUIHUANGFENGMANG_YITAO_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/hhfmyitao/hhfmyitao.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/hhfmyitao/hhfmyitao.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiHuihuangFengmangYitaoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANGFENGMANG_YITAO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiHuihuangFengmangYitaoServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANGFENGMANG_YITAO_LOG"/>
+    </logger>
+
+    <!-- 辉煌 丰芒 一淘 end -->
+
+
+    <!-- 辉煌 优酷 start -->
+    <appender name="HUIHUANG_YOUKU_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/hhyouku/hhyouku.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/hhyouku/hhyouku.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiHuihuangYoukuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANG_YOUKU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiHuihuangYoukuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_YOUKU_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiHuihuangYoukuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANG_YOUKU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiHuihuangYoukuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_YOUKU_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduHuihuangYoukuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANG_YOUKU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduHuihuangYoukuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_YOUKU_LOG"/>
+    </logger>
+
+    <!-- 辉煌 优酷 end -->
+
+
+    <!-- 辉煌 京东 start -->
+    <appender name="HUIHUANG_JINGDONG_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/hhjingdong/hhjingdong.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/hhjingdong/hhjingdong.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiHuihuangJingdongChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANG_JINGDONG_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiHuihuangJingdongServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_JINGDONG_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiHuihuangJingdongChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANG_JINGDONG_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiHuihuangJingdongServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_JINGDONG_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HonorHuihuangJingdongChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANG_JINGDONG_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HonorHuihuangJingdongServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_JINGDONG_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.IQiyiHuihuangFengmangJingdongChannelAds" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_JINGDONG_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.IQiyiHuihuangFengmangJingdongServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_JINGDONG_LOG"/>
+    </logger>
+
+    <appender name="HUIHUANG_JINGDONG_OPPO_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/huihuang/hhjingdong/hhjingdong_oppo.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/huihuang/hhjingdong/hhjingdong_oppo.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.OppoHuihuangFengmangJingdongChannelAds" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_JINGDONG_OPPO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.OppoHuihuangFengmangJingdongServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_JINGDONG_OPPO_LOG"/>
+    </logger>
+
+    <!-- 辉煌 京东 end -->
+
+
+    <!-- 辉煌 京东金融 start -->
+    <appender name="HUIHUANG_JINGDONGJINRONG_HUAWEI_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/huihuang/hhjingdongjinrong/hhjingdongjinrong_huawei.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/huihuang/hhjingdongjinrong/hhjingdongjinrong_huawei.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiHuihuangJingdongjinrongChannelAds" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_JINGDONGJINRONG_HUAWEI_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiHuihuangJingdongjinrongServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_JINGDONGJINRONG_HUAWEI_LOG"/>
+    </logger>
+
+    <appender name="HUIHUANG_JINGDONGJINRONG_HONOR_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/huihuang/hhjingdongjinrong/hhjingdongjinrong_honor.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/huihuang/hhjingdongjinrong/hhjingdongjinrong_honor.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HonorHuihuangJingdongjinrongChannelAds" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_JINGDONGJINRONG_HONOR_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HonorHuihuangJingdongjinrongServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_JINGDONGJINRONG_HONOR_LOG"/>
+    </logger>
+
+    <appender name="HUIHUANG_JINGDONGJINRONG_OPPO_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/huihuang/hhjingdongjinrong/hhjingdongjinrong_oppo.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/huihuang/hhjingdongjinrong/hhjingdongjinrong_oppo.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.OppoHuihuangJingdongjinrongChannelAds" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_JINGDONGJINRONG_OPPO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.OppoHuihuangJingdongjinrongServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_JINGDONGJINRONG_OPPO_LOG"/>
+    </logger>
+
+
+    <!-- 辉煌 京东金融 end -->
+
+    <!-- 辉煌 连信 start -->
+    <appender name="HUIHUANG_XIAOMI_LIANXIN_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/huihuang/lianxin/lianxin-xiaomi.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/huihuang/lianxin/lianxin-xiaomi.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiHuihuangLianxinChannelAds" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_XIAOMI_LIANXIN_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiHuihuangLianxinServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_XIAOMI_LIANXIN_LOG"/>
+    </logger>
+
+    <appender name="HUIHUANG_BAIDU_LIANXIN_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/huihuang/lianxin/lianxin-baidu.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/huihuang/lianxin/lianxin-baidu.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduHuihuangLianxinChannelAds" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_BAIDU_LIANXIN_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduHuihuangLianxinServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_BAIDU_LIANXIN_LOG"/>
+    </logger>
+
+
+    <!-- 辉煌 连信 end -->
+
+    <!-- 辉煌 高途 start -->
+
+    <appender name="HUIHUANG_BAIDU_GAOTU_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/huihuang/gaotu/gaotu-baidu.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/huihuang/gaotu/gaotu-baidu.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduHuihuangGaotuChannelAds" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_BAIDU_GAOTU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduHuihuangGaotuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_BAIDU_GAOTU_LOG"/>
+    </logger>
+
+
+    <!-- 辉煌 高途 end -->
+
+    <!-- 辉煌 唯品会 start -->
+
+    <appender name="HUIHUANG_BAIDU_WEIPINHUI_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/huihuang/weipinhui/weipinhui-baidu.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/huihuang/weipinhui/weipinhui-baidu.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduHuihuangGaotuChannelAds" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_BAIDU_WEIPINHUI_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduHuihuangGaotuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_BAIDU_WEIPINHUI_LOG"/>
+    </logger>
+
+
+    <!-- 辉煌 唯品会 end -->
+
+
+    <!-- 辉煌 mia start -->
+    <appender name="HUIHUANG_XIAOMI_MIA_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/huihuang/mia/mia-xiaomi.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/huihuang/mia/mia-xiaomi.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiHuihuangMiaChannelAds" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_XIAOMI_MIA_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiHuihuangMiaServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_XIAOMI_MIA_LOG"/>
+    </logger>
+
+    <appender name="HUIHUANG_BAIDU_MIA_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/huihuang/mia/mia-baidu.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/huihuang/mia/mia-baidu.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduHuihuangMiaChannelAds" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_BAIDU_MIA_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduHuihuangMiaServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_BAIDU_MIA_LOG"/>
+    </logger>
+
+    <appender name="HUIHUANG_HONOR_MIA_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/huihuang/mia/mia-honor.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/huihuang/mia/mia-honor.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HonorHuihuangMiaChannelAds" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_HONOR_MIA_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HonorHuihuangMiaServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_HONOR_MIA_LOG"/>
+    </logger>
+
+    <!-- 辉煌 mia end -->
+
+
+    <!-- 辉煌 爱聊 start -->
+    <appender name="HUIHUANG_AILIAO_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/hhailiao/hhailiao.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/hhailiao/hhailiao.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiHuihuangAiliaoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANG_AILIAO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiHuihuangAiliaoServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_AILIAO_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiHuihuangAiliaoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANG_AILIAO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiHuihuangAiliaoServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_AILIAO_LOG"/>
+    </logger>
+
+    <!-- 辉煌 爱聊 end -->
+
+    <!-- 辉煌 头条极速 start -->
+    <appender name="HUIHUANG_TOUTIAOJISU_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/hhttjs/hhttjs.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/hhttjs/hhttjs.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiHuihuangToutiaojisuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANG_TOUTIAOJISU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiHuihuangToutiaojisuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_TOUTIAOJISU_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduHuihuangToutiaojisuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANG_TOUTIAOJISU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduHuihuangToutiaojisuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_TOUTIAOJISU_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiHuihuangToutiaojisuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANG_TOUTIAOJISU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiHuihuangToutiaojisuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_TOUTIAOJISU_LOG"/>
+    </logger>
+
+    <!-- 辉煌 头条极速 end -->
+
+
+    <!-- 辉煌 饿了么 start -->
+    <appender name="HUIHUANG_ELEME_OPPO_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/huihuang/eleme/eleme-oppo.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/huihuang/eleme/eleme-oppo.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.OppoHuihuangElemeChannelAds" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_ELEME_OPPO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.OppoHuihuangElemeServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_ELEME_OPPO_LOG"/>
+    </logger>
+
+    <!-- 辉煌 饿了么 start -->
+
+
+
+    <!-- 辉煌 皮皮虾 start -->
+    <appender name="HUIHUANG_PIPIXIA_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/hhppx/hhppx.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/hhppx/hhppx.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduHuihuangPipixiaChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANG_PIPIXIA_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduHuihuangPipixiaServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_PIPIXIA_LOG"/>
+    </logger>
+
+
+    <!-- 辉煌 皮皮虾 end -->
+
+
+    <!-- 辉煌 支付宝 start -->
+    <appender name="HUIHUANG_ZHIFUBAO_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/hhzfb/hhzfb.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/hhzfb/hhzfb.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduHuihuangZhifubaoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANG_ZHIFUBAO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduHuihuangZhifubaoServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_ZHIFUBAO_LOG"/>
+    </logger>
+
+
+    <!-- 辉煌 支付宝 end -->
+
+    <!-- 辉煌 闲鱼 start -->
+    <appender name="HUIHUANG_XIANYU_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/hhxianyu/hhxianyu.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/hhxianyu/hhxianyu.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduHuihuangXianyuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANG_XIANYU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduHuihuangXianyuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_XIANYU_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiHuihuangFengmangXianyuChannelAds" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_XIANYU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiHuihuangFengmangXianyuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_XIANYU_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiHuihuangFengmangXianyuChannelAds" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_XIANYU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiHuihuangFengmangXianyuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_XIANYU_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.IQiyiHuihuangFengmangXianyuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANG_XIANYU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.IQiyiHuihuangFengmangXianyuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_XIANYU_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HonorHuihuangFengmangXianyuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANG_XIANYU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HonorHuihuangFengmangXianyuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_XIANYU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.middle.impl.GdtHuihuangZhitouXianyuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANG_XIANYU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.GdtHuihuangZhitouXianyuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_XIANYU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.middle.impl.OppoHuihuangXianyunChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANG_XIANYU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.OppoHuihuangXianyuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_XIANYU_LOG"/>
+    </logger>
+
+
+    <!-- 辉煌 闲鱼 end -->
+
+
+    <!-- 辉煌 映客 start -->
+    <appender name="HUIHUANG_YINGKE_BAIDU_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/huihuang/yingke/yingke-baidu.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/huihuang/yingke/yingke-baidu.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduHuihuangYingkeChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANG_YINGKE_BAIDU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduHuihuangYingkeServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_YINGKE_BAIDU_LOG"/>
+    </logger>
+
+    <appender name="HUIHUANG_YINGKE_XIAOMI_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/huihuang/yingke/yingke-xiaomi.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/huihuang/yingke/yingke-xiaomi.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiHuihuangYingkeChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANG_YINGKE_XIAOMI_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiHuihuangYingkeServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_YINGKE_XIAOMI_LOG"/>
+    </logger>
+
+
+    <!-- 辉煌 映客 end -->
+
+
+    <!-- 今日头条（全能互动） start -->
+    <appender name="QUANNENG_JINRITOUTIAO_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/quannengJrtt/quannengJrtt.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/quannengJrtt/quannengJrtt.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduQuannengJinritoutiaoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_JINRITOUTIAO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduQuannengJinritoutiaoServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_JINRITOUTIAO_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiQuannengJinritoutiaoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_JINRITOUTIAO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiQuannengJinritoutiaoServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_JINRITOUTIAO_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiQuannengJinritoutiaoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_JINRITOUTIAO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiQuannengJinritoutiaoServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_JINRITOUTIAO_LOG"/>
+    </logger>
+
+    <!-- 今日头条（全能互动） start -->
+
+    <!-- 智谱清言（全能互动） start -->
+    <appender name="QUANNENG_BAIDU_ZHIPUQINGYAN_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/quanneng/zhipuqingyan/zhipuqingyan_baidu.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/quanneng/zhipuqingyan/zhipuqingyan_baidu.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduQuannengZhipuqingyanChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_BAIDU_ZHIPUQINGYAN_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduQuannengZhipuqingyanServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_BAIDU_ZHIPUQINGYAN_LOG"/>
+    </logger>
+
+    <appender name="QUANNENG_HONOR_ZHIPUQINGYAN_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/quanneng/zhipuqingyan/zhipuqingyan_honor.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/quanneng/zhipuqingyan/zhipuqingyan_honor.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HonorQuannengZhipuqingyanChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_HONOR_ZHIPUQINGYAN_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HonorQuannengZhipuqingyanServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_HONOR_ZHIPUQINGYAN_LOG"/>
+    </logger>
+
+
+    <!-- 智谱清言（全能互动） start -->
+
+
+    <!-- 抖音火山（全能互动） start -->
+    <appender name="QUANNENG_JINRIHUOSHAN_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/quannengDyhs/quannengDyhs.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/quannengDyhs/quannengDyhs.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiQuannengDouyinhuoshanChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_JINRIHUOSHAN_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiQuannengDouyinhuoshanServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_JINRIHUOSHAN_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduQuannengDouyinhuoshanChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_JINRIHUOSHAN_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduQuannengDouyinhuoshanServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_JINRIHUOSHAN_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiQuannengDouyinhuoshanChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_JINRIHUOSHAN_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiQuannengDouyinhuoshanServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_JINRIHUOSHAN_LOG"/>
+    </logger>
+
+    <!-- 抖音火山（全能互动） start -->
+
+
+    <!-- 百度极速（全能互动） start -->
+    <appender name="QUANNENG_BAIDUJISU_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/quannengBdjs/quannengBdjs.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/quannengBdjs/quannengBdjs.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiQuannengBaidujisuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_BAIDUJISU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiQuannengBaidujisuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_BAIDUJISU_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiQuannengBaidujisuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_BAIDUJISU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiQuannengBaidujisuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_BAIDUJISU_LOG"/>
+    </logger>
+
+    <!-- 百度极速（全能互动） start -->
+
+
+    <!-- 小红书（全能互动） start -->
+    <appender name="QUANNENG_XIAOHONGSHU_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/quannengXhs/quannengXhs.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/quannengXhs/quannengXhs.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiQuannengXiaohongshuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_XIAOHONGSHU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiQuannengXiaohongshuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_XIAOHONGSHU_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiQuannengXiaohongshuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_XIAOHONGSHU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiQuannengXiaohongshuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_XIAOHONGSHU_LOG"/>
+    </logger>
+
+    <!-- 小红书（全能互动） start -->
+
+    <!-- 爱奇艺（全能互动） start -->
+    <appender name="QUANNENG_IQIYI_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/quannengIQiyi/quannengIQiyi.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/quannengIQiyi/quannengIQiyi.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiQuannengIQiyiChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_IQIYI_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiQuannengIQiyiServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_IQIYI_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiQuannengIQiyiChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_IQIYI_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiQuannengIQiyiServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_IQIYI_LOG"/>
+    </logger>
+
+    <!-- 爱奇艺（全能互动） start -->
+
+
+    <!-- 红果短剧（全能互动） start -->
+    <appender name="QUANNENG_HONGGUODUANJU_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/quannengHgdj/quannengHgdj.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/quannengHgdj/quannengHgdj.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiQuannengHgdjChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_HONGGUODUANJU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiQuannengHgdjServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_HONGGUODUANJU_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiQuannengHgdjChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_HONGGUODUANJU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiQuannengHgdjServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_HONGGUODUANJU_LOG"/>
+    </logger>
+
+    <!-- 红果短剧（全能互动） start -->
+
+    <!-- 腾讯视频（全能互动） start -->
+    <appender name="QUANNENG_TENGXUNSHIPIN_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/quannengTxsp/quannengTxsp.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/quannengTxsp/quannengTxsp.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduQuannengTengxunshipinChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_TENGXUNSHIPIN_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduQuannengTengxunshipinServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_TENGXUNSHIPIN_LOG"/>
+    </logger>
+
+    <!-- 腾讯视频（全能互动） start -->
+
+    <!-- 河马剧场（全能互动） start -->
+    <appender name="QUANNENG_HEMAJUCHANG_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/quannengHmjc/quannengHmjc.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/quannengHmjc/quannengHmjc.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiQuannengHemajuchangChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_HEMAJUCHANG_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiQuannengHemajuchangServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_HEMAJUCHANG_LOG"/>
+    </logger>
+
+    <!-- 河马剧场（全能互动） start -->
+
+
+    <!-- 皮皮虾（全能互动） start -->
+    <appender name="QUANNENG_PIPIXIA_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/quannengppx/quannengppx.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/quannengppx/quannengppx.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduQuannengPipixiaChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_PIPIXIA_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduQuannengPipixiaServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_PIPIXIA_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiQuannengPipixiaChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_PIPIXIA_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiQuannengPipixiaServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_PIPIXIA_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiQuannengPipixiaChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_PIPIXIA_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiQuannengPipixiaServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_PIPIXIA_LOG"/>
+    </logger>
+
+    <!-- 皮皮虾（全能互动） start -->
+
+
+    <!-- 有柿（全能互动） start -->
+    <appender name="QUANNENG_YOUSHI_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/quannengyoushi/quannengyoushi.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/quannengyoushi/quannengyoushi.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiQuannengYoushiChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_YOUSHI_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiQuannengYoushiServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_YOUSHI_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduQuannengYoushiChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_YOUSHI_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduQuannengYoushiServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_YOUSHI_LOG"/>
+    </logger>
+
+    <!-- 有柿（全能互动） start -->
+
+    <!-- 优酷（全能互动） start -->
+    <appender name="QUANNENG_YOUKU_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/quannengyouku/quannengyouku.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/quannengyouku/quannengyouku.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiQuannengYoukuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_YOUKU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiQuannengYoukuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_YOUKU_LOG"/>
+    </logger>
+
+    <!-- 优酷（全能互动） start -->
+
+    <!-- UC（全能互动） start -->
+    <appender name="QUANNENG_UC_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/quannenguc/quannenguc.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/quannenguc/quannenguc.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiQuannengUCChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_UC_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiQuannengUCServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_UC_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiQuannengUCChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_UC_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiQuannengUCServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_UC_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduQuannengUCChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_UC_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduQuannengUCServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_UC_LOG"/>
+    </logger>
+
+    <!-- UC（全能互动） start -->
+
+
+    <!-- soul（全能互动） start -->
+    <appender name="QUANNENG_SOUL_XIAOMI_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/quanneng/soul/soul_xiaomi.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/quanneng/soul/soul_xiaomi.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiQuannengSoulChannelAds" level="INFO" additivity="false">
+        <appender-ref ref="QUANNENG_SOUL_XIAOMI_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiQuannengSoulServiceImpl" level="INFO"
+            additivity="false">
+        <appender-ref ref="QUANNENG_SOUL_XIAOMI_LOG"/>
+    </logger>
+
+
+    <appender name="QUANNENG_SOUL_BAIDU_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/quanneng/soul/soul_baidu.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/quanneng/soul/soul_baidu.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduQuannengSoulChannelAds" level="INFO" additivity="false">
+        <appender-ref ref="QUANNENG_SOUL_BAIDU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduQuannengSoulServiceImpl" level="INFO"
+            additivity="false">
+        <appender-ref ref="QUANNENG_SOUL_BAIDU_LOG"/>
+    </logger>
+
+    <!-- soul（全能互动） start -->
+
+    <!-- eleme（全能互动） start -->
+    <appender name="QUANNENG_ELEME_XIAOMI_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/quanneng/eleme/eleme_xiaomi.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/quanneng/eleme/eleme_xiaomi.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiQuannengElemeChannelAds" level="INFO" additivity="false">
+        <appender-ref ref="QUANNENG_ELEME_XIAOMI_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiQuannengElemeServiceImpl" level="INFO"
+            additivity="false">
+        <appender-ref ref="QUANNENG_ELEME_XIAOMI_LOG"/>
+    </logger>
+
+    <appender name="QUANNENG_ELEME_BAIDU_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/quanneng/eleme/eleme_baidu.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/quanneng/eleme/eleme_baidu.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduQuannengElemeChannelAds" level="INFO" additivity="false">
+        <appender-ref ref="QUANNENG_ELEME_BAIDU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduQuannengElemeServiceImpl" level="INFO"
+            additivity="false">
+        <appender-ref ref="QUANNENG_ELEME_BAIDU_LOG"/>
+    </logger>
+
+    <!-- eleme（全能互动） start -->
+
+    <!-- 七读 start -->
+    <appender name="QIDU_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/qidu/qidu.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/qidu/qidu.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiQiduChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QIDU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiQiduServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QIDU_LOG"/>
+    </logger>
+
+    <!-- 七读 end -->
+
+
+    <!-- TT语音（huihui有道） start -->
+    <appender name="TT_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/tt/tt.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/tt/tt.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiTTYoudaoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="TT_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiHuihuiTTServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="TT_LOG"/>
+    </logger>
+
+    <!-- TT语音（huihui有道） end -->
+
+
+    <!-- QQ阅读（huihui有道） start -->
+    <appender name="QQREAD_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/qqread/qqread.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/qqread/qqread.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiHuihuiQQReadChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QQREAD_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiHuihuiQQReadServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QQREAD_LOG"/>
+    </logger>
+
+    <!-- QQ阅读（huihui有道） end -->
+
+    <!-- 58同城（huihui有道） start -->
+    <appender name="58_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/huihui58/huihui58.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/huihui58/huihui58.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduHuihuiTongchengChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="58_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduHuihuiTongchengServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="58_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiHuihuiTongchengChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="58_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiHuihuiTongchengServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="58_LOG"/>
+    </logger>
+
+    <!-- 58同城（huihui有道） end -->
+
+
+    <!-- 星野（huihui有道） start -->
+    <appender name="XINGYE_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/huihuixingye/huihuixingye.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/huihuixingye/huihuixingye.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiHuihuiXingyeChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="XINGYE_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiHuihuiXingyeServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="XINGYE_LOG"/>
+    </logger>
+
+    <!-- 星野（huihui有道） end -->
+
+    <!-- 夸克（huihui有道） start -->
+    <appender name="HUIHUI_KUAKE_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/huihuikuake/huihuikuake.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/huihuikuake/huihuikuake.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiHuihuiKuakeChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUI_KUAKE_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiHuihuiKuakeServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUI_KUAKE_LOG"/>
+    </logger>
+
+    <!-- 夸克（huihui有道） end -->
+
+
+    <!-- 丁耘 抖音火山 start -->
+    <appender name="DINGYUN_DOUYINHUOSHAN_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/dingyundyhs/dingyundyhs.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/dingyundyhs/dingyundyhs.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduDingyunDouyinhuoshanChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="DINGYUN_DOUYINHUOSHAN_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduDingyunDouyinhuoshanServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="DINGYUN_DOUYINHUOSHAN_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiDingyunDouyinhuoshanChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="DINGYUN_DOUYINHUOSHAN_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiDingyunDouyinhuoshanServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="DINGYUN_DOUYINHUOSHAN_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiDingyunDouyinhuoshanChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="DINGYUN_DOUYINHUOSHAN_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiDingyunDouyinhuoshanServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="DINGYUN_DOUYINHUOSHAN_LOG"/>
+    </logger>
+
+    <!-- 丁耘 抖音火山 end -->
+
+    <!-- 丁耘 西瓜视频 start -->
+    <appender name="DINGYUN_XIGAUVIDEO_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/dingyunxigua/dingyunxigua.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/dingyunxigua/dingyunxigua.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduDingyunXiguavideoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="DINGYUN_XIGAUVIDEO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduDingyunXiguavideoServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="DINGYUN_XIGAUVIDEO_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiDingyunXiguavideoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="DINGYUN_XIGAUVIDEO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiDingyunXiguavideoServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="DINGYUN_XIGAUVIDEO_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiDingyunXiguavideoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="DINGYUN_XIGAUVIDEO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiDingyunXiguavideoServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="DINGYUN_XIGAUVIDEO_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.IQiyiDingyunXiguavideoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="DINGYUN_XIGAUVIDEO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.IQiyiDingyunXiguavideoServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="DINGYUN_XIGAUVIDEO_LOG"/>
+    </logger>
+
+    <!-- 丁耘 西瓜视频 end -->
+
+
+    <!-- 丁耘 番茄畅听 start -->
+    <appender name="DINGYUN_FANQIECHANGTING_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/dingyunfqct/dingyunfqct.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/dingyunfqct/dingyunfqct.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduDingyunFanqiechangtingChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="DINGYUN_FANQIECHANGTING_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduDingyunFanqiechangtingServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="DINGYUN_FANQIECHANGTING_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiDingyunFanqiechangtingChannelAds" level="INFO"
+            additivity="true">
+        <appender-ref ref="DINGYUN_FANQIECHANGTING_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiDingyunFanqiechangtingServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="DINGYUN_FANQIECHANGTING_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiDingyunFanqiechangtingChannelAds" level="INFO"
+            additivity="true">
+        <appender-ref ref="DINGYUN_FANQIECHANGTING_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiDingyunFanqiechangtingServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="DINGYUN_FANQIECHANGTING_LOG"/>
+    </logger>
+
+    <!-- 丁耘 番茄畅听 end -->
+
+    <!-- 丁耘 有柿 start -->
+    <appender name="DINGYUN_YOUSHI_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/dingyunyoushi/dingyunyoushi.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/dingyunyoushi/dingyunyoushi.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduDingyunYoushiChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="DINGYUN_YOUSHI_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduDingyunYoushiServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="DINGYUN_YOUSHI_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiDingyunYoushiChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="DINGYUN_YOUSHI_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiDingyunYoushiServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="DINGYUN_YOUSHI_LOG"/>
+    </logger>
+
+
+    <!-- 丁耘 有柿 end -->
+
+
+    <!-- keep start -->
+    <appender name="KEEP_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/keep/keep.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/keep/keep.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiKeepChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="KEEP_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiKeepServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="KEEP_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduKeepChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="KEEP_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduKeepServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="KEEP_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiKeepChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="KEEP_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiKeepServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="KEEP_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.IQiyiLuyunKeepChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="KEEP_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.IQiyiLuyunKeepServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="KEEP_LOG"/>
+    </logger>
+
+    <!-- keep end -->
+
+
+    <!-- 派派 start -->
+    <appender name="LUYUN_PAIPAI_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/luyunpaipai/luyunpaipai.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/luyunpaipai/luyunpaipai.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiLuyunPaipaiChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="LUYUN_PAIPAI_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiLuyunPaipaiServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="LUYUN_PAIPAI_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduLuyunPaipaiChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="LUYUN_PAIPAI_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduLuyunPaipaiServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="LUYUN_PAIPAI_LOG"/>
+    </logger>
+
+
+    <!-- 派派 end -->
+
+    <!-- 小红书 start -->
+    <appender name="LUYUN_XIAOHONGSHU_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/luyunxhs/luyunxhs.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/luyunxhs/luyunxhs.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiLuyunXiaohongshuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="LUYUN_XIAOHONGSHU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiLuyunXiaohongshuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="LUYUN_XIAOHONGSHU_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.IQiyiLuyunXiaohongshuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="LUYUN_XIAOHONGSHU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.IQiyiLuyunXiaohongshuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="LUYUN_XIAOHONGSHU_LOG"/>
+    </logger>
+
+
+    <!-- 小红书 end -->
+
+    <!-- 快看漫画 start -->
+    <appender name="LUYUN_KUAIKANMANHUA_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/luyunkkmh/luyunkkmh.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/luyunkkmh/luyunkkmh.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiLuyunKuaikanmanhuaChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="LUYUN_KUAIKANMANHUA_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiLuyunKuaikanmanhuaServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="LUYUN_KUAIKANMANHUA_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduLuyunKuaikanmanhuaChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="LUYUN_KUAIKANMANHUA_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduLuyunKuaikanmanhuaServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="LUYUN_KUAIKANMANHUA_LOG"/>
+    </logger>
+
+
+    <!-- 快看漫画 end -->
+
+
+    <!-- bupet bili start -->
+    <appender name="BUPET_BILI_XIAOMI_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/bupet/bili/bili_xiaomi.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/bupet/bili/bili_xiaomi.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiBupetBiliChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="BUPET_BILI_XIAOMI_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiBupetBiliServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="BUPET_BILI_XIAOMI_LOG"/>
+    </logger>
+
+
+    <appender name="BUPET_BILI_BAIDU_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/bupet/bili/bili_baidu.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/bupet/bili/bili_baidu.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduBupetBiliChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="BUPET_BILI_BAIDU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduBupetBiliServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="BUPET_BILI_BAIDU_LOG"/>
+    </logger>
+
+
+    <!-- bupet bili end -->
+
+
+    <!-- ningzhi soul start -->
+    <appender name="NINGZHI_SOUL_BAIDU_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/ningzhi/soul/soul_baidu.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/ningzhi/soul/soul_baidu.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduNingzhiSoulChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="NINGZHI_SOUL_BAIDU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduNingzhiSoulServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="NINGZHI_SOUL_BAIDU_LOG"/>
+    </logger>
+
+    <appender name="NINGZHI_SOUL_XIAOMI_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/ningzhi/soul/soul_xiaomi.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/ningzhi/soul/soul_xiaomi.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiNingzhiSoulChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="NINGZHI_SOUL_XIAOMI_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiNingzhiSoulServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="NINGZHI_SOUL_XIAOMI_LOG"/>
+    </logger>
+
+
+    <!-- ningzhi soul end -->
+
+
+    <!-- 微博 百度网盘 start -->
+    <appender name="WEIBO_BAIDUWANGPAN_OPPO_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/weibo/baiduwangpan/baiduwangpan_oppo.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/weibo/baiduwangpan/baiduwangpan_oppo.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.OppoWeiboBaiduwangpanChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="WEIBO_BAIDUWANGPAN_OPPO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.OppoWeiboBaiduwangpanServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="WEIBO_BAIDUWANGPAN_OPPO_LOG"/>
+    </logger>
+
+
+    <appender name="WEIBO_BAIDUWANGPAN_BAIDU_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/weibo/baiduwangpan/baiduwangpan_baidu.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/weibo/baiduwangpan/baiduwangpan_baidu.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduWeiboBaiduwangpanChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="WEIBO_BAIDUWANGPAN_BAIDU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduWeiboBaiduwangpanServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="WEIBO_BAIDUWANGPAN_BAIDU_LOG"/>
+    </logger>
+
+
+    <!-- 微博 百度网盘 end -->
+
+    <!-- 微博 学而思 start -->
+    <appender name="WEIBO_XUEERSI_BAIDU_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/weibo/xueersi/xueersi_baidu.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/weibo/xueersi/xueersi_baidu.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduWeiboXueersiChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="WEIBO_XUEERSI_BAIDU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduWeiboXueersiServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="WEIBO_XUEERSI_BAIDU_LOG"/>
+    </logger>
+
+
+    <appender name="WEIBO_XUEERSI_HONOR_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/weibo/xueersi/xueersi_honor.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/weibo/xueersi/xueersi_honor.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HonorWeiboXueersiChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="WEIBO_XUEERSI_HONOR_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HonorWeiboXueersiServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="WEIBO_XUEERSI_HONOR_LOG"/>
+    </logger>
+
+
+    <!-- 微博 学而思 end -->
+
+
+    <!-- 微博 万年历 start -->
+    <appender name="WEIBO_WANNIANLI_BAIDU_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/weibo/wannianli/wannianli_baidu.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/weibo/wannianli/wannianli_baidu.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduWeiboWannianliChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="WEIBO_WANNIANLI_BAIDU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduWeiboWannianliServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="WEIBO_WANNIANLI_BAIDU_LOG"/>
+    </logger>
+
+    <appender name="WEIBO_WANNIANLI_OPPO_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/weibo/wannianli/wannianli_oppo.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/weibo/wannianli/wannianli_oppo.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.OppoWeiboWannianliChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="WEIBO_WANNIANLI_OPPO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.OppoWeiboWannianliServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="WEIBO_WANNIANLI_OPPO_LOG"/>
+    </logger>
+
+
+    <!-- 微博 万年历 end -->
+
+
+    <!-- 微博 快手/快手极速 start -->
+    <appender name="WEIBO_KUAISHOU_HUIHUANG_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/weibo/kuaishou/kuaishou_huihuang.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/weibo/kuaishou/kuaishou_huihuang.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuihuangWeiboKuaishouChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="WEIBO_KUAISHOU_HUIHUANG_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuihuangWeiboKuaishouServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="WEIBO_KUAISHOU_HUIHUANG_LOG"/>
+    </logger>
+
+
+    <appender name="WEIBO_KUAISHOUJISU_HUIHUANG_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/weibo/kuaishoujisu/kuaishoujisu_huihuang.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/weibo/kuaishoujisu/kuaishoujisu_huihuang.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuihuangWeiboKuaishoujisuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="WEIBO_KUAISHOUJISU_HUIHUANG_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuihuangWeiboKuaishoujisuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="WEIBO_KUAISHOUJISU_HUIHUANG_LOG"/>
+    </logger>
+
+
+    <!-- 微博 快手/快手极速 end -->
+
+
+    <!-- jiyue 映客 start -->
+    <appender name="JIYUE_YINGKE_BAIDU_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/jiyue/yingke/yingke_baidu.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/jiyue/yingke/yingke_baidu.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduJiyueYingkeChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="JIYUE_YINGKE_BAIDU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduJiyueYingkeServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="JIYUE_YINGKE_BAIDU_LOG"/>
+    </logger>
+
+    <!-- jiyue 映客 end -->
+
+</configuration>

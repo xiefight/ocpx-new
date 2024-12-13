@@ -1,0 +1,13 @@
+server:
+  port: 5015
+
+spring:
+  datasource:
+    username: root
+    password: 918904@xt
+    url: jdbc:mysql://rm-2ze954q1642q883g6so.mysql.rds.aliyuncs.com:3306/ocpx?useUnicode=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath:/mybatis/mapper/*.xml,classpath:/mybatis/mapper/*/*.xml
+  config-location:  classpath:/mybatis/config/mybatis-config.xml
