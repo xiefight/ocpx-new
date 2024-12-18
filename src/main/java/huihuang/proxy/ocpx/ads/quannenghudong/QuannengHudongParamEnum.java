@@ -4,6 +4,7 @@ import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
 import huihuang.proxy.ocpx.channel.honor.HonorParamEnum;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
 import huihuang.proxy.ocpx.channel.iqiyi.IQiyiParamEnum;
+import huihuang.proxy.ocpx.channel.oppo.OppoParamEnum;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiParamEnum;
 
 import java.util.HashMap;
@@ -158,6 +159,27 @@ public static Map<QuannengHudongParamEnum, IQiyiParamEnum> quannengHudongIQiyiMa
         quannengHudongHonorMap.put(CALLBACK, null);
         quannengHudongHonorMap.put(UNIQUE_ID, HonorParamEnum.QUANNENGHUDONG_UNIQUEID);
         quannengHudongHonorMap.put(ACCOUNT_ID, HonorParamEnum.ACCOUNT_ID);
+    }
+
+
+    public static Map<QuannengHudongParamEnum, OppoParamEnum> quannengHudongOppoMap;
+
+    static {
+        quannengHudongOppoMap = new HashMap<>();
+        quannengHudongOppoMap.put(PID, OppoParamEnum.QUANNENGHUDONG_PID);
+        quannengHudongOppoMap.put(IDFA, null);
+        quannengHudongOppoMap.put(IMEI, OppoParamEnum.IMEI);//需要md5
+        quannengHudongOppoMap.put(OAID, OppoParamEnum.OAID);
+        quannengHudongOppoMap.put(CAID, null);
+        quannengHudongOppoMap.put(OS, OppoParamEnum.OS);
+        quannengHudongOppoMap.put(IP, OppoParamEnum.IP);
+        quannengHudongOppoMap.put(ANDROID_ID, null);
+        quannengHudongOppoMap.put(AAID, null);
+        quannengHudongOppoMap.put(UA, OppoParamEnum.USERAGENT);
+        quannengHudongOppoMap.put(MODEL, null);
+        quannengHudongOppoMap.put(CALLBACK, null);
+        quannengHudongOppoMap.put(UNIQUE_ID, OppoParamEnum.QUANNENGHUDONG_UNIQUEID);
+        quannengHudongOppoMap.put(ACCOUNT_ID, OppoParamEnum.ACCOUNT_ID);
     }
 
 

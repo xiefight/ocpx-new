@@ -5,6 +5,7 @@ import huihuang.proxy.ocpx.channel.baidu.BaiduEventTypeEnum;
 import huihuang.proxy.ocpx.channel.honor.HonorEventTypeEnum;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiEventTypeEnum;
 import huihuang.proxy.ocpx.channel.iqiyi.IQiyiEventTypeEnum;
+import huihuang.proxy.ocpx.channel.oppo.OppoEventTypeEnum;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiEventTypeEnum;
 
 import java.util.Map;
@@ -107,6 +108,20 @@ public enum QuannengHudongEventTypeEnum {
         quannengHudongHonorEventTypeMap.put(DAY1RETENTION.code, HonorEventTypeEnum.RETAIN);
         //购买
         quannengHudongHonorEventTypeMap.put(PURCHASE.code, HonorEventTypeEnum.FIRST_PURCHASE);
+    }
+
+    public static Map<String, OppoEventTypeEnum> quannengHudongOppoEventTypeMap;
+
+    static {
+        quannengHudongOppoEventTypeMap = CollUtil.newHashMap();
+        //激活
+        quannengHudongOppoEventTypeMap.put(ACTIVATE.code, OppoEventTypeEnum.ACTIVE);
+        //注册
+        quannengHudongOppoEventTypeMap.put(REGISTER.code, OppoEventTypeEnum.REGISTER);
+        //次留
+        quannengHudongOppoEventTypeMap.put(DAY1RETENTION.code, OppoEventTypeEnum.RETAIN_2DAY);
+        //购买
+        quannengHudongOppoEventTypeMap.put(PURCHASE.code, null);
     }
 
 }
