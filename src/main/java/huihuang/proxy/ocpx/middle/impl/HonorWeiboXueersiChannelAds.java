@@ -2,6 +2,7 @@ package huihuang.proxy.ocpx.middle.impl;
 
 import huihuang.proxy.ocpx.ads.weibo.WeiboParamField;
 import huihuang.proxy.ocpx.ads.weibo.wannianli.WeiboWannianliPath;
+import huihuang.proxy.ocpx.ads.weibo.xueersi.WeiboXueersiPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IWeiboXueersiAdsDao;
 import huihuang.proxy.ocpx.channel.honor.HonorPath;
 import huihuang.proxy.ocpx.common.Constants;
@@ -50,10 +51,10 @@ public class HonorWeiboXueersiChannelAds extends HonorWeiboReportFactory {
         String monitorType = weiboParamField.getMonitorType();
         if ("0".equals(monitorType)) {
             //曝光监测
-            return WeiboWannianliPath.EXPOSURE_URI;
+            return WeiboXueersiPath.EXPOSURE_URI;
         } else {
             //点击监测
-            return WeiboWannianliPath.BASIC_URI;
+            return WeiboXueersiPath.BASIC_URI;
         }
     }
 }

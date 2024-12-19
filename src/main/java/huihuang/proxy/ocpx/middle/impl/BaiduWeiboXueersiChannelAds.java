@@ -50,10 +50,10 @@ public class BaiduWeiboXueersiChannelAds extends BaiduWeiboReportFactory {
         String monitorType = weiboParamField.getMonitorType();
         if ("0".equals(monitorType)){
             //曝光监测
-            return WeiboWannianliPath.EXPOSURE_URI;
+            return WeiboXueersiPath.EXPOSURE_URI;
         }else {
             //点击监测
-            return WeiboWannianliPath.BASIC_URI;
+            return WeiboXueersiPath.BASIC_URI;
         }
     }
 }
