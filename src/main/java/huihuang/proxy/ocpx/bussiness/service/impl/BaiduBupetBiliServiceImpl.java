@@ -81,6 +81,8 @@ public class BaiduBupetBiliServiceImpl extends BaiduChannelFactory implements IC
             baiduVO.setSecret(BaiduPath.BAIDU_BUPET_BILI_SECRET_01);
         }else if (BaiduPath.BAIDU_BUPET_BILI_ACCOUNT_02.equals(bupetAdsDTO.getAccountId())) {
             baiduVO.setSecret(BaiduPath.BAIDU_BUPET_BILI_SECRET_02);
+        }else if (BaiduPath.BAIDU_BUPET_BILI_ACCOUNT_03.equals(bupetAdsDTO.getAccountId())) {
+            baiduVO.setSecret(BaiduPath.BAIDU_BUPET_BILI_SECRET_03);
         }
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, baiduVO);
 

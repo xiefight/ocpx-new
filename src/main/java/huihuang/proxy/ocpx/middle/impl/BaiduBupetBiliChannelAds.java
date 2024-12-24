@@ -48,7 +48,8 @@ public class BaiduBupetBiliChannelAds extends BaiduBupetReportFactory {
     protected String initAdsUrl(Object adsObj) {
         BupetParamField bupetParamField = (BupetParamField) adsObj;
         String accountId = bupetParamField.getAccountId();
-        if (BaiduPath.BAIDU_BUPET_BILI_ACCOUNT_02.equals(accountId)) {
+        if (BaiduPath.BAIDU_BUPET_BILI_ACCOUNT_02.equals(accountId)
+          || BaiduPath.BAIDU_BUPET_BILI_ACCOUNT_03.equals(accountId)) {
             return BupetBiliPath.BASIC_URI_2;
         } else {
             //点击监测

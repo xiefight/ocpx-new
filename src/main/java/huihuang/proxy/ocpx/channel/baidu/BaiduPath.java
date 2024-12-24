@@ -287,6 +287,8 @@ public class BaiduPath {
     public static final String BAIDU_BUPET_BILI_SECRET_01 = "NTg4MDMzNzI=";
     public static final String BAIDU_BUPET_BILI_ACCOUNT_02 = "bdbupetbili02";
     public static final String BAIDU_BUPET_BILI_SECRET_02 = "NjE4MTk1Nzk=";
+    public static final String BAIDU_BUPET_BILI_ACCOUNT_03 = "bdbupetbili02";
+    public static final String BAIDU_BUPET_BILI_SECRET_03 = "NTg4MDMzNzI=";
 
     public static final String BAIDU_NINGZHI_SOUL_ACCOUNT_01 = "bdningzhisoul01";
     public static final String BAIDU_NINGZHI_SOUL_SECRET_01 = "NTk1NDExNDQ=";
