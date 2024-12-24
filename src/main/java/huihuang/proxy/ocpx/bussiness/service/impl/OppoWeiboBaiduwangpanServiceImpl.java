@@ -77,7 +77,7 @@ public class OppoWeiboBaiduwangpanServiceImpl extends OppoChannelFactory impleme
         oppoVO.setPkg(pkg);
         oppoVO.setDataType(WeiboEventTypeEnum.weiboOppoEventTypeMap.get(eventType).getCode());
         oppoVO.setAscribeType(0);
-//        oppoVO.setAdId(Long.valueOf(weiboAdsDTO.getAdid()));
+        oppoVO.setAdId(OppoPath.WEIBO_BAIDUWANGPAN_ADID);
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, oppoVO);
 
         Response response = baseAdsCallBack(oppoVO);

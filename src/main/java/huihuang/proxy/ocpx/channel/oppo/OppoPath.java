@@ -22,6 +22,10 @@ public class OppoPath {
      */
     public static final Long KUAISHOU_ADID = 1000251845L;
     public static final Long KUAISHOUJISU_ADID = 1000251849L;
+    //我自定义的
+    public static final Long QUANNENG_CAINIAO_ADID = 1000763741L;
+    public static final Long WEIBO_BAIDUWANGPAN_ADID = 1000763742L;
+    public static final Long WEIBO_WANNIANLI_ADID = 1000763743L;
 
 
     public static final String OPPO_HUIHUANG_YITAO_PKG = "com.taobao.etao";
@@ -31,6 +35,7 @@ public class OppoPath {
     public static final String OPPO_HUIHUANG_JINGDONGJINRONG_PKG = "com.jd.jrapp";
     public static final String OPPO_WEIBO_BAIDUWANGPAN_PKG = "com.baidu.netdisk";
     public static final String OPPO_WEIBO_WANNIANLI_PKG = "cn.etouch.ecalendar";
+    public static final String OPPO_QUANNENG_XUEERSI_PKG = "com.cainiao.wireless";
 
     /**
      * salt

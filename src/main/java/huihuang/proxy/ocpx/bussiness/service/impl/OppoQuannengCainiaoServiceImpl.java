@@ -60,8 +60,9 @@ public class OppoQuannengCainiaoServiceImpl extends OppoChannelFactory implement
 
         String oppoSecret = "";
         String adsName = qncnPath.baseAdsName();
-        Long adId = OppoPath.KUAISHOU_ADID;
-        String pkg = OppoPath.OPPO_HUIHUANG_ELEME_PKG;
+        Long adId = OppoPath.QUANNENG_CAINIAO_ADID;
+//        Long adId = OppoPath.KUAISHOU_ADID;
+        String pkg = OppoPath.OPPO_QUANNENG_XUEERSI_PKG;
 
 
         long currentTime = System.currentTimeMillis();
@@ -77,10 +78,10 @@ public class OppoQuannengCainiaoServiceImpl extends OppoChannelFactory implement
         oppoVO.setAdsName(adsName);
         oppoVO.setChannel(1);
         oppoVO.setTimestamp(currentTime);
-//        oppoVO.setPkg(pkg);
+        oppoVO.setPkg(pkg);
         oppoVO.setDataType(QuannengHudongEventTypeEnum.quannengHudongOppoEventTypeMap.get(eventType).getCode());
         oppoVO.setAscribeType(0);
-//        oppoVO.setAdId(Long.valueOf(quannengHudongAdsDTO.getAdid()));
+        oppoVO.setAdId(adId);
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, oppoVO);
 
         Response response = baseAdsCallBack(oppoVO);
