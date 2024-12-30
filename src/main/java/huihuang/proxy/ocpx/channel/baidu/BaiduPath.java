@@ -250,6 +250,8 @@ public class BaiduPath {
     public static final String QUANNENG_ELEME_SECRET_01 = "NTgxODQ5MjE=";
     public static final String QUANNENG_ELEME_ACCOUNT_02 = "bdqneleme02";
     public static final String QUANNENG_ELEME_SECRET_02 = "NTg2OTM2NjI=";
+    public static final String QUANNENG_ELEME_ACCOUNT_03 = "bdqneleme03";
+    public static final String QUANNENG_ELEME_SECRET_03 = "NTk2NjExMDk=";
     public static final String QUANNENG_SOUL_ACCOUNT_01 = "bdqnsoul01";
     public static final String QUANNENG_SOUL_SECRET_01 = "NTg0MTAwNDA=";
     public static final String QUANNENG_ZHIPUQINGYAN_ACCOUNT_01 = "bdqnzpqy01";
