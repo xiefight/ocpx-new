@@ -39,6 +39,7 @@ public class OppoChannelFactory {
     protected Response baseAdsCallBack(Ads2OppoVO oppoVO) throws Exception {
 
         String channelUrl = OppoPath.CALLBACK_URL;
+        Long timestamp = oppoVO.getTimestamp();
         //回传到渠道
         JSONObject json = new JSONObject();
         if (oppoVO.getImei() != null) {
@@ -50,7 +51,7 @@ public class OppoChannelFactory {
         } else {
             json.put("type", 0);
         }
-        json.put("timestamp", oppoVO.getTimestamp());
+        json.put("timestamp", timestamp);
         json.put("pkg", oppoVO.getPkg());
         json.put("dataType", oppoVO.getDataType());
         json.put("channel", oppoVO.getChannel());
@@ -60,14 +61,19 @@ public class OppoChannelFactory {
 
         StringBuilder url = new StringBuilder(channelUrl);
         logger.info("baseAdsCallBack 回传渠道url：{}", url);
+        String jsonParam = json.toJSONString();
+        logger.info("baseAdsCallBack 回传渠道参数：{}", jsonParam);
+        String signature = signature(jsonParam, timestamp);
+        logger.info("baseAdsCallBack 回传渠道签名：{}", signature);
         HttpResponse response = HttpRequest.post(url.toString())
-                .header("signature", signature(json.toJSONString(), oppoVO.getTimestamp()))
+                .header("signature", signature)
                 .header("Content-Type", "application/json")
-                .header("timestamp", String.valueOf(oppoVO.getTimestamp()))
-                .body(json.toJSONString()).execute();
+                .header("timestamp", String.valueOf(timestamp))
+                .body(jsonParam).execute();
         Map<String, Object> responseBodyMap = JsonParameterUtil.jsonToMap(response.body(), Exception.class);
+        logger.info("baseAdsCallBack 回传渠道返回信息：{}", responseBodyMap);
         //保存转化事件回调信息
-        OppoCallbackDTO oppoCallbackDTO = new OppoCallbackDTO(oppoVO.getAdsId(), oppoVO.getImei(), oppoVO.getOuId(), String.valueOf(oppoVO.getTimestamp()), oppoVO.getPkg(),
+        OppoCallbackDTO oppoCallbackDTO = new OppoCallbackDTO(oppoVO.getAdsId(), oppoVO.getImei(), oppoVO.getOuId(), String.valueOf(timestamp), oppoVO.getPkg(),
                 oppoVO.getDataType(), oppoVO.getChannel(), json.getInteger("type"), oppoVO.getAscribeType(), oppoVO.getAdId(), oppoVO.getAdsName());
 
 
@@ -82,6 +88,7 @@ public class OppoChannelFactory {
             oppoCallbackDao.insert(oppoCallbackDTO);
             return BasicResult.getFailResponse(oppoCallbackDTO.getCallBackMes(), oppoCallbackDTO);
         }
+
     }
 
     /**
