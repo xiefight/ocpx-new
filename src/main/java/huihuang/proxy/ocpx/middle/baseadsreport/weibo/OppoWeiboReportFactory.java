@@ -74,6 +74,7 @@ public abstract class OppoWeiboReportFactory extends WeiboReportFactory {
         WeiboParamField weiboParamField = (WeiboParamField) adsObj;
         String oaid_md5 = weiboParamField.getOaid_md5();
         if (oaid_md5 != null) {
+            weiboParamField.setOaid(oaid_md5);
             weiboParamField.setOaid_md5(MD5.create().digestHex(oaid_md5));
         }
         super.convertParams(weiboParamField);

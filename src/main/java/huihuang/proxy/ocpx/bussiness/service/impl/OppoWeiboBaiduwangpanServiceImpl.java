@@ -66,7 +66,9 @@ public class OppoWeiboBaiduwangpanServiceImpl extends OppoChannelFactory impleme
         if (StrUtil.isNotEmpty(weiboAdsDTO.getImei_md5())) {
             oppoVO.setImei(encode(weiboAdsDTO.getImei_md5().getBytes(StandardCharsets.UTF_8)));
         }
-        if (StrUtil.isNotEmpty(weiboAdsDTO.getOaid_md5())) {
+        if (StrUtil.isNotEmpty(weiboAdsDTO.getOaid())) {
+            oppoVO.setOuId(encode(weiboAdsDTO.getOaid().getBytes(StandardCharsets.UTF_8)));
+        } else if (StrUtil.isNotEmpty(weiboAdsDTO.getOaid_md5())) {
             oppoVO.setOuId(encode(weiboAdsDTO.getOaid_md5().getBytes(StandardCharsets.UTF_8)));
         }
 

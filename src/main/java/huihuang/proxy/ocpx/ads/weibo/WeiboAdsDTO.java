@@ -28,5 +28,7 @@ public class WeiboAdsDTO extends CommonColumn implements IMarkDto {
     private String extra;
 
     private String monitorType;
+    //微博没有oaid，但是回传给oppo时，需要oaid原值，所以上报时保存着
+    private String oaid;
 
 }
