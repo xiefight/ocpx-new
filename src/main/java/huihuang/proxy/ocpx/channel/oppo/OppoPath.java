@@ -24,6 +24,7 @@ public class OppoPath {
     public static final Long KUAISHOUJISU_ADID = 1000251849L;
     //我自定义的
     public static final Long QUANNENG_CAINIAO_ADID = 1000763741L;
+    public static final Long QUANNENG_ELEME_ADID = 1000763744L;
     public static final Long WEIBO_BAIDUWANGPAN_ADID = 1000763742L;
     public static final Long WEIBO_WANNIANLI_ADID = 1000763743L;
 

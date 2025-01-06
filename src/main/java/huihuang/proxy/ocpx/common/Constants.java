@@ -262,6 +262,7 @@ public class Constants {
         public static final String OPPO_WEIBO_BAIDUWANGPAN = "/oppowbbdwpServer";
         public static final String OPPO_WEIBO_WANNIANLI = "/oppowbwnlServer";
         public static final String OPPO_QUANNENG_CAINIAO = "/oppoqncnServer";
+        public static final String OPPO_QUANNENG_ELEME = "/oppoqnelemeServer";
 
 
         public static final String IQIYI_KUAISHOU = "/ikServer";
@@ -502,6 +503,7 @@ public class Constants {
         public static final String OPPO_WEIBO_BAIDUWANGPAN = "oppo-weibo-baiduwangpan";
         public static final String OPPO_WEIBO_WANNIANLI = "oppo-weibo-wannianli";
         public static final String OPPO_QUANNENG_CAINIAO = "oppo-quanneng-cainiao";
+        public static final String OPPO_QUANNENG_ELEME = "oppo-quanneng-eleme";
 
         public static final String IQIYI_KUAISHOU = "iqiyi-kuaishou";
         public static final String IQIYI_HUIHUANG_FANQIE = "iqiyi-huihuang-fanqie";
