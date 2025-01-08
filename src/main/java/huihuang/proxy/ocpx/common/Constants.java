@@ -259,6 +259,7 @@ public class Constants {
         public static final String OPPO_HUIHUANG_JINGDONG = "/oppohhjdServer";
         public static final String OPPO_HUIHUANG_JINGDONGJINRONG = "/oppohhjdjrServer";
         public static final String OPPO_HUIHUANG_ELEME = "/oppohhelmServer";
+        public static final String OPPO_HUIHUANG_YINGKE = "/oppohhyingkeServer";
         public static final String OPPO_WEIBO_BAIDUWANGPAN = "/oppowbbdwpServer";
         public static final String OPPO_WEIBO_WANNIANLI = "/oppowbwnlServer";
         public static final String OPPO_QUANNENG_CAINIAO = "/oppoqncnServer";
@@ -500,6 +501,7 @@ public class Constants {
         public static final String OPPO_HUIHUANG_JINGDONG = "oppo-huihuang-jingdong";
         public static final String OPPO_HUIHUANG_JINGDONGJINRONG = "oppo-huihuang-jingdongjinrong";
         public static final String OPPO_HUIHUANG_ELEME = "oppo-huihuang-eleme";
+        public static final String OPPO_HUIHUANG_YINGKE = "oppo-huihuang-yingke";
         public static final String OPPO_WEIBO_BAIDUWANGPAN = "oppo-weibo-baiduwangpan";
         public static final String OPPO_WEIBO_WANNIANLI = "oppo-weibo-wannianli";
         public static final String OPPO_QUANNENG_CAINIAO = "oppo-quanneng-cainiao";
