@@ -3,9 +3,8 @@ package huihuang.proxy.ocpx.bussiness.service.impl;
 import cn.hutool.core.util.StrUtil;
 import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangFengmangEventTypeEnum;
 import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangmingtianAdsDTO;
-import huihuang.proxy.ocpx.ads.huihuangmingtian.ads.HuihuangElemePath;
-import huihuang.proxy.ocpx.ads.huihuangmingtian.ads.HuihuangYingkePath;
-import huihuang.proxy.ocpx.bussiness.dao.ads.IHuihuangYingkeAdsDao;
+import huihuang.proxy.ocpx.ads.huihuangmingtian.ads.HuihuangMiaPath;
+import huihuang.proxy.ocpx.bussiness.dao.ads.IHuihuangMiaAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
 import huihuang.proxy.ocpx.bussiness.service.basechannel.OppoChannelFactory;
@@ -25,21 +24,21 @@ import org.springframework.stereotype.Service;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
-@Service("oppohhyingkeService")
-public class OppoHuihuangYingkeServiceImpl extends OppoChannelFactory implements IChannelAdsService {
+@Service("oppohhmiaService")
+public class OppoHuihuangMiaServiceImpl extends OppoChannelFactory implements IChannelAdsService {
 
-    protected Logger logger = LoggerFactory.getLogger(OppoHuihuangYingkeServiceImpl.class);
+    protected Logger logger = LoggerFactory.getLogger(OppoHuihuangMiaServiceImpl.class);
 
     @Autowired
     private ChannelAdsFactory channelAdsFactory;
     @Autowired
-    private IHuihuangYingkeAdsDao hhyingkeAdsDao;
+    private IHuihuangMiaAdsDao hhmiaAdsDao;
     @Autowired
     private BaseServiceInner baseServiceInner;
     @Autowired
-    private HuihuangYingkePath hhyingkePath;
+    private HuihuangMiaPath hhmiaPath;
 
-    String channelAdsKey = Constants.ChannelAdsKey.OPPO_HUIHUANG_YINGKE;
+    String channelAdsKey = Constants.ChannelAdsKey.OPPO_HUIHUANG_MIA;
 
     @Override
     public IChannelAds channelAds() {
@@ -52,7 +51,7 @@ public class OppoHuihuangYingkeServiceImpl extends OppoChannelFactory implements
         String eventType = parameterMap.get("event_type")[0];
         logger.info("adsCallBack {} 开始回调渠道  id:{}  eventType:{}", channelAdsKey, id, eventType);
         //根据id查询对应的点击记录
-        HuihuangmingtianAdsDTO hhtmAdsDTO = hhyingkeAdsDao.queryHuihuangYingkeAdsById(id);
+        HuihuangmingtianAdsDTO hhtmAdsDTO = hhmiaAdsDao.queryHuihuangMiaAdsById(id);
 
         if (null == hhtmAdsDTO) {
             logger.error("{} 未根据{}找到对应的监测信息", channelAdsKey, id);
@@ -60,9 +59,9 @@ public class OppoHuihuangYingkeServiceImpl extends OppoChannelFactory implements
         }
 
         String oppoSecret = "";
-        String adsName = hhyingkePath.baseAdsName();
-        Long adId = OppoPath.HUIHUANG_YINGKE_ADID;
-        String pkg = OppoPath.OPPO_HUIHUANG_YINGKE_PKG;
+        String adsName = hhmiaPath.baseAdsName();
+        Long adId = OppoPath.HUIHUANG_MIA_ADID;
+        String pkg = OppoPath.OPPO_HUIHUANG_MIA_PKG;
 
 
         long currentTime = System.currentTimeMillis();
@@ -93,12 +92,12 @@ public class OppoHuihuangYingkeServiceImpl extends OppoChannelFactory implements
         huihuangmingtianAds.setCallBackTime(String.valueOf(System.currentTimeMillis()));
         if (response.getCode() == 0) {
             huihuangmingtianAds.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
-            baseServiceInner.updateAdsObject(huihuangmingtianAds, hhyingkeAdsDao);
+            baseServiceInner.updateAdsObject(huihuangmingtianAds, hhmiaAdsDao);
             logger.info("adsCallBack {} 回调渠道成功：{}", channelAdsKey, data);
             return BasicResult.getSuccessResponse(data.getId());
         } else {
             huihuangmingtianAds.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
-            baseServiceInner.updateAdsObject(huihuangmingtianAds, hhyingkeAdsDao);
+            baseServiceInner.updateAdsObject(huihuangmingtianAds, hhmiaAdsDao);
             logger.info("adsCallBack {} 回调渠道失败：{}", channelAdsKey, data);
             return BasicResult.getFailResponse(data.getCallBackMes());
         }
