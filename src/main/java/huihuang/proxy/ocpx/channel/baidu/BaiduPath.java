@@ -220,6 +220,8 @@ public class BaiduPath {
     public static final String HUIHUANG_GAOTU_SECRET_04 = "NjAyNDUzNTY=";
     public static final String HUIHUANG_WEIPINHUI_ACCOUNT_01 = "bhhweipinhui01";
     public static final String HUIHUANG_WEIPINHUI_SECRET_01 = "?";
+    public static final String HUIHUANG_JINGDONGJINRONG_ACCOUNT_01 = "bdhhjdjr01";
+    public static final String HUIHUANG_JINGDONGJINRONG_SECRET_01 = "NjI3NjIxNzg=";
 
     public static final String QUANNENG_FANQIECHANGTING_ACCOUNT_02 = "bdqnfqct02";
     public static final String QUANNENG_PIPIXIA_ACCOUNT_02 = "bdqnppx02";
