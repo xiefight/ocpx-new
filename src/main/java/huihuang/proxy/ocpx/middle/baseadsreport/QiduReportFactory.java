@@ -7,10 +7,10 @@ import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpStatus;
 import com.alibaba.fastjson.JSONObject;
-import huihuang.proxy.ocpx.ads.qidu.QiduAdsDTO;
-import huihuang.proxy.ocpx.ads.qidu.QiduParamEnum;
-import huihuang.proxy.ocpx.ads.qidu.QiduParamField;
-import huihuang.proxy.ocpx.ads.qidu.QiduPath;
+import huihuang.proxy.ocpx.ads.hongyu.HongyuAdsDTO;
+import huihuang.proxy.ocpx.ads.hongyu.HongyuParamEnum;
+import huihuang.proxy.ocpx.ads.hongyu.HongyuParamField;
+import huihuang.proxy.ocpx.ads.hongyu.HongyuPath;
 import huihuang.proxy.ocpx.ads.quannenghudong.QuannengHudongParamEnum;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiParamEnum;
@@ -54,9 +54,9 @@ public abstract class QiduReportFactory extends BaseSupport implements IChannelA
     public String findMonitorAddress() {
         StringBuilder macro = new StringBuilder();
         //1.遍历广告主查找渠道对应的宏参数
-        Set<QiduParamEnum> qiduParamEnums = QiduParamEnum.qiduXiaomiMap.keySet();
-        for (QiduParamEnum qidu : qiduParamEnums) {
-            XiaomiParamEnum xiaomi = QiduParamEnum.qiduXiaomiMap.get(qidu);
+        Set<HongyuParamEnum> qiduParamEnums = HongyuParamEnum.hongyuXiaomiMap.keySet();
+        for (HongyuParamEnum qidu : qiduParamEnums) {
+            XiaomiParamEnum xiaomi = HongyuParamEnum.hongyuXiaomiMap.get(qidu);
             if (Objects.isNull(xiaomi) || StrUtil.isEmpty(xiaomi.getMacro())) {
                 continue;
             }
@@ -74,7 +74,7 @@ public abstract class QiduReportFactory extends BaseSupport implements IChannelA
 
     @Override
     protected void convertParams(Object adsObj) {
-        QiduParamField qiduParamField = (QiduParamField) adsObj;
+        HongyuParamField qiduParamField = (HongyuParamField) adsObj;
         if (null != qiduParamField.getCallback()) {
             qiduParamField.setCallback(URLEncoder.createQuery().encode(qiduParamField.getCallback(), StandardCharsets.UTF_8));
         }
@@ -93,7 +93,7 @@ public abstract class QiduReportFactory extends BaseSupport implements IChannelA
 
     @Override
     protected Response judgeParams(Object adsObj) {
-        QiduParamField qiduParamField = (QiduParamField) adsObj;
+        HongyuParamField qiduParamField = (HongyuParamField) adsObj;
         if (Objects.isNull(qiduParamField.getCallback())) {
             return BasicResult.getFailResponse(QuannengHudongParamEnum.CALLBACK.getName() + "不能为空");
         }
@@ -112,11 +112,11 @@ public abstract class QiduReportFactory extends BaseSupport implements IChannelA
 
     @Override
     protected Object channelParamToAdsParam(Map<String, String[]> parameterMap) {
-        QiduParamField qiduParamField = new QiduParamField();
+        HongyuParamField qiduParamField = new HongyuParamField();
 
-        Set<Map.Entry<QiduParamEnum, XiaomiParamEnum>> blSet = QiduParamEnum.qiduXiaomiMap.entrySet();
+        Set<Map.Entry<HongyuParamEnum, XiaomiParamEnum>> blSet = HongyuParamEnum.hongyuXiaomiMap.entrySet();
         blSet.stream().filter(bl -> Objects.nonNull(bl.getValue())).forEach(bl -> {
-            QiduParamEnum qidu = bl.getKey();
+            HongyuParamEnum qidu = bl.getKey();
             XiaomiParamEnum xiaomi = bl.getValue();
             String qiduField = qidu.getName();
             String baiduParam = xiaomi.getParam();
@@ -138,8 +138,8 @@ public abstract class QiduReportFactory extends BaseSupport implements IChannelA
 
     @Override
     protected Object saveOriginParamData(Object adsObj) {
-        QiduParamField qiduParamField = (QiduParamField) adsObj;
-        QiduAdsDTO qiduAdsDTO = new QiduAdsDTO();
+        HongyuParamField qiduParamField = (HongyuParamField) adsObj;
+        HongyuAdsDTO qiduAdsDTO = new HongyuAdsDTO();
         BeanUtil.copyProperties(qiduParamField, qiduAdsDTO);
         qiduAdsDTO.setChannelName(channelName());
         baseServiceInner.insertAdsObject(qiduAdsDTO, adsDao());
@@ -149,8 +149,8 @@ public abstract class QiduReportFactory extends BaseSupport implements IChannelA
 
     @Override
     protected void replaceCallbackUrl(Object adsObj, Object adsDtoObj) {
-        QiduParamField qiduParamField = (QiduParamField) adsObj;
-        QiduAdsDTO qiduAdsDTO = (QiduAdsDTO) adsDtoObj;
+        HongyuParamField qiduParamField = (HongyuParamField) adsObj;
+        HongyuAdsDTO qiduAdsDTO = (HongyuAdsDTO) adsDtoObj;
         String ocpxUrl = queryServerPath() + serverPathKey() + Constants.ServerPath.ADS_CALLBACK + "/" + qiduAdsDTO.getId() + "?";
         logger.info("clickReport {} 客户回调渠道的url：{}", channelAdsKey(), ocpxUrl);
         String encodeUrl = URLEncoder.createQuery().encode(ocpxUrl, StandardCharsets.UTF_8);
@@ -161,7 +161,7 @@ public abstract class QiduReportFactory extends BaseSupport implements IChannelA
 
     @Override
     protected String initAdsUrl() {
-        return QiduPath.BASIC_URI;
+        return HongyuPath.BASIC_URI;
     }
 
     @Override
@@ -169,8 +169,8 @@ public abstract class QiduReportFactory extends BaseSupport implements IChannelA
         logger.info("调用用户侧的地址 {} adsUrl:{}", channelAdsKey(), adsUrl);
         HttpResponse response = HttpRequest.get(adsUrl).timeout(20000).header("token", "application/json").execute();
         Map<String, Object> responseBodyMap = JsonParameterUtil.jsonToMap(response.body(), Exception.class);
-        QiduAdsDTO qiduAdsDTO = (QiduAdsDTO) adsDtoObj;
-        QiduAdsDTO qiduAdsVO = new QiduAdsDTO();
+        HongyuAdsDTO qiduAdsDTO = (HongyuAdsDTO) adsDtoObj;
+        HongyuAdsDTO qiduAdsVO = new HongyuAdsDTO();
         qiduAdsVO.setId(qiduAdsDTO.getId());
         //上报成功
         if (HttpStatus.HTTP_OK == response.getStatus() && Integer.parseInt(String.valueOf(Objects.requireNonNull(responseBodyMap).get("error_code"))) == 0) {

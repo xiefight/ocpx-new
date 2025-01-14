@@ -1,11 +1,11 @@
-package huihuang.proxy.ocpx.ads.qidu;
+package huihuang.proxy.ocpx.ads.hongyu;
 
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiParamEnum;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public enum QiduParamEnum {
+public enum HongyuParamEnum {
 
     APPID("appid", "String", 1, "广告主的appid"),
     CHANNEL("channel", "String", 1, "渠道标识"),
@@ -29,7 +29,7 @@ public enum QiduParamEnum {
     private Integer necessary;
     private String remark;
 
-    QiduParamEnum(String name, String type, Integer necessary, String remark) {
+    HongyuParamEnum(String name, String type, Integer necessary, String remark) {
         this.name = name;
         this.type = type;
         this.necessary = necessary;
@@ -53,23 +53,23 @@ public enum QiduParamEnum {
     }
 
 
-    public static Map<QiduParamEnum, XiaomiParamEnum> qiduXiaomiMap;
+    public static Map<HongyuParamEnum, XiaomiParamEnum> hongyuXiaomiMap;
 
     static {
-        qiduXiaomiMap = new HashMap<>();
-        qiduXiaomiMap.put(APPID, XiaomiParamEnum.QIDU_APPID);
-        qiduXiaomiMap.put(CHANNEL, XiaomiParamEnum.QIDU_CHANNEL);
-        qiduXiaomiMap.put(IDFA, null);
-        qiduXiaomiMap.put(IMEI, null);//
-        qiduXiaomiMap.put(IMEI_MD5, XiaomiParamEnum.IMEI);//需要md5
-        qiduXiaomiMap.put(OAID, XiaomiParamEnum.OAID);
-        qiduXiaomiMap.put(OAID_MD5, XiaomiParamEnum.OAID);
-        qiduXiaomiMap.put(IP, XiaomiParamEnum.IP);
-        qiduXiaomiMap.put(ANDROID_ID, null);
-        qiduXiaomiMap.put(UA, XiaomiParamEnum.UA);
-        qiduXiaomiMap.put(CALLBACK, XiaomiParamEnum.CALLBACK);
-        qiduXiaomiMap.put(CLICK_ID, null);
-        qiduXiaomiMap.put(TS, XiaomiParamEnum.TS);
+        hongyuXiaomiMap = new HashMap<>();
+        hongyuXiaomiMap.put(APPID, XiaomiParamEnum.QIDU_APPID);
+        hongyuXiaomiMap.put(CHANNEL, XiaomiParamEnum.QIDU_CHANNEL);
+        hongyuXiaomiMap.put(IDFA, null);
+        hongyuXiaomiMap.put(IMEI, null);//
+        hongyuXiaomiMap.put(IMEI_MD5, XiaomiParamEnum.IMEI);//需要md5
+        hongyuXiaomiMap.put(OAID, XiaomiParamEnum.OAID);
+        hongyuXiaomiMap.put(OAID_MD5, XiaomiParamEnum.OAID);
+        hongyuXiaomiMap.put(IP, XiaomiParamEnum.IP);
+        hongyuXiaomiMap.put(ANDROID_ID, null);
+        hongyuXiaomiMap.put(UA, XiaomiParamEnum.UA);
+        hongyuXiaomiMap.put(CALLBACK, XiaomiParamEnum.CALLBACK);
+        hongyuXiaomiMap.put(CLICK_ID, null);
+        hongyuXiaomiMap.put(TS, XiaomiParamEnum.TS);
     }
 
 

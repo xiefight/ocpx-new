@@ -1,10 +1,10 @@
-package huihuang.proxy.ocpx.ads.qidu;
+package huihuang.proxy.ocpx.ads.hongyu;
 
 import cn.hutool.core.annotation.Alias;
 import lombok.Data;
 
 @Data
-public class QiduParamField {
+public class HongyuParamField {
 
     @Alias("appId")
     private String appid;

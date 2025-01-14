@@ -1,11 +1,11 @@
-package huihuang.proxy.ocpx.ads.qidu;
+package huihuang.proxy.ocpx.ads.hongyu;
 
 import cn.hutool.core.collection.CollUtil;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiEventTypeEnum;
 
 import java.util.Map;
 
-public enum QiduEventTypeEnum {
+public enum HongyuEventTypeEnum {
 
     ACTIVATE("0", "激活"),
     REGISTER("1", "注册"),
@@ -17,7 +17,7 @@ public enum QiduEventTypeEnum {
     private String code;
     private String desc;
 
-    QiduEventTypeEnum(String code, String desc) {
+    HongyuEventTypeEnum(String code, String desc) {
         this.code = code;
         this.desc = desc;
     }

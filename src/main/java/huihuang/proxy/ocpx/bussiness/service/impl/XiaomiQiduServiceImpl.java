@@ -1,8 +1,9 @@
 package huihuang.proxy.ocpx.bussiness.service.impl;
 
-import huihuang.proxy.ocpx.ads.qidu.QiduAdsDTO;
-import huihuang.proxy.ocpx.ads.qidu.QiduEventTypeEnum;
-import huihuang.proxy.ocpx.ads.qidu.QiduPath;
+import huihuang.proxy.ocpx.ads.hongyu.HongyuAdsDTO;
+import huihuang.proxy.ocpx.ads.hongyu.HongyuEventTypeEnum;
+import huihuang.proxy.ocpx.ads.hongyu.HongyuPath;
+import huihuang.proxy.ocpx.ads.hongyu.qidu.HongyuQiduPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IQiduAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
@@ -47,19 +48,19 @@ public class XiaomiQiduServiceImpl extends XiaomiChannelFactory implements IChan
     public Response adsCallBack(Integer id, Map<String, String[]> parameterMap) throws Exception {
         String eventType = parameterMap.get("event_type")[0];
         logger.info("adsCallBack {} 开始回调渠道  id:{}  event:{}", channelAdsKey, id, eventType);
-        if (QiduEventTypeEnum.ACTIVATE.getCode().equals(eventType)) {
+        if (HongyuEventTypeEnum.ACTIVATE.getCode().equals(eventType)) {
             eventType = eventType + "new";
         }
         //根据id查询对应的点击记录
-        QiduAdsDTO qiduAdsDTO = qiduAdsDao.queryQiduAdsById(id);
+        HongyuAdsDTO qiduAdsDTO = qiduAdsDao.queryQiduAdsById(id);
         if (null == qiduAdsDTO) {
             logger.error("{} 未根据{}找到对应的监测信息", channelAdsKey, id);
             return BasicResult.getFailResponse("未找到对应的监测信息 " + id);
         }
         Ads2XiaomiVO xiaomiVO = new Ads2XiaomiVO();
         xiaomiVO.setAdsId(id);
-        xiaomiVO.setAdsName(QiduPath.ADS_NAME);
-        xiaomiVO.setEventType(QiduEventTypeEnum.qiduXiaomiEventTypeMap.get(eventType).getCode());
+        xiaomiVO.setAdsName(HongyuQiduPath.ADS_NAME);
+        xiaomiVO.setEventType(HongyuEventTypeEnum.qiduXiaomiEventTypeMap.get(eventType).getCode());
         xiaomiVO.setEventTimes(String.valueOf(System.currentTimeMillis()));
         xiaomiVO.setCallBackUrl(qiduAdsDTO.getCallback());
         xiaomiVO.setOaid(qiduAdsDTO.getOaid());
@@ -69,7 +70,7 @@ public class XiaomiQiduServiceImpl extends XiaomiChannelFactory implements IChan
         XiaomiCallbackDTO data = (XiaomiCallbackDTO) response.getData();
 
         //更新回调状态
-        QiduAdsDTO qiduAds = new QiduAdsDTO();
+        HongyuAdsDTO qiduAds = new HongyuAdsDTO();
         qiduAds.setId(id);
         qiduAds.setCallBackTime(String.valueOf(System.currentTimeMillis()));
 
