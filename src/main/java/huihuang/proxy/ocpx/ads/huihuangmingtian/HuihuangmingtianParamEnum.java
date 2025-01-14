@@ -131,6 +131,7 @@ public enum HuihuangmingtianParamEnum {
         huihuangmingtianBaiduMap.put(IDFA, BaiduParamEnum.IDFA);
         huihuangmingtianBaiduMap.put(IDFA_MD5, null);
         huihuangmingtianBaiduMap.put(CAMPAIGN_ID, null);
+        huihuangmingtianBaiduMap.put(EVENT_TYPE, BaiduParamEnum.HUIHUANG_EVENT_TYPE);
 
         huihuangmingtianBaiduMap.put(TMS, BaiduParamEnum.TS);
         huihuangmingtianBaiduMap.put(OS, BaiduParamEnum.OS_TYPE);
@@ -297,7 +298,7 @@ public enum HuihuangmingtianParamEnum {
         huihuangmingtianOppoMap.put(UID, OppoParamEnum.HUIHUANG_UID);
         huihuangmingtianOppoMap.put(CID, OppoParamEnum.HUIHUANG_CID);
         huihuangmingtianOppoMap.put(SID, OppoParamEnum.HUIHUANG_SID);
-        huihuangmingtianOppoMap.put(EVENT_TYPE, null);  //拉活  1  拉新   2
+        huihuangmingtianOppoMap.put(EVENT_TYPE, OppoParamEnum.HUIHUANG_EVENT_TYPE);  //拉活  1  拉新   2
 
         huihuangmingtianOppoMap.put(TMS, null);
         huihuangmingtianOppoMap.put(OS, OppoParamEnum.OS);

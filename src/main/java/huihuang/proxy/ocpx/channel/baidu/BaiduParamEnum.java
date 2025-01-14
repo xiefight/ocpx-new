@@ -54,6 +54,7 @@ public enum BaiduParamEnum {
     HUIHUANG_AID("","aid","辉煌明天提供广告数据 id "),
     HUIHUANG_ADID("","adid",""),
     HUIHUANG_CHANNEL("","channel",""),
+    HUIHUANG_EVENT_TYPE("","eventType",""),
 
 
     QUANNENGHUDONG_PID("","pid","全能互动广告商标识"),
