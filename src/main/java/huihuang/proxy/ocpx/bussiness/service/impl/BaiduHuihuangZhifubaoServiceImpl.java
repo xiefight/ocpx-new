@@ -77,6 +77,8 @@ public class BaiduHuihuangZhifubaoServiceImpl extends BaiduChannelFactory implem
             baiduVO.setSecret(BaiduPath.HUIHUANG_ZHIFUBAO_SECRET_01);
         } else if (BaiduPath.HUIHUANG_ZHIFUBAO_ACCOUNT_02.equals(hhtmAdsDTO.getAccountId())) {
             baiduVO.setSecret(BaiduPath.HUIHUANG_ZHIFUBAO_SECRET_02);
+        } else if (BaiduPath.HUIHUANG_ZHIFUBAO_ACCOUNT_04.equals(hhtmAdsDTO.getAccountId())) {
+            baiduVO.setSecret(BaiduPath.HUIHUANG_ZHIFUBAO_SECRET_04);
         }
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, baiduVO);
 
