@@ -1,10 +1,9 @@
 package huihuang.proxy.ocpx.middle.impl;
 
-import huihuang.proxy.ocpx.bussiness.dao.ads.IQiduAdsDao;
+import huihuang.proxy.ocpx.bussiness.dao.ads.IHongyuQiduAdsDao;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiPath;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.marketinterface.IMarkDao;
-import huihuang.proxy.ocpx.middle.baseadsreport.QiduReportFactory;
 import huihuang.proxy.ocpx.middle.baseadsreport.hongyu.XiaomiHongyuReportFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class XiaomiQiduChannelAds extends XiaomiHongyuReportFactory {
 
     @Autowired
-    private IQiduAdsDao qiduAdsDao;
+    private IHongyuQiduAdsDao qiduAdsDao;
 
     String channelAdsKey = Constants.ChannelAdsKey.XIAOMI_QIDU;
 

@@ -31,20 +31,20 @@ public enum HongyuEventTypeEnum {
     }
 
 
-    public static Map<String, XiaomiEventTypeEnum> qiduXiaomiEventTypeMap;
+    public static Map<String, XiaomiEventTypeEnum> hongyuXiaomiEventTypeMap;
 
     static {
-        qiduXiaomiEventTypeMap = CollUtil.newHashMap();
+        hongyuXiaomiEventTypeMap = CollUtil.newHashMap();
         //激活
-        qiduXiaomiEventTypeMap.put(ACTIVATE.code, XiaomiEventTypeEnum.APP_ACTIVE);
+        hongyuXiaomiEventTypeMap.put(ACTIVATE.code, XiaomiEventTypeEnum.APP_ACTIVE);
         //自定义新增激活
-        qiduXiaomiEventTypeMap.put(ACTIVATE.code + "new", XiaomiEventTypeEnum.APP_ACTIVE_NEW);
+        hongyuXiaomiEventTypeMap.put(ACTIVATE.code + "new", XiaomiEventTypeEnum.APP_ACTIVE_NEW);
         //注册
-        qiduXiaomiEventTypeMap.put(REGISTER.code, XiaomiEventTypeEnum.APP_REGISTER);
+        hongyuXiaomiEventTypeMap.put(REGISTER.code, XiaomiEventTypeEnum.APP_REGISTER);
         //次留
-        qiduXiaomiEventTypeMap.put(DAY1RETENTION.code, XiaomiEventTypeEnum.APP_RETENTION);
+        hongyuXiaomiEventTypeMap.put(DAY1RETENTION.code, XiaomiEventTypeEnum.APP_RETENTION);
         //购买
-        qiduXiaomiEventTypeMap.put(PURCHASE.code, XiaomiEventTypeEnum.APP_PURCHASE);
+        hongyuXiaomiEventTypeMap.put(PURCHASE.code, XiaomiEventTypeEnum.APP_PURCHASE);
     }
 
 

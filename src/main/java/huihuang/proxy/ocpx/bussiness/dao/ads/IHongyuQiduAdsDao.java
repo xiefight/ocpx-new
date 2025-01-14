@@ -5,7 +5,7 @@ import huihuang.proxy.ocpx.marketinterface.IMarkDao;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
-public interface IQiduAdsDao extends IMarkDao {
+public interface IHongyuQiduAdsDao extends IMarkDao {
 
     /**
      * 新增一条监测记录
@@ -20,6 +20,6 @@ public interface IQiduAdsDao extends IMarkDao {
     /**
      * 根据id查询
      */
-    HongyuAdsDTO queryQiduAdsById(Integer id);
+    HongyuAdsDTO queryHongyuQiduAdsById(Integer id);
 
 }

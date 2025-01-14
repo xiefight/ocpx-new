@@ -2,9 +2,8 @@ package huihuang.proxy.ocpx.bussiness.service.impl;
 
 import huihuang.proxy.ocpx.ads.hongyu.HongyuAdsDTO;
 import huihuang.proxy.ocpx.ads.hongyu.HongyuEventTypeEnum;
-import huihuang.proxy.ocpx.ads.hongyu.HongyuPath;
 import huihuang.proxy.ocpx.ads.hongyu.qidu.HongyuQiduPath;
-import huihuang.proxy.ocpx.bussiness.dao.ads.IQiduAdsDao;
+import huihuang.proxy.ocpx.bussiness.dao.ads.IHongyuQiduAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
 import huihuang.proxy.ocpx.bussiness.service.basechannel.XiaomiChannelFactory;
@@ -30,7 +29,7 @@ public class XiaomiQiduServiceImpl extends XiaomiChannelFactory implements IChan
     @Autowired
     private ChannelAdsFactory channelAdsFactory;
     @Autowired
-    private IQiduAdsDao qiduAdsDao;
+    private IHongyuQiduAdsDao qiduAdsDao;
     @Autowired
     private BaseServiceInner baseServiceInner;
 //    @Autowired
@@ -52,7 +51,7 @@ public class XiaomiQiduServiceImpl extends XiaomiChannelFactory implements IChan
             eventType = eventType + "new";
         }
         //根据id查询对应的点击记录
-        HongyuAdsDTO qiduAdsDTO = qiduAdsDao.queryQiduAdsById(id);
+        HongyuAdsDTO qiduAdsDTO = qiduAdsDao.queryHongyuQiduAdsById(id);
         if (null == qiduAdsDTO) {
             logger.error("{} 未根据{}找到对应的监测信息", channelAdsKey, id);
             return BasicResult.getFailResponse("未找到对应的监测信息 " + id);
@@ -60,7 +59,7 @@ public class XiaomiQiduServiceImpl extends XiaomiChannelFactory implements IChan
         Ads2XiaomiVO xiaomiVO = new Ads2XiaomiVO();
         xiaomiVO.setAdsId(id);
         xiaomiVO.setAdsName(HongyuQiduPath.ADS_NAME);
-        xiaomiVO.setEventType(HongyuEventTypeEnum.qiduXiaomiEventTypeMap.get(eventType).getCode());
+        xiaomiVO.setEventType(HongyuEventTypeEnum.hongyuXiaomiEventTypeMap.get(eventType).getCode());
         xiaomiVO.setEventTimes(String.valueOf(System.currentTimeMillis()));
         xiaomiVO.setCallBackUrl(qiduAdsDTO.getCallback());
         xiaomiVO.setOaid(qiduAdsDTO.getOaid());
