@@ -1,5 +1,6 @@
 package huihuang.proxy.ocpx.ads.hongyu;
 
+import huihuang.proxy.ocpx.channel.oppo.OppoParamEnum;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiParamEnum;
 
 import java.util.HashMap;
@@ -70,6 +71,26 @@ public enum HongyuParamEnum {
         hongyuXiaomiMap.put(CALLBACK, XiaomiParamEnum.CALLBACK);
         hongyuXiaomiMap.put(CLICK_ID, null);
         hongyuXiaomiMap.put(TS, XiaomiParamEnum.TS);
+    }
+
+
+    public static Map<HongyuParamEnum, OppoParamEnum> hongyuOppoMap;
+
+    static {
+        hongyuOppoMap = new HashMap<>();
+        hongyuOppoMap.put(APPID, OppoParamEnum.QIDU_APPID);
+        hongyuOppoMap.put(CHANNEL, OppoParamEnum.QIDU_CHANNEL);
+        hongyuOppoMap.put(IDFA, null);
+        hongyuOppoMap.put(IMEI, null);//
+        hongyuOppoMap.put(IMEI_MD5, OppoParamEnum.IMEI);//需要md5
+        hongyuOppoMap.put(OAID, OppoParamEnum.OAID);
+        hongyuOppoMap.put(OAID_MD5, OppoParamEnum.OAID);
+        hongyuOppoMap.put(IP, OppoParamEnum.IP);
+        hongyuOppoMap.put(ANDROID_ID, null);
+        hongyuOppoMap.put(UA, OppoParamEnum.USERAGENT);
+        hongyuOppoMap.put(CALLBACK, null);
+        hongyuOppoMap.put(CLICK_ID, null);
+        hongyuOppoMap.put(TS, OppoParamEnum.TS);
     }
 
 

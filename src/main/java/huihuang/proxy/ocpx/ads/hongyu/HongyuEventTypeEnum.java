@@ -1,6 +1,7 @@
 package huihuang.proxy.ocpx.ads.hongyu;
 
 import cn.hutool.core.collection.CollUtil;
+import huihuang.proxy.ocpx.channel.oppo.OppoEventTypeEnum;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiEventTypeEnum;
 
 import java.util.Map;
@@ -45,6 +46,21 @@ public enum HongyuEventTypeEnum {
         hongyuXiaomiEventTypeMap.put(DAY1RETENTION.code, XiaomiEventTypeEnum.APP_RETENTION);
         //购买
         hongyuXiaomiEventTypeMap.put(PURCHASE.code, XiaomiEventTypeEnum.APP_PURCHASE);
+    }
+
+
+    public static Map<String, OppoEventTypeEnum> hongyuOppoEventTypeMap;
+
+    static {
+        hongyuOppoEventTypeMap = CollUtil.newHashMap();
+        //激活
+        hongyuOppoEventTypeMap.put(ACTIVATE.code, OppoEventTypeEnum.ACTIVE);
+        //注册
+        hongyuOppoEventTypeMap.put(REGISTER.code, OppoEventTypeEnum.REGISTER);
+        //次留
+        hongyuOppoEventTypeMap.put(DAY1RETENTION.code, OppoEventTypeEnum.RETAIN_2DAY);
+        //购买
+        hongyuOppoEventTypeMap.put(PURCHASE.code, OppoEventTypeEnum.DEEP_PAGE_ACCESS);
     }
 
 

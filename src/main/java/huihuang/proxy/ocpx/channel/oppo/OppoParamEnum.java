@@ -52,6 +52,8 @@ public enum OppoParamEnum {
 
     MONITOR_TYPE("","monitorType","监测类型 0：曝光  1：点击 默认点击"),
 
+    QIDU_APPID("","appid","七读的appid"),
+    QIDU_CHANNEL("","channel","七读的channel"),
 
     ;
 

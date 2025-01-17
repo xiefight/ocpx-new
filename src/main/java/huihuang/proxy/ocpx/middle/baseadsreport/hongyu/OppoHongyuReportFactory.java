@@ -3,7 +3,7 @@ package huihuang.proxy.ocpx.middle.baseadsreport.hongyu;
 import cn.hutool.core.util.StrUtil;
 import huihuang.proxy.ocpx.ads.hongyu.HongyuParamEnum;
 import huihuang.proxy.ocpx.ads.hongyu.HongyuParamField;
-import huihuang.proxy.ocpx.channel.xiaomi.XiaomiParamEnum;
+import huihuang.proxy.ocpx.channel.oppo.OppoParamEnum;
 import huihuang.proxy.ocpx.common.Constants;
 
 import java.beans.IntrospectionException;
@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
-public abstract class XiaomiHongyuReportFactory extends HongyuReportFactory {
+public abstract class OppoHongyuReportFactory extends HongyuReportFactory {
 
 
     /**
@@ -24,13 +24,13 @@ public abstract class XiaomiHongyuReportFactory extends HongyuReportFactory {
     public String findMonitorAddress() {
         StringBuilder macro = new StringBuilder();
         //1.遍历广告主查找渠道对应的宏参数
-        Set<HongyuParamEnum> hongyuParamEnums = HongyuParamEnum.hongyuXiaomiMap.keySet();
+        Set<HongyuParamEnum> hongyuParamEnums = HongyuParamEnum.hongyuOppoMap.keySet();
         for (HongyuParamEnum hongyu : hongyuParamEnums) {
-            XiaomiParamEnum xiaomi = HongyuParamEnum.hongyuXiaomiMap.get(hongyu);
-            if (Objects.isNull(xiaomi) || StrUtil.isEmpty(xiaomi.getMacro())) {
+            OppoParamEnum oppo = HongyuParamEnum.hongyuOppoMap.get(hongyu);
+            if (Objects.isNull(oppo) || StrUtil.isEmpty(oppo.getMacro())) {
                 continue;
             }
-            macro.append(xiaomi.getParam()).append("=").append(xiaomi.getMacro()).append("&");
+            macro.append(oppo.getParam()).append("=").append(oppo.getMacro()).append("&");
         }
         String macroStr = macro.toString();
         if (macroStr.endsWith("&")) {
@@ -47,13 +47,13 @@ public abstract class XiaomiHongyuReportFactory extends HongyuReportFactory {
     protected Object channelParamToAdsParam(Map<String, String[]> parameterMap) {
         HongyuParamField hongyuParamField = new HongyuParamField();
 
-        Set<Map.Entry<HongyuParamEnum, XiaomiParamEnum>> blSet = HongyuParamEnum.hongyuXiaomiMap.entrySet();
+        Set<Map.Entry<HongyuParamEnum, OppoParamEnum>> blSet = HongyuParamEnum.hongyuOppoMap.entrySet();
         blSet.stream().filter(bl -> Objects.nonNull(bl.getValue())).forEach(bl -> {
             HongyuParamEnum hongyu = bl.getKey();
-            XiaomiParamEnum xiaomi = bl.getValue();
+            OppoParamEnum oppo = bl.getValue();
             String hongyuField = hongyu.getName();
-            String baiduParam = xiaomi.getParam();
-            String[] value = parameterMap.get(baiduParam);
+            String oppoParam = oppo.getParam();
+            String[] value = parameterMap.get(oppoParam);
             if (Objects.isNull(value) || value.length == 0) return;
             if ("null".equals(value[0]) || "NULL".equals(value[0])) return;
             if (value[0].startsWith("__") && value[0].endsWith("__")) return;
