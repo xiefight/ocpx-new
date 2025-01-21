@@ -13,6 +13,7 @@ public class HongyuParamField {
     private String imei;
     private String imei_md5;
     private String oaid;
+    @Alias("oaidMd5")
     private String oaid_md5;
     @Alias("androidId")
     private String androidid;
@@ -22,6 +23,8 @@ public class HongyuParamField {
     @Alias("clickId")
     private String clickid;
     private String callback;
+    @Alias("accountId")
+    private String account_id;
 
     private String extra;
 

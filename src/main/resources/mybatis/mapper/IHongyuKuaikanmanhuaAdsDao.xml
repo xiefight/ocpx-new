@@ -17,6 +17,7 @@
         <result column="ip" property="ip"/>
         <result column="ua" property="ua"/>
         <result column="callback" property="callback"/>
+        <result column="account_id" property="accountId"/>
         <result column="channel_name" property="channelName"/>
         <result column="click_id" property="clickId"/>
         <result column="extra" property="extra"/>
@@ -31,17 +32,17 @@
         <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
             SELECT LAST_INSERT_ID()
         </selectKey>
-        INSERT INTO qidu_ads
+        INSERT INTO hongyu_kuaikanmanhua_ads
         (appid, channel, imei, imei_md5,
         oaid, oaid_md5, idfa, android_id,
-        ts,ip,ua,callback,channel_name,click_id,extra, create_time, update_time, report_status, callback_status)
+        ts,ip,ua,callback,account_id,channel_name,click_id,extra, create_time, update_time, report_status, callback_status)
         VALUES (#{appId}, #{channel}, #{imei}, #{imeiMd5}, #{oaid}, #{oaidMd5}, #{idfa}, #{androidId}, #{ts},
-        #{ip},#{ua},#{callback},#{channelName},#{clickId},#{extra},now(),now(), "0", "0")
+        #{ip},#{ua},#{callback},#{accountId},#{channelName},#{clickId},#{extra},now(),now(), "0", "0")
     </insert>
 
 
     <update id="update" parameterType="huihuang.proxy.ocpx.ads.hongyu.HongyuAdsDTO">
-        UPDATE qidu_ads
+        UPDATE hongyu_kuaikanmanhua_ads
         <set>
             <if test="appId != null">appid = #{appId},</if>
             <if test="channel != null">channel = #{channel},</if>
@@ -55,6 +56,7 @@
             <if test="ip != null">ip = #{ip},</if>
             <if test="ua != null">ua = #{ua},</if>
             <if test="callback != null">callback = #{callback},</if>
+            <if test="accountId != null">account_id = #{accountId},</if>
             <if test="clickId != null">click_id = #{clickId},</if>
             <if test="channelName != null">channel_name = #{channelName},</if>
             <if test="extra != null">extra = #{extra},</if>
@@ -81,6 +83,7 @@
                ip,
                ua,
                callback,
+               account_id,
                channel_name,
                click_id,
                extra,
@@ -88,7 +91,7 @@
                update_time,
                report_status,
                callback_status
-        FROM qidu_ads
+        FROM hongyu_kuaikanmanhua_ads
         WHERE id = #{id}
     </select>
 

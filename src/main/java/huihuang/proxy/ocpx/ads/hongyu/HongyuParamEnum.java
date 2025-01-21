@@ -22,6 +22,9 @@ public enum HongyuParamEnum {
     TS("ts", "String", 0, "请求时间（毫秒单位）"),
     CALLBACK("callback", "String", 1, "渠道回调地址"),
 
+    ACCOUNT_ID("account_id", "String", 0, "我们规定的账户id,用于同一pid区分不出来的情况下,使用accountId区分"),
+
+
 
     ;
 
@@ -71,6 +74,7 @@ public enum HongyuParamEnum {
         hongyuXiaomiMap.put(CALLBACK, XiaomiParamEnum.CALLBACK);
         hongyuXiaomiMap.put(CLICK_ID, null);
         hongyuXiaomiMap.put(TS, XiaomiParamEnum.TS);
+        hongyuXiaomiMap.put(ACCOUNT_ID, XiaomiParamEnum.ACCOUNT_ID);
     }
 
 
@@ -84,13 +88,14 @@ public enum HongyuParamEnum {
         hongyuOppoMap.put(IMEI, null);//
         hongyuOppoMap.put(IMEI_MD5, OppoParamEnum.IMEI);//需要md5
         hongyuOppoMap.put(OAID, OppoParamEnum.OAID);
-        hongyuOppoMap.put(OAID_MD5, OppoParamEnum.OAID);
+        hongyuOppoMap.put(OAID_MD5, null);
         hongyuOppoMap.put(IP, OppoParamEnum.IP);
         hongyuOppoMap.put(ANDROID_ID, null);
         hongyuOppoMap.put(UA, OppoParamEnum.USERAGENT);
         hongyuOppoMap.put(CALLBACK, null);
         hongyuOppoMap.put(CLICK_ID, null);
         hongyuOppoMap.put(TS, OppoParamEnum.TS);
+        hongyuOppoMap.put(ACCOUNT_ID, OppoParamEnum.ACCOUNT_ID);
     }
 
 

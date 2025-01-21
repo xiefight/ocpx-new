@@ -1,5 +1,6 @@
 package huihuang.proxy.ocpx.ads.hongyu;
 
+import cn.hutool.core.annotation.Alias;
 import huihuang.proxy.ocpx.common.CommonColumn;
 import huihuang.proxy.ocpx.marketinterface.IMarkDto;
 import lombok.Data;
@@ -23,6 +24,7 @@ public class HongyuAdsDTO extends CommonColumn implements IMarkDto {
     private String os;
     private String clickId;
     private String callback;
+    private String accountId;
 
     private String extra;
 
