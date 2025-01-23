@@ -266,6 +266,10 @@ public class BaiduPath {
     public static final String QUANNENG_ZHIPUQINGYAN_SECRET_01 = "NTkwODU3MDY=";
     public static final String QUANNENG_CAINIAO_ACCOUNT_01 = "bdqncn01";
     public static final String QUANNENG_CAINIAO_SECRET_01 = "NjE4MTgyMDQ=";
+    public static final String QUANNENG_YOUKU_ACCOUNT_01 = "bdqnyk01";
+    public static final String QUANNENG_YOUKU_SECRET_01 = "NjMwNjgwMDE=";
+    public static final String QUANNENG_YOUKU_ACCOUNT_02 = "bdqnyk02";
+    public static final String QUANNENG_YOUKU_SECRET_02 = "NTg4OTIxNTU=";
 
 
     public static final String BAIDU_DINGYUN_DOUYINHUOSHAN_ACCOUNT = "bddydyhs01";

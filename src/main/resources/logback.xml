@@ -3161,10 +3161,10 @@
     <!-- 有柿（全能互动） start -->
 
     <!-- 优酷（全能互动） start -->
-    <appender name="QUANNENG_YOUKU_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <File>logs/quannengyouku/quannengyouku.log</File>
+    <appender name="QUANNENG_YOUKU_XIAOMI_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/quanneng/youku/youku_xiaomi.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-            <fileNamePattern>logs/quannengyouku/quannengyouku.log.%i</fileNamePattern>
+            <fileNamePattern>logs/quanneng/youku/youku_xiaomi.log.%i</fileNamePattern>
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
@@ -3180,11 +3180,38 @@
     </appender>
 
     <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiQuannengYoukuChannelAds" level="INFO" additivity="true">
-        <appender-ref ref="QUANNENG_YOUKU_LOG"/>
+        <appender-ref ref="QUANNENG_YOUKU_XIAOMI_LOG"/>
     </logger>
     <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiQuannengYoukuServiceImpl" level="INFO"
             additivity="true">
-        <appender-ref ref="QUANNENG_YOUKU_LOG"/>
+        <appender-ref ref="QUANNENG_YOUKU_XIAOMI_LOG"/>
+    </logger>
+
+
+    <appender name="QUANNENG_YOUKU_BAIDU_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/quanneng/youku/youku_baidu.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/quanneng/youku/youku_baidu.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduQuannengYoukuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_YOUKU_BAIDU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduQuannengYoukuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_YOUKU_BAIDU_LOG"/>
     </logger>
 
     <!-- 优酷（全能互动） start -->

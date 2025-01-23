@@ -4,6 +4,7 @@ import cn.hutool.core.util.StrUtil;
 import huihuang.proxy.ocpx.ads.quannenghudong.QuannengHudongParamEnum;
 import huihuang.proxy.ocpx.ads.quannenghudong.QuannengHudongParamField;
 import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
+import huihuang.proxy.ocpx.channel.baidu.BaiduPath;
 import huihuang.proxy.ocpx.common.Constants;
 
 import java.beans.IntrospectionException;
@@ -66,6 +67,14 @@ public abstract class BaiduQuannengHudongReportFactory extends QuannengHudongRep
         });
         logger.info("clickReport {} 媒体侧请求的监测链接中的参数，转化成广告侧的参数对象 channelParamToAdsParam:{}", channelAdsKey(), quannengHudongParamField);
         return quannengHudongParamField;
+    }
+
+    /**
+     * 渠道名称固定，可提取到上层
+     */
+    @Override
+    protected String channelName() {
+        return BaiduPath.BAIDU_CHANNEL_NAME;
     }
 
 }
