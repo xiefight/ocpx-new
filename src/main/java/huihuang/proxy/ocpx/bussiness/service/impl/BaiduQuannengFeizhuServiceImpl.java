@@ -77,6 +77,8 @@ public class BaiduQuannengFeizhuServiceImpl extends BaiduChannelFactory implemen
 
         if (BaiduPath.QUANNENG_FEIZHU_ACCOUNT_01.equals(accountId)) {
             baiduVO.setSecret(BaiduPath.QUANNENG_FEIZHU_SECRET_01);
+        } else if (BaiduPath.QUANNENG_FEIZHU_ACCOUNT_02.equals(accountId)) {
+            baiduVO.setSecret(BaiduPath.QUANNENG_FEIZHU_SECRET_02);
         }
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, baiduVO);
 
