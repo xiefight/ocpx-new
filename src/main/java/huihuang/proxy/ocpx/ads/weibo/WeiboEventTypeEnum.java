@@ -15,6 +15,8 @@ public enum WeiboEventTypeEnum {
     REGISTER("3", "注册"),
     PAY("4", "付费"),
     DAY1RETENTION("7", "次日留存"),
+    DAY1RETENTION_THREE("9", "三日留存"),
+    DAY1RETENTION_SEVEN("10", "七日留存"),
 
     ;
 
