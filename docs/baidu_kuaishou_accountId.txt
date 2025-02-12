@@ -23,7 +23,8 @@
 		"kuaishou_ads_baidu_bdksjs11": 520000000,
 		"kuaishou_ads_baidu_bdksjs12": 540000000,
 		"kuaishou_ads_baidu_bdksjs13": 560000000,
-		"kuaishou_ads_baidu_bdksjs14": 580000000
+		"kuaishou_ads_baidu_bdksjs14": 580000000,
+		"kuaishou_ads_baidu_bdksjs15": 600000000
 	},
 	"serverPath": "https://hzpvip.com"
 }
