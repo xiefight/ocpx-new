@@ -6,6 +6,7 @@ import huihuang.proxy.ocpx.channel.guangdiantong.GuangdiantongEventTypeEnum;
 import huihuang.proxy.ocpx.channel.honor.HonorEventTypeEnum;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiEventTypeEnum;
 import huihuang.proxy.ocpx.channel.iqiyi.IQiyiEventTypeEnum;
+import huihuang.proxy.ocpx.channel.oppo.OppoEventTypeEnum;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiEventTypeEnum;
 
 import java.util.Map;
@@ -242,6 +243,37 @@ public enum HuihuiEventTypeEnum {
         //自定义
         huihuiHonorEventTypeMap.put(ANDROID_CUSTOM.code, null);
         huihuiHonorEventTypeMap.put(IOS_CUSTOM.code, null);
+
+    }
+
+
+    public static Map<String, OppoEventTypeEnum> huihuiOppoEventTypeMap;
+
+    static {
+        huihuiOppoEventTypeMap = CollUtil.newHashMap();
+        //下载
+        huihuiOppoEventTypeMap.put(ANDROID_DOWNLOAD.code, null);
+        //激活
+        huihuiOppoEventTypeMap.put(ANDROID_ACTIVATE.code, OppoEventTypeEnum.ACTIVE);
+        huihuiOppoEventTypeMap.put(IOS_ACTIVATE.code, OppoEventTypeEnum.ACTIVE);
+        //注册
+        huihuiOppoEventTypeMap.put(ANDROID_REGISTER.code, OppoEventTypeEnum.REGISTER);
+        huihuiOppoEventTypeMap.put(IOS_REGISTER.code, OppoEventTypeEnum.REGISTER);
+        //次日留存
+        huihuiOppoEventTypeMap.put(ANDROID_DAY1RETENTION.code, OppoEventTypeEnum.RETAIN_2DAY);
+        huihuiOppoEventTypeMap.put(IOS_DAY1RETENTION.code, OppoEventTypeEnum.RETAIN_2DAY);
+        //加入购物车
+        huihuiOppoEventTypeMap.put(ANDROID_ADDTOCART.code, null);
+        huihuiOppoEventTypeMap.put(IOS_ADDTOCART.code, null);
+        //购买
+        huihuiOppoEventTypeMap.put(ANDROID_PURCHASE.code, null);
+        huihuiOppoEventTypeMap.put(IOS_PURCHASE.code, null);
+        //授信
+        huihuiOppoEventTypeMap.put(ANDROID_CREDIT.code, null);
+        huihuiOppoEventTypeMap.put(IOS_CREDIT.code, null);
+        //自定义
+        huihuiOppoEventTypeMap.put(ANDROID_CUSTOM.code, null);
+        huihuiOppoEventTypeMap.put(IOS_CUSTOM.code, null);
 
     }
 

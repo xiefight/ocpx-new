@@ -5,6 +5,7 @@ import huihuang.proxy.ocpx.channel.guangdiantong.GuangdiantongParamEnum;
 import huihuang.proxy.ocpx.channel.honor.HonorParamEnum;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
 import huihuang.proxy.ocpx.channel.iqiyi.IQiyiParamEnum;
+import huihuang.proxy.ocpx.channel.oppo.OppoParamEnum;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiParamEnum;
 
 import java.util.HashMap;
@@ -221,6 +222,32 @@ public enum HuihuiParamEnum {
         huihuiHonorMap.put(AAID, null);
         huihuiHonorMap.put(MODEL, null);
         huihuiHonorMap.put(OCPX_ACCOUNT, HonorParamEnum.ACCOUNT_ID);
+    }
+
+
+    public static Map<HuihuiParamEnum, OppoParamEnum> huihuiOppoMap;
+
+    static {
+        huihuiOppoMap = new HashMap<>();
+        huihuiOppoMap.put(AID, OppoParamEnum.HUIHUIYOUDAO_AID);
+        huihuiOppoMap.put(SID, OppoParamEnum.HUIHUIYOUDAO_SID);
+        huihuiOppoMap.put(CONV_EXT, OppoParamEnum.HUIHUIYOUDAO_CONV_EXT);
+        huihuiOppoMap.put(IMEI, OppoParamEnum.IMEI);
+        huihuiOppoMap.put(OAID, OppoParamEnum.OAID);
+        huihuiOppoMap.put(OAID_MD5, null);
+        huihuiOppoMap.put(IDFA, null);
+        huihuiOppoMap.put(IDFA_MD5, null);
+        huihuiOppoMap.put(CAID, null);
+        huihuiOppoMap.put(CAID_MD5, null);
+        huihuiOppoMap.put(TS, OppoParamEnum.TS);
+        huihuiOppoMap.put(OS, OppoParamEnum.OS);
+        huihuiOppoMap.put(IP, OppoParamEnum.IP);
+        huihuiOppoMap.put(UA, OppoParamEnum.USERAGENT);
+//        huihuiOppoMap.put(CALLBACK, OppoParamEnum.CALLBACK);
+        huihuiOppoMap.put(REQ_ID, null);
+        huihuiOppoMap.put(AAID, null);
+        huihuiOppoMap.put(MODEL, null);
+        huihuiOppoMap.put(OCPX_ACCOUNT, OppoParamEnum.ACCOUNT_ID);
     }
 
 
