@@ -1,5 +1,6 @@
 package huihuang.proxy.ocpx.bussiness.service.basechannel;
 
+import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.digest.DigestUtil;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
@@ -42,10 +43,10 @@ public class OppoChannelFactory {
         Long timestamp = oppoVO.getTimestamp();
         //回传到渠道
         JSONObject json = new JSONObject();
-        if (oppoVO.getImei() != null) {
+        if (StrUtil.isNotEmpty(oppoVO.getImei())) {
             json.put("imei", oppoVO.getImei());
             json.put("type", 1);
-        } else if (oppoVO.getOuId() != null) {
+        } else if (StrUtil.isNotEmpty(oppoVO.getOuId())) {
             json.put("ouId", oppoVO.getOuId());
             json.put("type", 2);
         } else {

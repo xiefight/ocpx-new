@@ -44,6 +44,7 @@ public class OppoPath {
     public static final String OPPO_HUIHUANG_GAOTU_PKG = "com.gaotu100.superclass";
     public static final String OPPO_WEIBO_BAIDUWANGPAN_PKG = "com.baidu.netdisk";
     public static final String OPPO_WEIBO_WANNIANLI_PKG = "cn.etouch.ecalendar";
+    public static final String OPPO_WEIBO_ZHIPUQINGYAN_PKG = "com.zhipuai.qingyan";
     public static final String OPPO_QUANNENG_XUEERSI_PKG = "com.cainiao.wireless";
     public static final String OPPO_HONGYU_KUAIKANMANHUA_PKG = "com.kuaikan.comic";
     public static final String OPPO_HUIHUI_MOMO_PKG = "com.immomo.momo";
