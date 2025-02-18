@@ -1,7 +1,11 @@
 package huihuang.proxy.ocpx.middle.impl;
 
+import huihuang.proxy.ocpx.ads.bupet.BupetParamField;
+import huihuang.proxy.ocpx.ads.bupet.bili.BupetBiliPath;
 import huihuang.proxy.ocpx.ads.huihui.HuihuiParamField;
+import huihuang.proxy.ocpx.ads.huihui.HuihuiPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IHuihuiYupaoAdsDao;
+import huihuang.proxy.ocpx.channel.baidu.BaiduPath;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.marketinterface.IMarkDao;
 import huihuang.proxy.ocpx.middle.baseadsreport.huihuiyoudao.XiaomiHuihuiReportFactory;
@@ -41,6 +45,24 @@ public class XiaomiHuihuiYupaoChannelAds extends XiaomiHuihuiReportFactory {
         huihuiParamField.setRedirect("false");
         huihuiParamField.setDeveloper_id("5f7a582066184032");
         return huihuiParamField;
+    }
+
+
+    @Override
+    protected String initAdsUrl() {
+        return null;
+    }
+
+    @Override
+    protected String initAdsUrl(Object adsObj) {
+        HuihuiParamField bupetParamField = (HuihuiParamField) adsObj;
+        String accountId = bupetParamField.getOcpxAccount();
+        if ("xmhhyupao03".equals(accountId)) {
+            return HuihuiPath.BASIC_URI_2;
+        } else {
+            //点击监测
+            return HuihuiPath.BASIC_URI;
+        }
     }
 
 }
