@@ -83,6 +83,8 @@ public class BaiduHuihuiYupaoServiceImpl extends BaiduChannelFactory implements 
             baiduVO.setSecret(BaiduPath.BAIDU_HUIHUI_YUPAO_SECRET_02);
         } else if (BaiduPath.BAIDU_HUIHUI_YUPAO_ACCOUNT_03.equals(ocpxAccount)) {
             baiduVO.setSecret(BaiduPath.BAIDU_HUIHUI_YUPAO_SECRET_03);
+        } else if (BaiduPath.BAIDU_HUIHUI_YUPAO_ACCOUNT_04.equals(ocpxAccount)) {
+            baiduVO.setSecret(BaiduPath.BAIDU_HUIHUI_YUPAO_SECRET_04);
         }
 
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, baiduVO);
