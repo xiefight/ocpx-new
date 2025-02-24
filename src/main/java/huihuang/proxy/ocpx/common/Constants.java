@@ -307,6 +307,7 @@ public class Constants {
 
         public static final String GDT_HUIHUI_XIANYU = "/gdthhxyServer";
         public static final String GDT_HUIHUANG_XIANYU = "/gdthhztxyServer";
+        public static final String GDT_HUIHUANG_YINGKE = "/gdthhykServer";
         public static final String GDT_KUAISHOU = "/gdtksServer";
 
 
@@ -548,6 +549,7 @@ public class Constants {
 
         public static final String GDT_HUIHUI_XIANYU = "gdt-huihui-xianyu";
         public static final String GDT_HUIHUANG_XIANYU = "gdt-huihuangzhitou-xianyu";
+        public static final String GDT_HUIHUANG_YINGKE = "gdt-huihuang-yingke";
         public static final String GDT_KUAISHOU = "gdt-kuaishou";
 
 
