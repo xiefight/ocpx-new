@@ -75,6 +75,8 @@ public class BaiduHuihuangYiduiServiceImpl extends BaiduChannelFactory implement
         baiduVO.setCbIp(hhtmAdsDTO.getIp());
         if (BaiduPath.HUIHUANG_YIDUI_ACCOUNT_01.equals(hhtmAdsDTO.getAccountId())) {
             baiduVO.setSecret(BaiduPath.HUIHUANG_YIDUI_SECRET_01);
+        } else if (BaiduPath.HUIHUANG_YIDUI_ACCOUNT_02.equals(hhtmAdsDTO.getAccountId())) {
+            baiduVO.setSecret(BaiduPath.HUIHUANG_YIDUI_SECRET_02);
         }
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, baiduVO);
 
