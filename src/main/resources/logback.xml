@@ -4595,4 +4595,35 @@
 
     <!-- jiyue 映客 end -->
 
+
+    <!-- 辉煌 有道 美团 外放 start -->
+    <appender name="HUIHUANG_HUIHUI_MEITUAN_HUIHUANG_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/huihuang/meituanhuihui/meituan/meituan_huihuang.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/huihuang/meituanhuihui/meituan/meituan_huihuang.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuihuangHuihuiMeituanChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANG_HUIHUI_MEITUAN_HUIHUANG_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuihuangHuihuiMeituanServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_HUIHUI_MEITUAN_HUIHUANG_LOG"/>
+    </logger>
+
+    <!-- 辉煌 有道 美团 外放 end -->
+
 </configuration>

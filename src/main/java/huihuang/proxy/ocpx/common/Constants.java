@@ -207,6 +207,7 @@ public class Constants {
 
         public static final String HUIHUANG_WEIBO_KUAISHOU = "/hhwbksServer";
         public static final String HUIHUANG_WEIBO_KUAISHOUJISU = "/hhwbksjsServer";
+        public static final String HUIHUANG_HUIHUI_MEITUAN = "/hhhuihmtServer";
 
 
 
@@ -465,6 +466,7 @@ public class Constants {
 
         public static final String HUIHUANG_WEIBO_KUAISHOU = "huihuang-weibo-kuaishou";
         public static final String HUIHUANG_WEIBO_KUAISHOUJISU = "huihuang-weibo-kuaishoujisu";
+        public static final String HUIHUANG_HUIHUI_MEITUAN = "huihuang-huihui-meituan";
 
         public static final String HUAWEI_KUAISHOU = "huawei-kuaishou";
         public static final String HUAWEI_LTJD = "huawei-ltjd";

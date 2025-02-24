@@ -480,6 +480,8 @@ public class ChannelAdsConfig {
     private HuihuangWeiboKuaishouChannelAds hhwbksChannelAds;
     @Autowired
     private HuihuangWeiboKuaishoujisuChannelAds hhwbksjsChannelAds;
+    @Autowired
+    private HuihuangHuihuiMeituanChannelAds hhhhmtChannelAds;
 
     @PostConstruct
     public void init() {
@@ -725,6 +727,7 @@ public class ChannelAdsConfig {
 
         channelAdsMap.put(Constants.ChannelAdsKey.HUIHUANG_WEIBO_KUAISHOU, hhwbksChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.HUIHUANG_WEIBO_KUAISHOUJISU, hhwbksjsChannelAds);
+        channelAdsMap.put(Constants.ChannelAdsKey.HUIHUANG_HUIHUI_MEITUAN, hhhhmtChannelAds);
 
     }
 

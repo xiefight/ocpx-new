@@ -4,6 +4,7 @@ import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
 import huihuang.proxy.ocpx.channel.guangdiantong.GuangdiantongParamEnum;
 import huihuang.proxy.ocpx.channel.honor.HonorParamEnum;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
+import huihuang.proxy.ocpx.channel.huihuang.HuihuangChannelParamEnum;
 import huihuang.proxy.ocpx.channel.iqiyi.IQiyiParamEnum;
 import huihuang.proxy.ocpx.channel.oppo.OppoNewParamEnum;
 import huihuang.proxy.ocpx.channel.oppo.OppoParamEnum;
@@ -308,6 +309,36 @@ public enum HuihuangmingtianParamEnum {
 
         huihuangmingtianOppoMap.put(ACCOUNT_ID, OppoParamEnum.ACCOUNT_ID);
 
+    }
+
+
+    public static Map<HuihuangmingtianParamEnum, HuihuangChannelParamEnum> huihuangmingtianHuihuangMap;
+
+    static {
+        huihuangmingtianHuihuangMap = new HashMap<>();
+        huihuangmingtianHuihuangMap.put(CHAIN_CODE, HuihuangChannelParamEnum.CHAIN_CODE);
+        huihuangmingtianHuihuangMap.put(TASKID, HuihuangChannelParamEnum.TASKID);
+        huihuangmingtianHuihuangMap.put(APP, HuihuangChannelParamEnum.APP);
+        huihuangmingtianHuihuangMap.put(SOURCE, HuihuangChannelParamEnum.SOURCE);
+        huihuangmingtianHuihuangMap.put(ADVERTISING_SPACE_ID, HuihuangChannelParamEnum.ADVERTISING_SPACE_ID);
+        huihuangmingtianHuihuangMap.put(AID, HuihuangChannelParamEnum.AID);
+        huihuangmingtianHuihuangMap.put(CHANNEL, HuihuangChannelParamEnum.CHANNEL);
+        huihuangmingtianHuihuangMap.put(ADID, HuihuangChannelParamEnum.ADID);
+        huihuangmingtianHuihuangMap.put(IMEI_MD5, HuihuangChannelParamEnum.IMEI_MD5);
+        huihuangmingtianHuihuangMap.put(OAID, HuihuangChannelParamEnum.OAID);
+        huihuangmingtianHuihuangMap.put(OAID_MD5, HuihuangChannelParamEnum.OAID_MD5);
+        huihuangmingtianHuihuangMap.put(IDFA, HuihuangChannelParamEnum.IDFA);
+        huihuangmingtianHuihuangMap.put(IDFA_MD5, HuihuangChannelParamEnum.IDFA_MD5);
+        huihuangmingtianHuihuangMap.put(CAMPAIGN_ID, HuihuangChannelParamEnum.CAMPAIGN_ID);
+        huihuangmingtianHuihuangMap.put(EVENT_TYPE, HuihuangChannelParamEnum.EVENT_TYPE);
+
+        huihuangmingtianHuihuangMap.put(TMS, HuihuangChannelParamEnum.TMS);
+        huihuangmingtianHuihuangMap.put(OS, HuihuangChannelParamEnum.OS);
+        huihuangmingtianHuihuangMap.put(IP, HuihuangChannelParamEnum.IP);
+        huihuangmingtianHuihuangMap.put(UA, HuihuangChannelParamEnum.UA);
+        huihuangmingtianHuihuangMap.put(CALLBACK_URL, HuihuangChannelParamEnum.CALLBACK_URL);
+
+        huihuangmingtianHuihuangMap.put(ACCOUNT_ID, HuihuangChannelParamEnum.ACCOUNT_ID);
     }
 
 }
