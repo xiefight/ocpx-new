@@ -1,6 +1,7 @@
 package huihuang.proxy.ocpx.middle.baseadsreport.weibo;
 
 import cn.hutool.core.util.StrUtil;
+import cn.hutool.crypto.digest.MD5;
 import huihuang.proxy.ocpx.ads.weibo.WeiboParamEnum;
 import huihuang.proxy.ocpx.ads.weibo.WeiboParamField;
 import huihuang.proxy.ocpx.bussiness.service.basechannel.HonorChannelFactory;
@@ -77,6 +78,19 @@ public abstract class HonorWeiboReportFactory extends WeiboReportFactory {
         }
         logger.info("clickReport {} 媒体侧请求的监测链接中的参数，转化成广告侧的参数对象 channelParamToAdsParam:{}", channelAdsKey(), weiboParamField);
         return weiboParamField;
+    }
+
+
+    @Override
+    protected void convertParams(Object adsObj) {
+        WeiboParamField weiboParamField = (WeiboParamField) adsObj;
+        //荣耀传过来的oaid是原值，此处需要进行md5加密
+        String oaid_md5 = weiboParamField.getOaid_md5();
+        if (oaid_md5 != null) {
+            weiboParamField.setOaid(oaid_md5);
+            weiboParamField.setOaid_md5(MD5.create().digestHex(oaid_md5));
+        }
+        super.convertParams(weiboParamField);
     }
 
 }
