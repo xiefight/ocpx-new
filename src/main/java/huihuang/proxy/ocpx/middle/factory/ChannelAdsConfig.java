@@ -467,6 +467,8 @@ public class ChannelAdsConfig {
     @Autowired
     private HonorWeiboZhipuqingyanChannelAds honorwbzpqyChannelAds;
     @Autowired
+    private HonorWeiboYikexiangceChannelAds honorwbykxcChannelAds;
+    @Autowired
     private HonorQuannengXueersiChannelAds honorqnxesChannelAds;
 
     @Autowired
@@ -722,6 +724,7 @@ public class ChannelAdsConfig {
         channelAdsMap.put(Constants.ChannelAdsKey.HONOR_QUANNENG_XUEERSI, honorqnxesChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.HONOR_WEIBO_XUEERSI, honorwbxesChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.HONOR_WEIBO_ZHIPUQINGYAN, honorwbzpqyChannelAds);
+        channelAdsMap.put(Constants.ChannelAdsKey.HONOR_WEIBO_YIKEXIANGCE, honorwbykxcChannelAds);
 
         channelAdsMap.put(Constants.ChannelAdsKey.GDT_HUIHUI_XIANYU, gdthhxyChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.GDT_KUAISHOU, gdtksChannelAds);
