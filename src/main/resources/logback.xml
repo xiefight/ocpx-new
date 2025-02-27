@@ -1362,7 +1362,8 @@
     <logger name="huihuang.proxy.ocpx.middle.impl.OppoQuannengElemeChannelAds" level="INFO" additivity="true">
         <appender-ref ref="QUANNENG_ELEME_OPPO_LOG"/>
     </logger>
-    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.OppoQuannengElemeServiceImpl" level="INFO" additivity="true">
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.OppoQuannengElemeServiceImpl" level="INFO"
+            additivity="true">
         <appender-ref ref="QUANNENG_ELEME_OPPO_LOG"/>
     </logger>
 
@@ -2545,7 +2546,6 @@
     </logger>
 
     <!-- 辉煌 饿了么 start -->
-
 
 
     <!-- 辉煌 皮皮虾 start -->
@@ -4385,7 +4385,7 @@
     <!-- 微博 学而思 end -->
 
     <!-- 微博 智谱清言 start -->
-        <appender name="WEIBO_ZHIPUQINGYAN_HONOR_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <appender name="WEIBO_ZHIPUQINGYAN_HONOR_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <File>logs/weibo/zhipuqingyan/zhipuqingyan_honor.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
             <fileNamePattern>logs/weibo/zhipuqingyan/zhipuqingyan_honor.log.%i</fileNamePattern>
@@ -4684,5 +4684,36 @@
     </logger>
 
     <!-- 辉煌 有道 美团 外放 end -->
+
+    <!-- vigo keep start -->
+    <appender name="VIGO_KEEP_OPPO_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/vigo/keep/keep_oppo.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/vigo/keep/keep_oppo.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.OppoVigoKeepChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="VIGO_KEEP_OPPO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.OppoVigoKeepServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="VIGO_KEEP_OPPO_LOG"/>
+    </logger>
+
+    <!-- vigo keep end -->
+
 
 </configuration>
