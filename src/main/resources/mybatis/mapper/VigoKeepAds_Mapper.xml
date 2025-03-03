@@ -33,9 +33,9 @@
             SELECT LAST_INSERT_ID()
         </selectKey>
         INSERT INTO vigo_keep_ads
-        (request_id,pid, idfa,ifda_md5, imei,imei_md5, oaid,oaid_md5, caid, ip, ua, model,account_id, callback, extra,channel_name,
+        (request_id,pid, idfa,idfa_md5, imei,imei_md5, oaid,oaid_md5, caid, ip, ua, model,account_id, callback, extra,channel_name,
         create_time, update_time,report_status,callback_status)
-        VALUES (#{requestId}, #{pid}, #{idfa}, #{imei}, #{oaid}, #{caid}, #{ip},
+        VALUES (#{requestId}, #{pid}, #{idfa},#{idfaMd5}, #{imei},#{imeiMd5}, #{oaid},#{oaidMd5}, #{caid}, #{ip},
         #{ua}, #{model},#{accountId}, #{callback}, #{extra},#{channelName},now(),now(), "0", "0")
     </insert>
 
