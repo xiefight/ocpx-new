@@ -1,9 +1,8 @@
 package huihuang.proxy.ocpx.bussiness.service.impl;
 
 import cn.hutool.core.util.StrUtil;
-import huihuang.proxy.ocpx.ads.quannenghudong.QuannengHudongAdsDTO;
-import huihuang.proxy.ocpx.ads.quannenghudong.QuannengHudongEventTypeEnum;
 import huihuang.proxy.ocpx.ads.vigo.VigoAdsDTO;
+import huihuang.proxy.ocpx.ads.vigo.VigoEventTypeEnum;
 import huihuang.proxy.ocpx.ads.vigo.keep.VigoKeepPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IVigoKeepAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
@@ -49,7 +48,7 @@ public class OppoVigoKeepServiceImpl extends OppoChannelFactory implements IChan
     @Override
     public Response adsCallBack(Integer id, Map<String, String[]> parameterMap) throws Exception {
         //转化类型字段
-        String eventType = parameterMap.get("action_type")[0];
+        String eventType = parameterMap.get("event_type")[0];
         logger.info("adsCallBack {} 开始回调渠道  id:{}  eventType:{}", channelAdsKey, id, eventType);
         //根据id查询对应的点击记录
         VigoAdsDTO vigoAdsDTO = vigoKeepAdsDao.queryVigoKeepAdsById(id);
@@ -80,7 +79,8 @@ public class OppoVigoKeepServiceImpl extends OppoChannelFactory implements IChan
         oppoVO.setChannel(1);
         oppoVO.setTimestamp(currentTime);
         oppoVO.setPkg(pkg);
-        oppoVO.setDataType(QuannengHudongEventTypeEnum.quannengHudongOppoEventTypeMap.get(eventType).getCode());
+        oppoVO.setDataType(VigoEventTypeEnum.vigoOppoEventTypeMap.get(eventType).getCode());
+//        oppoVO.setDataType(QuannengHudongEventTypeEnum.quannengHudongOppoEventTypeMap.get(eventType).getCode());
         oppoVO.setAscribeType(0);
         oppoVO.setAdId(adId);
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, oppoVO);
