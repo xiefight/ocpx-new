@@ -214,6 +214,8 @@ public class BaiduPath {
     public static final String HUIHUANG_YINGKE_SECRET_03 = "NjAwNTc2ODI=";
     public static final String HUIHUANG_YINGKE_ACCOUNT_04 = "bhhyingke04";
     public static final String HUIHUANG_YINGKE_SECRET_04 = "NjQxMDA0MDA=";
+    public static final String HUIHUANG_YINGKE_ACCOUNT_05 = "bhhyingke05";
+    public static final String HUIHUANG_YINGKE_SECRET_05 = "NjQ5MDIwMjM=";
     public static final String HUIHUANG_TIANMAO_ACCOUNT_01 = "bhhtianmao01";
     public static final String HUIHUANG_TIANMAO_SECRET_01 = "NTg0OTE2MjM=";
     public static final String HUIHUANG_TIANMAO_ACCOUNT_02 = "bhhtianmao02";
@@ -222,6 +224,8 @@ public class BaiduPath {
     public static final String HUIHUANG_MIA_SECRET_01 = "NTkwODU2NzY=";
     public static final String HUIHUANG_MIA_ACCOUNT_02 = "bhhmia02";
     public static final String HUIHUANG_MIA_SECRET_02 = "NTkwODU2NzU=";
+    public static final String HUIHUANG_MIA_ACCOUNT_03 = "bhhmia03";
+    public static final String HUIHUANG_MIA_SECRET_03 = "NjQ5MDE5ODA=";
     public static final String HUIHUANG_LIANXIN_ACCOUNT_01 = "bhhlianxin01";
     public static final String HUIHUANG_LIANXIN_SECRET_01 = "NTkwODU2ODI=";
     public static final String HUIHUANG_GAOTU_ACCOUNT_01 = "bhhgaotu01";
