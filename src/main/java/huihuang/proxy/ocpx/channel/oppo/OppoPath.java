@@ -54,6 +54,7 @@ public class OppoPath {
     public static final String OPPO_QUANNENG_XUEERSI_PKG = "com.cainiao.wireless";
     public static final String OPPO_HONGYU_KUAIKANMANHUA_PKG = "com.kuaikan.comic";
     public static final String OPPO_HUIHUI_MOMO_PKG = "com.immomo.momo";
+    public static final String OPPO_HUIHUI_IQIYI_PKG = "com.qiyi.video";
     public static final String OPPO_VIGO_KEEP_PKG = "com.gotokeep.keep";
 
     /**
