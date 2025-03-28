@@ -339,6 +339,8 @@ public class BaiduPath {
     public static final String BAIDU_WEIBO_WANNIANLI_SECRET_01 = "NjA5MjY5MzE=";
     public static final String BAIDU_WEIBO_BAIDUWANGPAN_ACCOUNT_01 = "bdwbbdwp01";
     public static final String BAIDU_WEIBO_BAIDUWANGPAN_SECRET_01 = "NjEwNTIwMDk=";
+    public static final String BAIDU_WEIBO_YINGKE_ACCOUNT_01 = "bdwbyk01";
+    public static final String BAIDU_WEIBO_YINGKE_SECRET_01 = "NjU5OTg2OTY=";
 
     public static final String BAIDU_JIYUE_YINGKE_ACCOUNT_01 = "bdjyyk01";
     public static final String BAIDU_JIYUE_YINGKE_SECRET_01 = "NjAwNTc2ODI=";
