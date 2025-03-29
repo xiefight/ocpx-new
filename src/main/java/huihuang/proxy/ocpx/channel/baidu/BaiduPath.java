@@ -196,6 +196,8 @@ public class BaiduPath {
     public static final String HUIHUANG_PIPIXIA_SECRET = "NTI1OTY1ODc=";
     public static final String HUIHUANG_YOUKU_ACCOUNT_01 = "bhhyouku01";
     public static final String HUIHUANG_YOUKU_SECRET_01 = "NTU3MTA0NTA=";
+    public static final String HUIHUANG_YOUKU_ACCOUNT_02 = "bhhyouku02";
+    public static final String HUIHUANG_YOUKU_SECRET_02 = "NTg4OTIxNTY=";
     public static final String HUIHUANG_ZHIFUBAO_ACCOUNT_01 = "bhhzhifubao01";
     public static final String HUIHUANG_ZHIFUBAO_SECRET_01 = "NDczODM5ODI=";
     public static final String HUIHUANG_ZHIFUBAO_ACCOUNT_02 = "bhhzhifubao02";

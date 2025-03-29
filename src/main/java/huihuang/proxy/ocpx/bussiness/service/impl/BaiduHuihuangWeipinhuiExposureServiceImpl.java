@@ -74,8 +74,8 @@ public class BaiduHuihuangWeipinhuiExposureServiceImpl extends BaiduChannelFacto
         baiduVO.setCbAndroidIdMd5(null);
         baiduVO.setCbIp(hhtmAdsDTO.getIp());
         //todo 渠道秘钥待提供
-        if (BaiduPath.HUIHUANG_YOUKU_ACCOUNT_01.equals(hhtmAdsDTO.getAccountId())) {
-            baiduVO.setSecret(BaiduPath.HUIHUANG_YOUKU_SECRET_01);
+        if (BaiduPath.HUIHUANG_WEIPINHUI_ACCOUNT_01.equals(hhtmAdsDTO.getAccountId())) {
+            baiduVO.setSecret(BaiduPath.HUIHUANG_WEIPINHUI_SECRET_01);
         }
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, baiduVO);
 
