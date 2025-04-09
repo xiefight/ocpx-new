@@ -47,6 +47,7 @@ public enum HuihuangmingtianParamEnum {
             "PAY1D（当日付费）\n" +
             "PAY1D_REMAIN1D（次留&付费都回传）"),
     EVENT_TYPE("eventType", "String", 2, "目标 1-拉活 2-拉新"),
+    VERSION("version", "String", 2, ""),
 
 
     ACCOUNT_ID("account_id", "String", 1, ""),
@@ -133,6 +134,11 @@ public enum HuihuangmingtianParamEnum {
         huihuangmingtianBaiduMap.put(IDFA_MD5, null);
         huihuangmingtianBaiduMap.put(CAMPAIGN_ID, null);
         huihuangmingtianBaiduMap.put(EVENT_TYPE, BaiduParamEnum.HUIHUANG_EVENT_TYPE);
+        huihuangmingtianBaiduMap.put(VERSION, BaiduParamEnum.HUIHUANG_VERSION);
+
+        huihuangmingtianBaiduMap.put(UID, BaiduParamEnum.HUIHUANG_UID);
+        huihuangmingtianBaiduMap.put(CID, BaiduParamEnum.HUIHUANG_CID);
+        huihuangmingtianBaiduMap.put(SID, BaiduParamEnum.HUIHUANG_SID);
 
         huihuangmingtianBaiduMap.put(TMS, BaiduParamEnum.TS);
         huihuangmingtianBaiduMap.put(OS, BaiduParamEnum.OS_TYPE);

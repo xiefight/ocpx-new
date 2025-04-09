@@ -55,6 +55,10 @@ public enum BaiduParamEnum {
     HUIHUANG_ADID("","adid",""),
     HUIHUANG_CHANNEL("","channel",""),
     HUIHUANG_EVENT_TYPE("","eventType",""),
+    HUIHUANG_UID("","uid",""),
+    HUIHUANG_CID("","cid",""),
+    HUIHUANG_SID("","sid",""),
+    HUIHUANG_VERSION("","version",""),
 
 
     QUANNENGHUDONG_PID("","pid","全能互动广告商标识"),
