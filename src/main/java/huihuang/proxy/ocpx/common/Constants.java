@@ -301,6 +301,7 @@ public class Constants {
         public static final String HONOR_HUIHUANG_JINGDONGJINRONG = "/honorhhjdjrServer";
         public static final String HONOR_HUIHUANG_XIANYU = "/honorhhxyServer";
         public static final String HONOR_HUIHUANG_MIA = "/honorhhmiaServer";
+        public static final String HONOR_HUIHUANG_YOUKU = "/honorhhyoukuServer";
         public static final String HONOR_HUIHUANG_YITAO = "/honorhhyitaoServer";
         public static final String HONOR_HUIHUI_ZHIPUQINGYAN = "/honorhhzpqyServer";
         public static final String HONOR_HUIHUI_XUEERSI = "/honorhhxesServer";
@@ -570,6 +571,7 @@ public class Constants {
         public static final String HONOR_HUIHUANG_JINGDONGJINRONG = "honor-huihuang-jingdongjinrong";
         public static final String HONOR_HUIHUANG_XIANYU = "honor-huihuang-xianyu";
         public static final String HONOR_HUIHUANG_MIA = "honor-huihuang-mia";
+        public static final String HONOR_HUIHUANG_YOUKU = "honor-huihuang-youku";
         public static final String HONOR_HUIHUANG_YITAO = "honor-huihuang-yitao";
         public static final String HONOR_HUIHUI_ZHIPUQINGYAN = "honor-huihui-zhipuqingyan";
         public static final String HONOR_HUIHUI_XUEERSI = "honor-huihui-xueersi";

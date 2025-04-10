@@ -36,6 +36,7 @@ public enum HonorParamEnum {
     HUIHUANG_CID("","cid",""),
     HUIHUANG_SID("","sid",""),
     HUIHUANG_EVENT_TYPE("","eventType",""),
+    HUIHUANG_VERSION("","version",""),
 
 
     HUIHUIYOUDAO_AID("","aid","闲鱼投放渠道标识"),

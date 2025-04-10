@@ -235,6 +235,7 @@ public enum HuihuangmingtianParamEnum {
         huihuangmingtianHonorMap.put(CID, HonorParamEnum.HUIHUANG_CID);
         huihuangmingtianHonorMap.put(SID, HonorParamEnum.HUIHUANG_SID);
         huihuangmingtianHonorMap.put(EVENT_TYPE, HonorParamEnum.HUIHUANG_EVENT_TYPE);
+        huihuangmingtianHonorMap.put(VERSION, HonorParamEnum.HUIHUANG_VERSION);
 
         huihuangmingtianHonorMap.put(TMS, HonorParamEnum.TIME);
         huihuangmingtianHonorMap.put(OS, HonorParamEnum.OS);
