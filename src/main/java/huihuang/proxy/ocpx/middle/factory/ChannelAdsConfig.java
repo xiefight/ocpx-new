@@ -387,6 +387,8 @@ public class ChannelAdsConfig {
     private BaiduWeiboBaiduwangpanChannelAds bdwbbdwpChannelAds;
     @Autowired
     private BaiduWeiboYingkeChannelAds bdwbykChannelAds;
+    @Autowired
+    private BaiduWeiboYoukuChannelAds bdwbyoukuChannelAds;
 
     @Autowired
     private BaiduJiyueYingkeChannelAds bdjiyueyingkeChannelAds;
@@ -695,6 +697,7 @@ public class ChannelAdsConfig {
         channelAdsMap.put(Constants.ChannelAdsKey.BAIDU_WEIBO_WANNIANLI, bdwbwnlChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.BAIDU_WEIBO_BAIDUWANGPAN, bdwbbdwpChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.BAIDU_WEIBO_YINGKE, bdwbykChannelAds);
+        channelAdsMap.put(Constants.ChannelAdsKey.BAIDU_WEIBO_YOUKU, bdwbyoukuChannelAds);
 
         channelAdsMap.put(Constants.ChannelAdsKey.BAIDU_JIYUE_YINGKE, bdjiyueyingkeChannelAds);
 

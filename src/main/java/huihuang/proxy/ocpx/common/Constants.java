@@ -203,6 +203,7 @@ public class Constants {
         public static final String BAIDU_WEIBO_WANNIANLI = "/bdwbwnlServer";
         public static final String BAIDU_WEIBO_BAIDUWANGPAN = "/bdwbbdwpServer";
         public static final String BAIDU_WEIBO_YINGKE = "/bdwbykServer";
+        public static final String BAIDU_WEIBO_YOUKU = "/bdwbyoukuServer";
 
         public static final String BAIDU_JIYUE_YINGKE = "/bdjyykServer";
 
@@ -471,6 +472,7 @@ public class Constants {
         public static final String BAIDU_WEIBO_WANNIANLI = "baidu-weibo-wannianli";
         public static final String BAIDU_WEIBO_BAIDUWANGPAN = "baidu-weibo-baiduwangpan";
         public static final String BAIDU_WEIBO_YINGKE = "baidu-weibo-yingke";
+        public static final String BAIDU_WEIBO_YOUKU = "baidu-weibo-youku";
 
         public static final String BAIDU_JIYUE_YINGKE = "baidu-jiyue-yingke";
 
