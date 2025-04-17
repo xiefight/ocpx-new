@@ -81,6 +81,8 @@ public class BaiduHuihuangYoukuServiceImpl extends BaiduChannelFactory implement
             baiduVO.setSecret(BaiduPath.HUIHUANG_YOUKU_SECRET_03);
         } else if (BaiduPath.HUIHUANG_YOUKU_ACCOUNT_04.equals(hhtmAdsDTO.getAccountId())) {
             baiduVO.setSecret(BaiduPath.HUIHUANG_YOUKU_SECRET_04);
+        } else if (BaiduPath.HUIHUANG_YOUKU_ACCOUNT_05.equals(hhtmAdsDTO.getAccountId())) {
+            baiduVO.setSecret(BaiduPath.HUIHUANG_YOUKU_SECRET_05);
         }
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, baiduVO);
 
