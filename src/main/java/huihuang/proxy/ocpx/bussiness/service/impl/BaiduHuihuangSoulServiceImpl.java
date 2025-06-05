@@ -1,10 +1,11 @@
 package huihuang.proxy.ocpx.bussiness.service.impl;
 
 import cn.hutool.core.net.URLDecoder;
-import huihuang.proxy.ocpx.ads.weibo.WeiboAdsDTO;
-import huihuang.proxy.ocpx.ads.weibo.WeiboEventTypeEnum;
-import huihuang.proxy.ocpx.ads.weibo.yingke.WeiboYingkePath;
-import huihuang.proxy.ocpx.bussiness.dao.ads.IWeiboYingkeAdsDao;
+import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangFengmangEventTypeEnum;
+import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangmingtianAdsDTO;
+import huihuang.proxy.ocpx.ads.huihuangmingtian.ads.HuihuangYingkePath;
+import huihuang.proxy.ocpx.bussiness.dao.ads.IHuihuangSoulAdsDao;
+import huihuang.proxy.ocpx.bussiness.dao.ads.IHuihuangYingkeAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
 import huihuang.proxy.ocpx.bussiness.service.basechannel.BaiduChannelFactory;
@@ -24,21 +25,21 @@ import org.springframework.stereotype.Service;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
-@Service("bdwbykService")
-public class BaiduWeiboYingkeServiceImpl extends BaiduChannelFactory implements IChannelAdsService {
+@Service("bhhsoulService")
+public class BaiduHuihuangSoulServiceImpl extends BaiduChannelFactory implements IChannelAdsService {
 
-    protected Logger logger = LoggerFactory.getLogger(BaiduWeiboYingkeServiceImpl.class);
+    protected Logger logger = LoggerFactory.getLogger(BaiduHuihuangSoulServiceImpl.class);
 
     @Autowired
     private ChannelAdsFactory channelAdsFactory;
     @Autowired
-    private IWeiboYingkeAdsDao weiboYingkeAdsDao;
+    private IHuihuangSoulAdsDao hhsoulAdsDao;
     @Autowired
     private BaseServiceInner baseServiceInner;
     @Autowired
-    private WeiboYingkePath weiboYingkePath;
+    private HuihuangYingkePath hhyingkePath;
 
-    String channelAdsKey = Constants.ChannelAdsKey.BAIDU_WEIBO_YINGKE;
+    String channelAdsKey = Constants.ChannelAdsKey.BAIDU_HUIHUANG_YINGKE;
 
     @Override
     public IChannelAds channelAds() {
@@ -47,38 +48,34 @@ public class BaiduWeiboYingkeServiceImpl extends BaiduChannelFactory implements 
 
     @Override
     public Response adsCallBack(Integer id, Map<String, String[]> parameterMap) throws Exception {
-        String eventType = parameterMap.get("action_type")[0];
+        String eventType = parameterMap.get("event_type")[0];
         logger.info("adsCallBack {} 开始回调渠道  id:{}  eventType:{}", channelAdsKey, id, eventType);
+
         //根据id查询对应的点击记录
-        WeiboAdsDTO weiboAdsDTO = weiboYingkeAdsDao.queryWeiboYingkeAdsById(id);
-        if (null == weiboAdsDTO) {
+        HuihuangmingtianAdsDTO hhtmAdsDTO = hhsoulAdsDao.queryHuihuangSoulAdsById(id);
+        if (null == hhtmAdsDTO) {
             logger.error("{} 未根据{}找到对应的监测信息", channelAdsKey, id);
             return BasicResult.getFailResponse("未找到对应的监测信息 " + id);
         }
-
-        String callback = weiboAdsDTO.getCb();
+        String callback = hhtmAdsDTO.getCallbackUrl();
         String channelUrl = URLDecoder.decode(callback, StandardCharsets.UTF_8);
 
         Ads2BaiduVO baiduVO = new Ads2BaiduVO();
         baiduVO.setAdsId(id);
-        baiduVO.setAdsName(weiboYingkePath.baseAdsName());
+        baiduVO.setAdsName(hhyingkePath.baseAdsName());
         baiduVO.setChannelUrl(channelUrl);
-        baiduVO.setaType(WeiboEventTypeEnum.weiboBaiduEventTypeMap.get(eventType).getCode());
+        baiduVO.setaType(HuihuangFengmangEventTypeEnum.huihuangmingtianBaiduEventTypeMap.get(eventType).getCode());
         baiduVO.setaValue(0);
         baiduVO.setCbEventTime(String.valueOf(System.currentTimeMillis()));
-//        baiduVO.setCbOaid(weiboAdsDTO.getOaid());
-        baiduVO.setCbOaidMd5(weiboAdsDTO.getOaid_md5());
-        baiduVO.setCbIdfa(weiboAdsDTO.getIdfa_md5());
+        baiduVO.setCbOaid(hhtmAdsDTO.getOaid());
+        baiduVO.setCbOaidMd5(hhtmAdsDTO.getOaidMd5());
+        baiduVO.setCbIdfa(hhtmAdsDTO.getIdfa());
         baiduVO.setCbImei(null);
-        baiduVO.setCbImeiMd5(weiboAdsDTO.getImei_md5());
+        baiduVO.setCbImeiMd5(hhtmAdsDTO.getImeiMd5());
         baiduVO.setCbAndroidIdMd5(null);
-        baiduVO.setCbIp(weiboAdsDTO.getIp());
-        if (BaiduPath.BAIDU_WEIBO_YINGKE_ACCOUNT_01.equals(weiboAdsDTO.getAccountId())) {
-            baiduVO.setSecret(BaiduPath.BAIDU_WEIBO_YINGKE_SECRET_01);
-        } else if (BaiduPath.BAIDU_WEIBO_YINGKE_ACCOUNT_02.equals(weiboAdsDTO.getAccountId())) {
-            baiduVO.setSecret(BaiduPath.BAIDU_WEIBO_YINGKE_SECRET_02);
-        } else if (BaiduPath.BAIDU_WEIBO_YINGKE_ACCOUNT_03.equals(weiboAdsDTO.getAccountId())) {
-            baiduVO.setSecret(BaiduPath.BAIDU_WEIBO_YINGKE_SECRET_03);
+        baiduVO.setCbIp(hhtmAdsDTO.getIp());
+        if (BaiduPath.HUIHUANG_SOUL_ACCOUNT_01.equals(hhtmAdsDTO.getAccountId())) {
+            baiduVO.setSecret(BaiduPath.HUIHUANG_SOUL_SECRET_01);
         }
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, baiduVO);
 
@@ -86,18 +83,17 @@ public class BaiduWeiboYingkeServiceImpl extends BaiduChannelFactory implements 
         BaiduCallbackDTO data = (BaiduCallbackDTO) response.getData();
 
         //更新回调状态
-        WeiboAdsDTO dto = new WeiboAdsDTO();
-        dto.setId(id);
-        dto.setCallBackTime(String.valueOf(System.currentTimeMillis()));
-
+        HuihuangmingtianAdsDTO huihuangmingtianAds = new HuihuangmingtianAdsDTO();
+        huihuangmingtianAds.setId(id);
+        huihuangmingtianAds.setCallBackTime(String.valueOf(System.currentTimeMillis()));
         if (response.getCode() == 0) {
-            dto.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
-            baseServiceInner.updateAdsObject(dto, weiboYingkeAdsDao);
+            huihuangmingtianAds.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
+            baseServiceInner.updateAdsObject(huihuangmingtianAds, hhsoulAdsDao);
             logger.info("adsCallBack {} 回调渠道成功：{}", channelAdsKey, data);
             return BasicResult.getSuccessResponse(data.getId());
         } else {
-            dto.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
-            baseServiceInner.updateAdsObject(dto, weiboYingkeAdsDao);
+            huihuangmingtianAds.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
+            baseServiceInner.updateAdsObject(huihuangmingtianAds, hhsoulAdsDao);
             logger.info("adsCallBack {} 回调渠道失败：{}", channelAdsKey, data);
             return BasicResult.getFailResponse(data.getCallBackMes());
         }

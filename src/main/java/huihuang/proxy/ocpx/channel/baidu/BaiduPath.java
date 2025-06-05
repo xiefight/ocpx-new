@@ -228,6 +228,8 @@ public class BaiduPath {
     public static final String HUIHUANG_YINGKE_SECRET_05 = "NjQ5MDIwMjM=";
     public static final String HUIHUANG_YINGKE_ACCOUNT_07 = "bhhyingke07";
     public static final String HUIHUANG_YINGKE_SECRET_07 = "NjY3NjQ1MDY=";
+    public static final String HUIHUANG_YINGKE_ACCOUNT_08 = "bhhyingke08";
+    public static final String HUIHUANG_YINGKE_SECRET_08 = "Njg3MDI3ODA=";
     public static final String HUIHUANG_TIANMAO_ACCOUNT_01 = "bhhtianmao01";
     public static final String HUIHUANG_TIANMAO_SECRET_01 = "NTg0OTE2MjM=";
     public static final String HUIHUANG_TIANMAO_ACCOUNT_02 = "bhhtianmao02";
@@ -256,6 +258,8 @@ public class BaiduPath {
     public static final String HUIHUANG_YIDUI_SECRET_01 = "NjQzNTY1NDg=";
     public static final String HUIHUANG_YIDUI_ACCOUNT_02 = "bdhhyidui02";
     public static final String HUIHUANG_YIDUI_SECRET_02 = "NjQ0MDAzMjA=";
+    public static final String HUIHUANG_SOUL_ACCOUNT_01 = "bdhhsoul01";
+    public static final String HUIHUANG_SOUL_SECRET_01 = "Njg3MDEwMDI=";
 
     public static final String QUANNENG_FANQIECHANGTING_ACCOUNT_02 = "bdqnfqct02";
     public static final String QUANNENG_PIPIXIA_ACCOUNT_02 = "bdqnppx02";
@@ -351,8 +355,14 @@ public class BaiduPath {
     public static final String BAIDU_WEIBO_BAIDUWANGPAN_SECRET_01 = "NjEwNTIwMDk=";
     public static final String BAIDU_WEIBO_YINGKE_ACCOUNT_01 = "bdwbyk01";
     public static final String BAIDU_WEIBO_YINGKE_SECRET_01 = "NjU5OTg2OTY=";
+    public static final String BAIDU_WEIBO_YINGKE_ACCOUNT_02 = "bdwbyk02";
+    public static final String BAIDU_WEIBO_YINGKE_SECRET_02 = "NjY3NjQ1MDY=";
+    public static final String BAIDU_WEIBO_YINGKE_ACCOUNT_03 = "bdwbyk03";
+    public static final String BAIDU_WEIBO_YINGKE_SECRET_03 = "NTg0ODU1OTY=";
     public static final String BAIDU_WEIBO_YOUKU_ACCOUNT_01 = "bdwbyouku01";
     public static final String BAIDU_WEIBO_YOUKU_SECRET_01 = "NjY3ODk0MzU=";
+    public static final String BAIDU_WEIBO_YOUKU_ACCOUNT_02 = "bdwbyouku02";
+    public static final String BAIDU_WEIBO_YOUKU_SECRET_02 = "NjY3NDY2MjQ=";
 
     public static final String BAIDU_JIYUE_YINGKE_ACCOUNT_01 = "bdjyyk01";
     public static final String BAIDU_JIYUE_YINGKE_SECRET_01 = "NjAwNTc2ODI=";

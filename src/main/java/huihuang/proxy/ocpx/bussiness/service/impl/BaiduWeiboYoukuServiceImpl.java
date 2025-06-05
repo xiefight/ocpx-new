@@ -75,6 +75,8 @@ public class BaiduWeiboYoukuServiceImpl extends BaiduChannelFactory implements I
         baiduVO.setCbIp(weiboAdsDTO.getIp());
         if (BaiduPath.BAIDU_WEIBO_YOUKU_ACCOUNT_01.equals(weiboAdsDTO.getAccountId())) {
             baiduVO.setSecret(BaiduPath.BAIDU_WEIBO_YOUKU_SECRET_01);
+        } else  if (BaiduPath.BAIDU_WEIBO_YOUKU_ACCOUNT_02.equals(weiboAdsDTO.getAccountId())) {
+            baiduVO.setSecret(BaiduPath.BAIDU_WEIBO_YOUKU_SECRET_02);
         }
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, baiduVO);
 
