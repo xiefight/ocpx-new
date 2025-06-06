@@ -40,6 +40,9 @@ public enum HuihuangChannelParamEnum {
 
     MONITOR_TYPE("", "monitorType", "监测类型 0：曝光  1：点击 默认点击"),
 
+    AD_ID("__AD_ID__", "ad_id", ""),
+    GTD_CHANNEL("", "channel", "渠道标识"),
+
     ;
 
     /**
