@@ -27,7 +27,7 @@ public class BaiduHuihuangSoulChannelAds extends BaiduHuihuangReportFactory {
 
     @Override
     protected String serverPathKey() {
-        return Constants.ServerPath.BAIDU_HUIHUANG_SOUL;
+        return Constants.ServerPath.BAIDU_HUIHUANG_SOUL ;
     }
 
     @Override

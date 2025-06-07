@@ -38,6 +38,7 @@ public abstract class BaiduHuihuangReportFactory extends HuihuangMingtianReportF
         }
         //2.config中查找服务地址
         String serverPath = queryServerPath();
+        String s = serverPathKey();
         //3.拼接监测地址
         return serverPath + serverPathKey() + Constants.ServerPath.CLICK_REPORT + "?" + macroStr;
     }

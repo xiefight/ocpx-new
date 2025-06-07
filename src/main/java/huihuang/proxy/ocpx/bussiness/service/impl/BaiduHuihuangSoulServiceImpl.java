@@ -3,9 +3,8 @@ package huihuang.proxy.ocpx.bussiness.service.impl;
 import cn.hutool.core.net.URLDecoder;
 import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangFengmangEventTypeEnum;
 import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangmingtianAdsDTO;
-import huihuang.proxy.ocpx.ads.huihuangmingtian.ads.HuihuangYingkePath;
+import huihuang.proxy.ocpx.ads.huihuangmingtian.ads.HuihuangSoulPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IHuihuangSoulAdsDao;
-import huihuang.proxy.ocpx.bussiness.dao.ads.IHuihuangYingkeAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
 import huihuang.proxy.ocpx.bussiness.service.basechannel.BaiduChannelFactory;
@@ -37,9 +36,9 @@ public class BaiduHuihuangSoulServiceImpl extends BaiduChannelFactory implements
     @Autowired
     private BaseServiceInner baseServiceInner;
     @Autowired
-    private HuihuangYingkePath hhyingkePath;
+    private HuihuangSoulPath hhsoulPath;
 
-    String channelAdsKey = Constants.ChannelAdsKey.BAIDU_HUIHUANG_YINGKE;
+    String channelAdsKey = Constants.ChannelAdsKey.BAIDU_HUIHUANG_SOUL;
 
     @Override
     public IChannelAds channelAds() {
@@ -62,7 +61,7 @@ public class BaiduHuihuangSoulServiceImpl extends BaiduChannelFactory implements
 
         Ads2BaiduVO baiduVO = new Ads2BaiduVO();
         baiduVO.setAdsId(id);
-        baiduVO.setAdsName(hhyingkePath.baseAdsName());
+        baiduVO.setAdsName(hhsoulPath.baseAdsName());
         baiduVO.setChannelUrl(channelUrl);
         baiduVO.setaType(HuihuangFengmangEventTypeEnum.huihuangmingtianBaiduEventTypeMap.get(eventType).getCode());
         baiduVO.setaValue(0);
