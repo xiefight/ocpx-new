@@ -34,7 +34,7 @@
         INSERT INTO gtd_yingke_ads
         (os, idfa, idfa_md5, ip, imei, imei_md5, oaid, oaid_md5, ua, ts, callback, account_id, extra, adid, channel,
          channel_name, create_time, update_time, report_status, callback_status)
-        VALUES (#{os}, #{idfa}, #{idfa_md5}, #{ip},#{imei}, #{imei_md5},#{oaid}, #{oaid_md5},
+        VALUES (#{os}, #{idfa}, #{idfaMd5}, #{ip},#{imei}, #{imeiMd5},#{oaid}, #{oaidMd5},
         #{ua},#{ts}, #{callback},#{accountId}, #{extra},#{adid},#{channel},#{channelName},now(),now(),
         "0", "0")
     </insert>
@@ -45,11 +45,11 @@
         <set>
             <if test="os != null">os = #{os},</if>
             <if test="idfa != null">idfa = #{idfa},</if>
-            <if test="idfa_md5 != null">idfa_md5 = #{idfa_md5},</if>
+            <if test="idfaMd5 != null">idfa_md5 = #{idfaMd5},</if>
             <if test="imei != null">imei = #{imei},</if>
-            <if test="imei_md5 != null">imei_md5 = #{imei_md5},</if>
+            <if test="imeiMd5 != null">imei_md5 = #{imeiMd5},</if>
             <if test="oaid != null">oaid = #{oaid},</if>
-            <if test="oaid_md5 != null">oaid_md5 = #{oaid_md5},</if>
+            <if test="oaidMd5 != null">oaid_md5 = #{oaidMd5},</if>
             <if test="ip != null">ip = #{ip},</if>
             <if test="ua != null">ua = #{ua},</if>
             <if test="ts != null">ts = #{ts},</if>

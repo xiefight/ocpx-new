@@ -19,6 +19,7 @@ public class GtdAdsDTO extends CommonColumn implements IMarkDto {
     private String oaid;
     private String oaidMd5;
     private String idfa;
+
     private String idfaMd5;
     private String ts;
     private String os;

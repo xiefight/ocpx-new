@@ -4985,15 +4985,13 @@
         </layout>
     </appender>
 
-    <logger name="huihuang.proxy.ocpx.bussiness.controller.HuihuangGtdYingkeController" level="INFO"
-            additivity="true">
+    <logger name="huihuang.proxy.ocpx.bussiness.controller.HuihuangGtdYingkeController" level="INFO" additivity="true">
         <appender-ref ref="GTD_YINGKE_HUIHUANG_LOG"/>
     </logger>
     <logger name="huihuang.proxy.ocpx.middle.impl.HuihuangGtdYingkeChannelAds" level="INFO" additivity="true">
         <appender-ref ref="GTD_YINGKE_HUIHUANG_LOG"/>
     </logger>
-    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuihuangGtdYingkeServiceImpl" level="INFO"
-            additivity="true">
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuihuangGtdYingkeServiceImpl" level="INFO" additivity="true">
         <appender-ref ref="GTD_YINGKE_HUIHUANG_LOG"/>
     </logger>
 

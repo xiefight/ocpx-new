@@ -20,7 +20,7 @@ import java.util.Map;
 @RequestMapping(Constants.ServerPath.HUIHUANG_GTD_YINGKE)
 public class HuihuangGtdYingkeController {
 
-    protected Logger logger = LoggerFactory.getLogger(getClass());
+    protected Logger logger = LoggerFactory.getLogger(HuihuangGtdYingkeController.class);
 
     @Autowired
     @Qualifier("hhgtdyingkeService")
@@ -39,7 +39,10 @@ public class HuihuangGtdYingkeController {
         if (queryString != null) {
             requestURL.append("?").append(queryString);
         }
-        logger.info("url:{}", requestURL.toString());
+        logger.info("reqUrl:{}", requestURL.toString());
+        logger.info("reqBody:{}", reqBody);
+//        System.out.println("requestURL.toString() = " + requestURL);
+//        System.out.println("reqBody = " + reqBody);
         try {
             Map<String, Object> params = JsonParameterUtil.jsonToMap(reqBody, Exception.class);
             return hhgtdyingkeService.monitorAddress(params);
