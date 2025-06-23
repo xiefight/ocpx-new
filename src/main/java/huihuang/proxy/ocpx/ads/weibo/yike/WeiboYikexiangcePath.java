@@ -13,8 +13,10 @@ public class WeiboYikexiangcePath extends WeiboPath {
         return "weibo-yikexiangce";
     }
 
-    public static final String EXPOSURE_URI = "https://vs.biz.weibo.com/x/pv?fid=1300&a=2727303&mi=&si=200032&";
+    public static final String EXPOSURE_URI = "https://e.picself.cn/x/pv?fid=1300&a=2727303&mi=&si=200032&";
+//    public static final String EXPOSURE_URI = "https://vs.biz.weibo.com/x/pv?fid=1300&a=2727303&mi=&si=200032&";
 
-    public static final String BASIC_URI = "https://vs.biz.weibo.com/x/bhv?fid=1300&a=2727303&mi=&si=200032&";
+    public static final String BASIC_URI = "https://e.picself.cn/x/bhv?fid=1300&a=2727303&mi=&si=200032&";
+//    public static final String BASIC_URI = "https://vs.biz.weibo.com/x/bhv?fid=1300&a=2727303&mi=&si=200032&";
 
 }
