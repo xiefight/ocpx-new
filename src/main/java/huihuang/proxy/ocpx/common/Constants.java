@@ -314,6 +314,8 @@ public class Constants {
         public static final String HONOR_WEIBO_ZHIPUQINGYAN = "/honorwbzpqyServer";
         public static final String HONOR_WEIBO_YIKEXIANGCE = "/honorwbykxcServer";
 
+        public static final String HONOR_JD_JDJR = "/honorjdjdjrServer";
+
 
         public static final String GDT_HUIHUI_XIANYU = "/gdthhxyServer";
         public static final String GDT_HUIHUANG_XIANYU = "/gdthhztxyServer";
@@ -586,6 +588,8 @@ public class Constants {
         public static final String HONOR_WEIBO_XUEERSI = "honor-weibo-xueersi";
         public static final String HONOR_WEIBO_ZHIPUQINGYAN = "honor-weibo-zhipuqingyan";
         public static final String HONOR_WEIBO_YIKEXIANGCE = "honor-weibo-yikexiangce";
+
+        public static final String HONOR_JD_JDJR = "honor-jd-jdjr";
     }
 
     public class AdsForChannel {
