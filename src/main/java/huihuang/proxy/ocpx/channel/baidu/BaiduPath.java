@@ -321,6 +321,10 @@ public class BaiduPath {
     public static final String BAIDU_DINGYUN_YOUSHI_ACCOUNT = "bddyys01";
     public static final String DINGYUN_YOUSHI_01_SECRET = "NTI1OTY1OTA=";
 
+    public static final String BAIDU_GTD_YINGKE_ACCOUNT_01 = "bdgtdyk01";
+    public static final String BAIDU_GTD_YINGKE_SECRET_01 = "Njg3MDI3ODM=";
+
+
     public static final String BAIDU_LUYUN_PAIPAI_ACCOUNT_01 = "blypp01";
     public static final String BAIDU_LUYUN_PAIPAI_ACCOUNT_02 = "blypp02";
     public static final String LUYUN_PAIPAI_SECRET_01 = "NDU5NDk5MjQ=";

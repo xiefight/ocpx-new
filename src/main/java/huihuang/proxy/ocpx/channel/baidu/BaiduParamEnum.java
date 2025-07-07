@@ -76,6 +76,8 @@ public enum BaiduParamEnum {
     JIYUE_TYPE("","type","jiyue家的产品type"),
     JIYUE_TOKEN("","token","jiyue家的产品token"),
 
+    GTD_CHANNEL("", "channel", "渠道标识"),
+
     ;
 
 

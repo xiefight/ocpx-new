@@ -207,6 +207,7 @@ public class Constants {
         public static final String BAIDU_WEIBO_YOUKU = "/bdwbyoukuServer";
 
         public static final String BAIDU_JIYUE_YINGKE = "/bdjyykServer";
+        public static final String BAIDU_GTD_YINGKE = "/bdgtdykServer";
 
         public static final String HUIHUANG_WEIBO_KUAISHOU = "/hhwbksServer";
         public static final String HUIHUANG_WEIBO_KUAISHOUJISU = "/hhwbksjsServer";
@@ -480,6 +481,7 @@ public class Constants {
         public static final String BAIDU_WEIBO_YOUKU = "baidu-weibo-youku";
 
         public static final String BAIDU_JIYUE_YINGKE = "baidu-jiyue-yingke";
+        public static final String BAIDU_GTD_YINGKE = "baidu-gtd-yingke";
 
         public static final String HUIHUANG_WEIBO_KUAISHOU = "huihuang-weibo-kuaishou";
         public static final String HUIHUANG_WEIBO_KUAISHOUJISU = "huihuang-weibo-kuaishoujisu";

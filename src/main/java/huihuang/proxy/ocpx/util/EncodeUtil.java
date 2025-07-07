@@ -1,0 +1,18 @@
+package huihuang.proxy.ocpx.util;
+
+import cn.hutool.core.net.URLEncoder;
+
+import java.nio.charset.StandardCharsets;
+
+public class EncodeUtil {
+
+    public static void main(String[] args) {
+        String str = "http://ocpc.baidu.com/ocpcapi/cb/actionCb?a_type={{ATYPE}}%26a_value={{AVALUE}}%26s=8733784531242421502%26o=1733802895467%26actType=2%26ext_info=AFD3NzMzNzg0NTMxMjQyNDIxNTAyIiwiaSI6IjcxMyIsImoiOiIxNjUxMyIsImsiOiJOakF3TlRjMk9EST0iLCJsIjoiODczMzc4NDUzMTI0MjQyMTUwMl8xNzMzODAyODk1NDY3IiwibSI6IjE3MzM4MDI4OTU0NjciLCJuIjoiMTgiLCJvIjoiMTg5IiwicCI6IjMiLCJxIjoiMiIsInIiOiI0IiwicyI6IjE3OTMiLCJ0IjoiMTUxNzMwOTg1Nzk3MSIsIngiOiIxMDAxIiwieSI6IiIsInoiOiIwIn0=IjoiMTk4IiwiMjkiOiIyIiwiMyI6Ijk0OTYxNzU4NzExNiIsIjMxIjoiMSIsIjMzIjoiMiIsIjM0IjoiMTMxMTM2IiwiMzUiOiIwIiwiMzYiOiIxMDAwIiwiMzgiOiJBQTIzODExQkQ3RjA0MjI4QjNCOUIyMTlFMTZDQzlFNjA4NjYwMDUwZDcwMjA5YzBlODQxZjI2MmFkZWU5OWEwIiwiMzkiOiI0IiwiNCI6IjEiLCI0MCI6IjEwNzMzOTQxNjU5IiwiNDMiOiIwIiwiNDciOiIxIiwiNSI6IjI4IiwiNTAiOiIyNjEiLCI1MSI6IjE3MzM4MDI4OTM0NzMiLCI2IjoiIiwiNyI6IjExMzA2MzI3Njg2Njc3ODY0MDQ3IiwiOCI6IjExMDM4MSIsIjkiOiIxIiwiYSI6IiIsImIiOiI5MTNBRjk4OTZDMTRCQjNFRkM0OUNBMTA2RjE2MkZGNjpGRz0xIiwiYyI6IjAiLCJkIjoiNzAxNzIzOTY2IiwiZSI6IjEwNzMzOTQxNjU5IiwiZiI6Ijk0OTYxNzUzOTYwMSIsImciOiI2MDA1NzY4MiIsImgiOiI4eyIwIjoiMSIsIjEiOiIwIiwiMTEiOiI2NzI1IiwiMTIiOiIxIiwiMTQiOiIxIiwiMTUiOiJBQTIzODExQkQ3RjA0MjI4QjNCOUIyMTlFMTZDQzlFNjA4NjYwMDUwZDcwMjA5YzBlODQxZjI2MmFkZWU5OWEwIiwiMTYiOiI0IiwiMTciOiIyIiwiMTkiOiJvcHBvMTAyMTIxMjkzMyIsIjIiOiI5NDk2MTc1ODcxMTUiLCIyMSI6IjEiLCIyMiI6ImZhbHNlIiwiMjQiOiIyNCIsIjI1IjoiMCIsIjI3";
+        System.out.println(encode(str));
+    }
+
+    public static String encode(String str) {
+        return URLEncoder.createQuery().encode(str, StandardCharsets.UTF_8);
+    }
+
+}

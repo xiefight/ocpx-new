@@ -48,4 +48,15 @@ public enum GtdEventTypeEnum {
         gtdHuihuangEventTypeMap.put(PAID.code, HuihuangChannelEventTypeEnum.PAID);
     }
 
+
+    public static Map<String, BaiduEventTypeEnum> gtdBaiduEventTypeMap;
+
+    static {
+        gtdBaiduEventTypeMap = CollUtil.newHashMap();
+        gtdBaiduEventTypeMap.put(ACTIVATE.code, BaiduEventTypeEnum.ACTIVE);
+        gtdBaiduEventTypeMap.put(REGISTER.code, BaiduEventTypeEnum.REGISTER);
+        gtdBaiduEventTypeMap.put(DAY1RETENTION.code, BaiduEventTypeEnum.RETAIN_1DAY);
+        gtdBaiduEventTypeMap.put(PAID.code, BaiduEventTypeEnum.ORDERS);
+    }
+
 }

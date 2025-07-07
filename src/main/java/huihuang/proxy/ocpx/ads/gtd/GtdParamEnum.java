@@ -1,5 +1,6 @@
 package huihuang.proxy.ocpx.ads.gtd;
 
+import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
 import huihuang.proxy.ocpx.channel.huihuang.HuihuangChannelParamEnum;
 
 import java.util.HashMap;
@@ -14,6 +15,7 @@ public enum GtdParamEnum {
     OAID_MD5("oaidMd5", "String", 1, "安卓设备广告标识 oaid md5值 小写"),
     IP("ip", "String", 2, "点击 ip"),
     UA("adAgent", "String", 2, "点 击 数 据 上 报 时http的 header 中的user_agent，一次urlencode 编码"),
+    UA2("ua", "String", 2, "点 击 数 据 上 报 时http的 header 中的user_agent，一次urlencode 编码"),
     TS("ts", "String", 1, "点击时间，时间戳，单位毫秒"),
 
     OS("os", "String", 1, "0:android 1:ios"),
@@ -74,6 +76,30 @@ public enum GtdParamEnum {
         gtdHuihuangMap.put(CALLBACK, HuihuangChannelParamEnum.CALLBACK_URL);
 
         gtdHuihuangMap.put(ACCOUNT_ID, HuihuangChannelParamEnum.ACCOUNT_ID);
+    }
+
+
+    public static Map<GtdParamEnum, BaiduParamEnum> gtdBaiduMap;
+
+    static {
+        gtdBaiduMap = new HashMap<>();
+        gtdBaiduMap.put(IMEI_MD5, BaiduParamEnum.IMEI_MD5);
+        gtdBaiduMap.put(OAID_MD5, BaiduParamEnum.OAID_MD5);
+        gtdBaiduMap.put(IDFA_MD5, null);
+        gtdBaiduMap.put(IMEI, null);
+        gtdBaiduMap.put(OAID, BaiduParamEnum.OAID);
+        gtdBaiduMap.put(IDFA, BaiduParamEnum.IDFA);
+
+        gtdBaiduMap.put(TS, BaiduParamEnum.TS);
+        gtdBaiduMap.put(OS, BaiduParamEnum.OS_TYPE);
+        gtdBaiduMap.put(IP, BaiduParamEnum.IP);
+        gtdBaiduMap.put(UA2, BaiduParamEnum.UA);
+        gtdBaiduMap.put(ADID, null);
+        gtdBaiduMap.put(CHANNEL, BaiduParamEnum.GTD_CHANNEL);
+
+        gtdBaiduMap.put(CALLBACK, BaiduParamEnum.CALLBACK_URL);
+
+        gtdBaiduMap.put(ACCOUNT_ID, BaiduParamEnum.ACCOUNT_ID);
     }
 
 
