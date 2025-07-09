@@ -3,6 +3,7 @@ package huihuang.proxy.ocpx.ads.jd;
 import cn.hutool.core.collection.CollUtil;
 import huihuang.proxy.ocpx.channel.baidu.BaiduEventTypeEnum;
 import huihuang.proxy.ocpx.channel.honor.HonorEventTypeEnum;
+import huihuang.proxy.ocpx.channel.oppo.OppoEventTypeEnum;
 
 import java.util.Map;
 
@@ -39,6 +40,15 @@ public enum JDEventTypeEnum {
         JdHonorEventTypeMap = CollUtil.newHashMap();
         JdHonorEventTypeMap.put(ACTIVATE.code, HonorEventTypeEnum.ACTIVE);
         JdHonorEventTypeMap.put(REGISTER.code, HonorEventTypeEnum.REGISTER);
+    }
+
+
+    public static Map<String, OppoEventTypeEnum> JdOppoEventTypeMap;
+
+    static {
+        JdOppoEventTypeMap = CollUtil.newHashMap();
+        JdOppoEventTypeMap.put(ACTIVATE.code, OppoEventTypeEnum.ACTIVE);
+        JdOppoEventTypeMap.put(REGISTER.code, OppoEventTypeEnum.REGISTER);
     }
 
 

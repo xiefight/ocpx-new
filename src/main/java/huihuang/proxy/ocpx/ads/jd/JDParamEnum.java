@@ -1,6 +1,7 @@
 package huihuang.proxy.ocpx.ads.jd;
 
 import huihuang.proxy.ocpx.channel.honor.HonorParamEnum;
+import huihuang.proxy.ocpx.channel.oppo.OppoParamEnum;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -60,6 +61,21 @@ public enum JDParamEnum {
         jdHonorMap.put(CALLBACK_URL, null);
         jdHonorMap.put(ACCOUNT_ID, HonorParamEnum.ACCOUNT_ID);
         jdHonorMap.put(CODE, HonorParamEnum.JD_CODE);
+    }
+
+
+    public static Map<JDParamEnum, OppoParamEnum> jdOppoMap;
+
+    static {
+        jdOppoMap = new HashMap<>();
+        jdOppoMap.put(OAID, OppoParamEnum.OAID);
+        jdOppoMap.put(IDFA, null);
+
+        jdOppoMap.put(CLICK_TIME, OppoParamEnum.TS);
+        jdOppoMap.put(PLATFORM, OppoParamEnum.OS);
+        jdOppoMap.put(CALLBACK_URL, null);
+        jdOppoMap.put(ACCOUNT_ID, OppoParamEnum.ACCOUNT_ID);
+        jdOppoMap.put(CODE, OppoParamEnum.JD_CODE);
     }
 
 
