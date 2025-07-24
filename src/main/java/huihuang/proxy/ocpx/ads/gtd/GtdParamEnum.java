@@ -2,6 +2,7 @@ package huihuang.proxy.ocpx.ads.gtd;
 
 import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
 import huihuang.proxy.ocpx.channel.huihuang.HuihuangChannelParamEnum;
+import huihuang.proxy.ocpx.channel.oppo.OppoParamEnum;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -96,10 +97,30 @@ public enum GtdParamEnum {
         gtdBaiduMap.put(UA2, BaiduParamEnum.UA);
         gtdBaiduMap.put(ADID, null);
         gtdBaiduMap.put(CHANNEL, BaiduParamEnum.GTD_CHANNEL);
-
         gtdBaiduMap.put(CALLBACK, BaiduParamEnum.CALLBACK_URL);
-
         gtdBaiduMap.put(ACCOUNT_ID, BaiduParamEnum.ACCOUNT_ID);
+    }
+
+
+    public static Map<GtdParamEnum, OppoParamEnum> gtdOppoMap;
+
+    static {
+        gtdOppoMap = new HashMap<>();
+        gtdOppoMap.put(IMEI_MD5, OppoParamEnum.IMEI);
+        gtdOppoMap.put(OAID_MD5, null);
+        gtdOppoMap.put(IDFA_MD5, null);
+        gtdOppoMap.put(IMEI, null);
+        gtdOppoMap.put(OAID, OppoParamEnum.OAID);
+        gtdOppoMap.put(IDFA, null);
+
+        gtdOppoMap.put(TS, OppoParamEnum.TS);
+        gtdOppoMap.put(OS, OppoParamEnum.OS);
+        gtdOppoMap.put(IP, OppoParamEnum.IP);
+        gtdOppoMap.put(UA2, OppoParamEnum.USERAGENT);
+        gtdOppoMap.put(ADID, null);
+        gtdOppoMap.put(CHANNEL, OppoParamEnum.GTD_CHANNEL);
+        gtdOppoMap.put(CALLBACK, null);
+        gtdOppoMap.put(ACCOUNT_ID, OppoParamEnum.ACCOUNT_ID);
     }
 
 

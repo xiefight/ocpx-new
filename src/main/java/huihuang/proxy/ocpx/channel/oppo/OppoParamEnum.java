@@ -62,6 +62,8 @@ public enum OppoParamEnum {
 
     JD_CODE("", "code", ""),
 
+    GTD_CHANNEL("", "channel", "渠道标识"),
+
     ;
 
 

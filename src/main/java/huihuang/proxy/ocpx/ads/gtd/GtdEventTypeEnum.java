@@ -59,4 +59,15 @@ public enum GtdEventTypeEnum {
         gtdBaiduEventTypeMap.put(PAID.code, BaiduEventTypeEnum.ORDERS);
     }
 
+
+    public static Map<String, OppoEventTypeEnum> gtdOppoEventTypeMap;
+
+    static {
+        gtdOppoEventTypeMap = CollUtil.newHashMap();
+        gtdOppoEventTypeMap.put(ACTIVATE.code, OppoEventTypeEnum.ACTIVE);
+        gtdOppoEventTypeMap.put(REGISTER.code, OppoEventTypeEnum.REGISTER);
+        gtdOppoEventTypeMap.put(DAY1RETENTION.code, OppoEventTypeEnum.RETAIN_2DAY);
+        gtdOppoEventTypeMap.put(PAID.code, OppoEventTypeEnum.DEEP_PAGE_ACCESS);
+    }
+
 }

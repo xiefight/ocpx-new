@@ -37,6 +37,8 @@ public class OppoPath {
     public static final Long VIGO_KEEP_ADID = 1000763751L;
     public static final Long WEIBO_ZHIPUQINGYAN_ADID = 1000763752L;
     public static final Long WEIBO_YIKEXIANGCE_ADID = 1000763753L;
+    public static final Long JD_JDJR_ADID = 1000763754L;
+    public static final Long GTD_YINGKE_ADID = 1000763755L;
 
 
     public static final String OPPO_HUIHUANG_YITAO_PKG = "com.taobao.etao";
@@ -59,6 +61,7 @@ public class OppoPath {
     public static final String OPPO_HUIHUI_IQIYI_PKG = "com.qiyi.video";
     public static final String OPPO_VIGO_KEEP_PKG = "com.gotokeep.keep";
     public static final String OPPO_JD_JDJR_PKG = "com.jd.jrapp";
+    public static final String OPPO_GTD_YINGKE_PKG = "？";
 
     /**
      * salt
