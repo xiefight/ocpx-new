@@ -36,6 +36,7 @@ public class HuihuangmingtianParamField {
     private String advertisingSpaceId;
     private String channel;
     private String adid;
+    private String ipUa;
 
     private String version;
 

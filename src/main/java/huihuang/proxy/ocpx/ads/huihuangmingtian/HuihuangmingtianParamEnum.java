@@ -48,6 +48,7 @@ public enum HuihuangmingtianParamEnum {
             "PAY1D_REMAIN1D（次留&付费都回传）"),
     EVENT_TYPE("eventType", "String", 2, "目标 1-拉活 2-拉新"),
     VERSION("version", "String", 2, ""),
+    IP_UA("ipUa", "String", 2, ""),
 
 
     ACCOUNT_ID("account_id", "String", 1, ""),
@@ -236,6 +237,7 @@ public enum HuihuangmingtianParamEnum {
         huihuangmingtianHonorMap.put(SID, HonorParamEnum.HUIHUANG_SID);
         huihuangmingtianHonorMap.put(EVENT_TYPE, HonorParamEnum.HUIHUANG_EVENT_TYPE);
         huihuangmingtianHonorMap.put(VERSION, HonorParamEnum.HUIHUANG_VERSION);
+        huihuangmingtianHonorMap.put(IP_UA, HonorParamEnum.HUIHUANG_IPUA);
 
         huihuangmingtianHonorMap.put(TMS, HonorParamEnum.TIME);
         huihuangmingtianHonorMap.put(OS, HonorParamEnum.OS);
