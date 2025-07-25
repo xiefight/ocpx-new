@@ -39,7 +39,7 @@ public class OppoPath {
     public static final Long WEIBO_YIKEXIANGCE_ADID = 1000763753L;
     public static final Long JD_JDJR_ADID = 1000763754L;
     public static final Long GTD_YINGKE_ADID = 1000763755L;
-
+    public static final Long HUIHUANG_XINYU_ADID = 1000763756L;
 
     public static final String OPPO_HUIHUANG_YITAO_PKG = "com.taobao.etao";
     public static final String OPPO_HUIHUANG_XIANYU_PKG = "com.taobao.idlefish";
@@ -47,6 +47,7 @@ public class OppoPath {
     public static final String OPPO_HUIHUANG_ELEME_PKG = "me.ele";
     public static final String OPPO_HUIHUANG_YINGKE_PKG = "com.meelive.ingkee";
     public static final String OPPO_HUIHUANG_MIA_PKG = "com.jiuyin.mc";
+    public static final String OPPO_HUIHUANG_XINYU_PKG = "com.huiran.xy";
     public static final String OPPO_HUIHUANG_JINGDONGJINRONG_PKG = "com.jd.jrapp";
     public static final String OPPO_HUIHUANG_GAOTU_PKG = "com.gaotu100.superclass";
     public static final String OPPO_HUIHUANG_YOUKU_PKG = "com.youku.phone";
