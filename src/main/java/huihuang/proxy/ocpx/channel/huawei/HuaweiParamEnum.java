@@ -58,6 +58,8 @@ public enum HuaweiParamEnum {
     KEEP_APPID("","appid","keep appid"),
     KEEP_CHANNEL("","channel","keep channel"),
 
+    GTD_CHANNEL("", "channel", "渠道标识"),
+
     ;
 
 

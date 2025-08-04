@@ -133,5 +133,9 @@ public class HuaweiPath {
     public static final String HW_KEEP_ACCOUNT_03 = "hwkeep03";
     public static final String KEEP_SECRET_03 = "xaZeAMCE5Ax6CN/zJVrSVh20YgbsKhT/OJgMx7CpB68=";
 
+    //gtd 映客
+    public static final String HW_GTD_YINGKE_ACCOUNT_01 = "hwgtdyk01";
+    public static final String HW_GTD_YINGKE_SECRET_01 = "4a7p8F0cqXpldeb3JmM6XtgM9iKwJ+jd9UZmYj1ClJw=";
+
     public static final String CALLBACK_URL = "https://ppscrowd-drcn.op.hicloud.com/action-lib-track/hiad/v2/actionupload?";
 }

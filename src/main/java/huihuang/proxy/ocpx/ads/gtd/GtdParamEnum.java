@@ -1,6 +1,7 @@
 package huihuang.proxy.ocpx.ads.gtd;
 
 import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
+import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
 import huihuang.proxy.ocpx.channel.huihuang.HuihuangChannelParamEnum;
 import huihuang.proxy.ocpx.channel.oppo.OppoParamEnum;
 
@@ -121,6 +122,28 @@ public enum GtdParamEnum {
         gtdOppoMap.put(CHANNEL, OppoParamEnum.GTD_CHANNEL);
         gtdOppoMap.put(CALLBACK, null);
         gtdOppoMap.put(ACCOUNT_ID, OppoParamEnum.ACCOUNT_ID);
+    }
+
+
+    public static Map<GtdParamEnum, HuaweiParamEnum> gtdHuaweiMap;
+
+    static {
+        gtdHuaweiMap = new HashMap<>();
+        gtdHuaweiMap.put(IMEI_MD5, null);
+        gtdHuaweiMap.put(OAID_MD5, null);
+        gtdHuaweiMap.put(IDFA_MD5, null);
+        gtdHuaweiMap.put(IMEI, null);
+        gtdHuaweiMap.put(OAID, HuaweiParamEnum.OAID);
+        gtdHuaweiMap.put(IDFA, null);
+
+        gtdHuaweiMap.put(TS, HuaweiParamEnum.TRACE_TIME);
+        gtdHuaweiMap.put(OS, HuaweiParamEnum.OS_VERSION);
+        gtdHuaweiMap.put(IP, HuaweiParamEnum.IP);
+        gtdHuaweiMap.put(UA2, HuaweiParamEnum.USER_AGENT);
+        gtdHuaweiMap.put(ADID, null);
+        gtdHuaweiMap.put(CHANNEL, HuaweiParamEnum.GTD_CHANNEL);
+        gtdHuaweiMap.put(CALLBACK, HuaweiParamEnum.CALLBACK);
+        gtdHuaweiMap.put(ACCOUNT_ID, HuaweiParamEnum.ACCOUNT_ID);
     }
 
 

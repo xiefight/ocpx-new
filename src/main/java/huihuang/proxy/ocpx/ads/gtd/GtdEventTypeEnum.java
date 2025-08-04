@@ -70,4 +70,15 @@ public enum GtdEventTypeEnum {
         gtdOppoEventTypeMap.put(PAID.code, OppoEventTypeEnum.DEEP_PAGE_ACCESS);
     }
 
+
+    public static Map<String, HuaweiEventTypeEnum> gtdHuaweiEventTypeMap;
+
+    static {
+        gtdHuaweiEventTypeMap = CollUtil.newHashMap();
+        gtdHuaweiEventTypeMap.put(ACTIVATE.code, HuaweiEventTypeEnum.ACTIVE);
+        gtdHuaweiEventTypeMap.put(REGISTER.code, HuaweiEventTypeEnum.REGISTER);
+        gtdHuaweiEventTypeMap.put(DAY1RETENTION.code, HuaweiEventTypeEnum.RETAIN);
+        gtdHuaweiEventTypeMap.put(PAID.code, HuaweiEventTypeEnum.PAID);
+    }
+
 }
