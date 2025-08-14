@@ -243,6 +243,7 @@ public class Constants {
         public static final String HUAWEI_HUIHUANG_JINGDONG = "/hhhjdServer";
         public static final String HUAWEI_HUIHUANG_JINGDONGJINRONG = "/hhhjdjrServer";
         public static final String HUAWEI_HUIHUANG_AILIAO = "/hhhalServer";
+        public static final String HUAWEI_HUIHUANG_YINGKE = "/hwhhykServer";
 
         public static final String HUAWEI_QUANNENG_FANQIE = "/hqfServer";
         public static final String HUAWEI_QUANNENG_FANQIECHANGTING = "/hqfqctServer";
@@ -521,6 +522,7 @@ public class Constants {
         public static final String HUAWEI_HUIHUANG_JINGDONG = "huawei-huihuang-jingdong";
         public static final String HUAWEI_HUIHUANG_JINGDONGJINRONG = "huawei-huihuang-jingdongjinrong";
         public static final String HUAWEI_HUIHUANG_AILIAO = "huawei-huihuang-ailiao";
+        public static final String HUAWEI_HUIHUANG_YINGKE = "huawei-huihuang-yingke";
 
         public static final String HUAWEI_QUANNENG_FANQIE = "huawei-quanneng-fanqie";
         public static final String HUAWEI_QUANNENG_FANQIECHANGTING = "huawei-quanneng-fanqiechangting";

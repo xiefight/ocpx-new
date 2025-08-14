@@ -243,6 +243,8 @@ public class ChannelAdsConfig {
     private HuaweiHuihuangAiliaoChannelAds hhhalChannelAds;
     @Autowired
     private HuaweiHuihuangJingdongjinrongChannelAds hhhjdjrChannelAds;
+    @Autowired
+    private HuaweiHuihuangYingkeChannelAds hwhhykChannelAds;
 
     @Autowired
     private HuaweiDingyunDouyinhuoshanChannelAds hdydyhsChannelAds;
@@ -641,6 +643,7 @@ public class ChannelAdsConfig {
         channelAdsMap.put(Constants.ChannelAdsKey.HUAWEI_HUIHUANG_JINGDONGJINRONG, hhhjdjrChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.HUAWEI_HUIHUANG_XIANYU, hhhxyChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.HUAWEI_HUIHUANG_AILIAO, hhhalChannelAds);
+        channelAdsMap.put(Constants.ChannelAdsKey.HUAWEI_HUIHUANG_YINGKE, hwhhykChannelAds);
 
         channelAdsMap.put(Constants.ChannelAdsKey.HUAWEI_DINGYUN_DOUYINHUOSHAN, hdydyhsChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.HUAWEI_DINGYUN_XIGUAVIDEO, hdyxgChannelAds);
