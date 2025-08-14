@@ -91,10 +91,6 @@ public abstract class BaseJDReportFactory extends BaseSupport implements IChanne
             e.printStackTrace();
         }
         jdParamField.setCallback_url(encodeUrl);
-        //特殊处理account_id：account_id和现有字段冲突，接口传参时使用我门自己的，保存到数据库后，替换成客户的，上报给客户
-        if (jdParamField.getAccount_id() != null && !"yunlu01".equals(jdParamField.getAccount_id())) {
-            jdParamField.setAccount_id("yunlu01");
-        }
         logger.info("clickReport {} 回调参数 replaceCallbackUrl:{}", channelAdsKey(), jdParamField);
     }
 

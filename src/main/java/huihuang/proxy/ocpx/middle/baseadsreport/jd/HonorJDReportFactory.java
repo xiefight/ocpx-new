@@ -1,6 +1,7 @@
 package huihuang.proxy.ocpx.middle.baseadsreport.jd;
 
 import cn.hutool.core.util.StrUtil;
+import huihuang.proxy.ocpx.ads.jd.JDAdsDTO;
 import huihuang.proxy.ocpx.ads.jd.JDParamEnum;
 import huihuang.proxy.ocpx.ads.jd.JDParamField;
 import huihuang.proxy.ocpx.bussiness.service.basechannel.HonorChannelFactory;
@@ -10,6 +11,7 @@ import huihuang.proxy.ocpx.common.Constants;
 
 import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Map;
@@ -93,5 +95,18 @@ public abstract class HonorJDReportFactory extends BaseJDReportFactory {
         return jdParamField;
     }
 
+    @Override
+    protected void replaceCallbackUrl(Object adsObj, Object adsDtoObj) {
+        super.replaceCallbackUrl(adsObj, adsDtoObj);
+        JDParamField jdParamField = (JDParamField) adsObj;
+        //特殊处理account_id：account_id和现有字段冲突，接口传参时使用我门自己的，保存到数据库后，替换成客户的，上报给客户
+        if ("honorjdjdjr02".equals(jdParamField.getAccount_id())) {
+            jdParamField.setAccount_id("yunlu01");
+        }
+        if ("honorjdjdjr03".equals(jdParamField.getAccount_id())) {
+            jdParamField.setAccount_id("FM_zxj01");
+        }
+        logger.info("clickReport {} 回调参数 replaceCallbackUrl:{}", channelAdsKey(), jdParamField);
+    }
 
 }
